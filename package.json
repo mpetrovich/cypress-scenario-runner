@@ -1,0 +1,22 @@
+{
+  "name": "genie-bdd",
+  "version": "0.1.0",
+  "description": "Framework-agnostic UI behavioral test runner.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nextbigsoundinc/genie.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nextbigsoundinc/genie/issues"
+  },
+  "homepage": "https://github.com/nextbigsoundinc/genie#readme",
+  "dependencies": {
+    "cypress-cucumber-preprocessor": "^1.0.0",
+    "faker": "^4.1.0"
+  },
+  "peerDependencies": {
+    "cypress": "^2.1.0"
+  }
+}

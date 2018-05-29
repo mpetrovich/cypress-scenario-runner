@@ -29,7 +29,6 @@ $(npm bin)/cypress-genie install
 
 Add this to `package.json`:
 ```
-  ...
   "cypress-cucumber-preprocessor": {
     "step_definitions": "cypress/steps/"
   }
@@ -37,9 +36,11 @@ Add this to `package.json`:
 
 Add this to `cypress/plugins/index.js`:
 ```js
+const genie = require('./genie/index');
+
 module.exports = (on, config) => {
+	genie(on, config);
 	...
-	require('./genie/index');
 };
 ```
 
@@ -47,6 +48,22 @@ Add this to `cypress/support/index.js`:
 ```js
 require('./genie/index');
 ```
+
+
+Configuration
+---
+Genie adds several configuration settings.
+
+Parameter | Default | Description
+--- | --- | ---
+`defaultCommandWait` | `0` | Number of milliseconds to wait before each scenario step. Useful if the UI needs a delay for DOM elements to update.
+`elementAttributeName` | `test-el` | Name of the attribute whose value is used to match given/when/then steps
+`valueAttributeName` | `test-val` | Name of the attribute whose value is used to match multi-checkbox inputs
+
+
+Usage
+---
+Coming soon.
 
 
 Removal

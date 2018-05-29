@@ -1,7 +1,7 @@
 {
-  "name": "genie-bdd",
-  "version": "0.1.2",
-  "description": "Framework-agnostic UI behavioral test runner.",
+  "name": "cypress-genie",
+  "version": "0.1.0",
+  "description": "Behavioral test framework for Cypress.",
   "main": "index.js",
   "repository": {
     "type": "git",

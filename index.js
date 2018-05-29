@@ -1,6 +1,6 @@
 const faker = require('faker');
 
-function configure() {
+function init() {
 	const elAttrName = Cypress.config('elementAttributeName') || 'test-el';
 	const valAttrName = Cypress.config('valueAttributeName') || 'test-val';
 
@@ -133,5 +133,5 @@ function getRandomValue(type) {
 }
 
 module.exports = {
-	configure
+	init
 };

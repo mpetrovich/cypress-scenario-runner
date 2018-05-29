@@ -18,5 +18,8 @@
   },
   "peerDependencies": {
     "cypress": "^2.1.0"
+  },
+  "bin": {
+    "cypress-genie": "install.js"
   }
 }

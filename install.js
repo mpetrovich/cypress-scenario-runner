@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const mergedirs = require('merge-dirs').default;
 const path = require('path');
 const pwd = path.resolve();

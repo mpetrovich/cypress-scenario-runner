@@ -2,11 +2,12 @@
 
 const mergedirs = require('merge-dirs').default;
 const exec = require('child_process').exec;
+const { getInstalledPathSync } = require('get-installed-path');
 
-const command = process.argv[1];
+const command = process.argv[2];
 const path = require('path');
 const pwd = path.resolve();
-const src = path.resolve(__dirname, 'cypress');
+const src = path.resolve(getInstalledPathSync('cypress-genie'), 'cypress');
 const dest = path.resolve(pwd, 'cypress');
 
 if (command === 'install') {

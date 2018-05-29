@@ -1,4 +1,4 @@
-const mergedirs = require('merge-dirs');
+const mergedirs = require('merge-dirs').default;
 const path = require('path');
 const pwd = path.resolve();
 

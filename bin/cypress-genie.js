@@ -3,7 +3,7 @@
 const mergedirs = require('merge-dirs').default;
 const exec = require('child_process').exec;
 
-const command = process.argv[0];
+const command = process.argv[1];
 const path = require('path');
 const pwd = path.resolve();
 const src = path.resolve(__dirname, 'cypress');

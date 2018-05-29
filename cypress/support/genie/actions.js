@@ -1,5 +1,5 @@
 const pages = Cypress.env('pages');
-const logins = Cypress.env('logins');
+const users = Cypress.env('users');
 
 const actions = {
 
@@ -28,7 +28,7 @@ const actions = {
 	},
 
 	login: function(usertype) {
-		let { email, password } = logins[usertype];
+		let { email, password } = users[usertype];
 		actions.logout();
 		actions.navigate('login');
 		cy.getInput('email').type(email);

@@ -29,7 +29,21 @@ $(npm bin)/cypress-genie
 
 Add this to `package.json`:
 ```
+  ...
   "cypress-cucumber-preprocessor": {
     "step_definitions": "cypress/steps/"
   }
+```
+
+Add this to `cypress/plugins/index.js`:
+```js
+module.exports = (on, config) => {
+	...
+	require('./genie/index');
+};
+```
+
+Add this to `cypress/support/index.js`:
+```js
+require('./genie/index');
 ```

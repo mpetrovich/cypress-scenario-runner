@@ -11,6 +11,9 @@
     "url": "https://github.com/nextbigsoundinc/genie/issues"
   },
   "homepage": "https://github.com/nextbigsoundinc/genie#readme",
+  "engines": {
+    "node": ">=6.0"
+  },
   "dependencies": {
     "cypress-cucumber-preprocessor": "^1.0.0",
     "faker": "^4.1.0",

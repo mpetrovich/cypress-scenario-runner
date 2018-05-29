@@ -39,8 +39,9 @@ Add this to `cypress/plugins/index.js`:
 const genie = require('./genie/index');
 
 module.exports = (on, config) => {
-	genie(on, config);
-	...
+   genie(on, config);
+   ...
+   return config;
 };
 ```
 

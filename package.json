@@ -22,7 +22,8 @@
   "peerDependencies": {
     "cypress": "^2.1.0"
   },
+  "main": "bin/cypress-genie.js",
   "bin": {
-    "cypress-genie": "install.js"
+    "cypress-genie": "bin/cypress-genie.js"
   }
 }

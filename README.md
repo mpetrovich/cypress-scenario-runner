@@ -22,7 +22,7 @@ $(npm bin)/cypress open
 
 #### 3. Run the Genie installer.
 ```sh
-$(npm bin)/cypress-genie
+$(npm bin)/cypress-genie install
 ```
 
 #### 4. Configure Cypress to include the correct Genie assets.
@@ -46,4 +46,12 @@ module.exports = (on, config) => {
 Add this to `cypress/support/index.js`:
 ```js
 require('./genie/index');
+```
+
+
+Removal
+---
+```sh
+$(npm bin)/cypress-genie uninstall
+npm uninstall cypress-genie --save-dev
 ```

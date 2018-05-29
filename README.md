@@ -1,6 +1,6 @@
 Genie
 ===
-Framework-agnostic UI behavioral test runner.
+Framework-agnostic UI behavioral test runner for Cypress.
 
 
 Prerequisites
@@ -10,22 +10,22 @@ Prerequisites
 
 Installation
 ---
-#### 1. Install [Cypress](https://www.cypress.io/) and Genie.
+#### 1. Install [Cypress](https://www.cypress.io/) and Genie
 ```sh
 npm install --save-dev cypress cypress-genie
 ```
 
-#### 2. Launch Cypress at least once to create the initial `cypress/` directory structure.
+#### 2. Launch Cypress at least once to create the initial `cypress/` directory structure
 ```sh
 $(npm bin)/cypress open
 ```
 
-#### 3. Run the Genie installer.
+#### 3. Run the Genie installer
 ```sh
 $(npm bin)/cypress-genie install
 ```
 
-#### 4. Configure Cypress to include the correct Genie assets.
+#### 4. Configure Cypress to include the correct Genie assets
 
 Add this to `package.json`:
 ```

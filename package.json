@@ -1,6 +1,6 @@
 {
   "name": "cypress-genie",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Behavioral test framework for Cypress.",
   "repository": {
     "type": "git",

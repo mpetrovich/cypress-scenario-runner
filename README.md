@@ -1,6 +1,16 @@
-Genie
+Cypress Scenario Runner
 ===
-Framework-agnostic UI behavioral test runner for Cypress.
+This tool lets you run [Gherkin](https://docs.cucumber.io/gherkin/reference/) scenarios without writing any code.
+
+
+Usage
+---
+Coming soon.
+
+
+How it works
+---
+Coming soon.
 
 
 Prerequisites
@@ -10,9 +20,9 @@ Prerequisites
 
 Installation
 ---
-#### 1. Install [Cypress](https://www.cypress.io/) and Genie
+#### 1. Install [Cypress](https://www.cypress.io/) and this package
 ```sh
-npm install --save-dev cypress cypress-genie
+npm install --save-dev cypress cypress-scenario-runner
 ```
 
 #### 2. Launch Cypress at least once to create the initial `cypress/` directory structure
@@ -20,12 +30,12 @@ npm install --save-dev cypress cypress-genie
 $(npm bin)/cypress open
 ```
 
-#### 3. Run the Genie installer
+#### 3. Run the installer
 ```sh
-$(npm bin)/cypress-genie install
+$(npm bin)/cypress-scenario-runner install
 ```
 
-#### 4. Configure Cypress to include the correct Genie assets
+#### 4. Configure Cypress to include the correct assets
 
 Add this to `package.json`:
 ```
@@ -36,10 +46,10 @@ Add this to `package.json`:
 
 Add this to `cypress/plugins/index.js`:
 ```js
-const genie = require('./genie/index');
+const scenarioRunner = require('./scenario-runner/index');
 
 module.exports = (on, config) => {
-   genie(on, config);
+   scenarioRunner(on, config);
    ...
    return config;
 };
@@ -47,13 +57,13 @@ module.exports = (on, config) => {
 
 Add this to `cypress/support/index.js`:
 ```js
-require('./genie/index');
+require('./scenario-runner/index');
 ```
 
 
 Configuration
 ---
-Genie adds several configuration settings.
+This package adds several configuration settings:
 
 Parameter | Default | Description
 --- | --- | ---
@@ -62,14 +72,9 @@ Parameter | Default | Description
 `valueAttributeName` | `test-val` | Name of the attribute whose value is used to match multi-checkbox inputs
 
 
-Usage
----
-Coming soon.
-
-
 Removal
 ---
 ```sh
-$(npm bin)/cypress-genie uninstall
-npm uninstall cypress-genie --save-dev
+$(npm bin)/cypress-scenario-runner uninstall
+npm uninstall cypress-scenario-runner --save-dev
 ```

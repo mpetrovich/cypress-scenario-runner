@@ -1,16 +1,16 @@
 {
-  "name": "cypress-genie",
+  "name": "cypress-scenario-runner",
   "version": "0.3.4",
-  "description": "Behavioral test framework for Cypress.",
+  "description": "Run Gherkin BDD scenarios without writing any code.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nextbigsoundinc/genie.git"
+    "url": "git+https://github.com/nextbigsoundinc/cypress-scenario-runner.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nextbigsoundinc/genie/issues"
+    "url": "https://github.com/nextbigsoundinc/cypress-scenario-runner/issues"
   },
-  "homepage": "https://github.com/nextbigsoundinc/genie#readme",
+  "homepage": "https://github.com/nextbigsoundinc/cypress-scenario-runner#readme",
   "engines": {
     "node": ">=6.0"
   },
@@ -22,8 +22,8 @@
   "peerDependencies": {
     "cypress": "^2.1.0"
   },
-  "main": "bin/cypress-genie.js",
+  "main": "bin/cypress-scenario-runner.js",
   "bin": {
-    "cypress-genie": "bin/cypress-genie.js"
+    "cypress-scenario-runner": "bin/cypress-scenario-runner.js"
   }
 }

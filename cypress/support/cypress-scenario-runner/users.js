@@ -1,7 +1,7 @@
 Cypress.env('users', {
 	'a user': {
-		email: 'name@example.com',
-		password: 'abc123'
+		email: 'team@brandcoders.com',
+		password: 'team'
 	},
 	'an admin user': {
 		email: 'admin@example.com',

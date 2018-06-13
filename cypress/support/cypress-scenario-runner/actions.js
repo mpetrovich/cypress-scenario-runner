@@ -1,11 +1,9 @@
 const pages = Cypress.env('pages');
 const users = Cypress.env('users');
 
-const actions = {
+const elAttrName = Cypress.config('elementAttributeName') || 'test-el';
 
-	logout: function() {
-		cy.clearCookies();
-	},
+const actions = {
 
 	navigate: function(page) {
 		cy.visit(pages[page]);
@@ -15,7 +13,7 @@ const actions = {
 		cy.getElem(name).first().click();
 	},
 
-	input: function(field, value) {
+	set: function(field, value) {
 		cy.getInput(field).input(value);
 	},
 
@@ -25,23 +23,6 @@ const actions = {
 
 	debug: function() {
 		cy.debug();
-	},
-
-	login: function(usertype) {
-		let { email, password } = users[usertype];
-		actions.logout();
-		actions.navigate('login');
-		cy.getInput('email').type(email);
-		cy.getInput('password').type(password);
-		cy.getInput('remember').check();
-		actions.click('login button');
-	},
-
-	inputTable: function(table) {
-		for (const row of table.raw()) {
-			let [field, value] = row;
-			actions.input(field, value);
-		}
 	},
 
 	waitUntilHidden: function(name) {
@@ -54,9 +35,16 @@ const actions = {
 			}
 		};
 		cy.get('html').then($html => new Promise(function(resolve, reject) {
-			let $element = $html.find(`[test-el="${name}"]`);
+			let $element = $html.find(`[${elAttrName}="${name}"]`);
 			poll($element, resolve);
 		}));
+	},
+
+	inputTable: function(table) {
+		for (const row of table.raw()) {
+			let [field, value] = row;
+			actions.input(field, value);
+		}
 	},
 
 };

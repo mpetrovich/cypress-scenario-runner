@@ -46,7 +46,7 @@ Add this to `package.json`:
 
 Add this to `cypress/plugins/index.js`:
 ```js
-const scenarioRunner = require('./scenario-runner/index');
+const scenarioRunner = require('./cypress-scenario-runner/index');
 
 module.exports = (on, config) => {
    scenarioRunner(on, config);
@@ -57,7 +57,7 @@ module.exports = (on, config) => {
 
 Add this to `cypress/support/index.js`:
 ```js
-require('./scenario-runner/index');
+require('./cypress-scenario-runner/index');
 ```
 
 

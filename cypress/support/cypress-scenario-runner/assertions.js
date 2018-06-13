@@ -27,11 +27,11 @@ const assertions = {
 	},
 
 	hasText: function(name, value) {
-		cy.getElem(name).should($element => expect($element.text().trim()).to.eq(value));
+		cy.getElem(name).should($element => expect($element.text().trim().toLowerCase()).to.eq(value.toLowerCase()));
 	},
 
 	doesNotHaveText: function(name, value) {
-		cy.getElem(name).should($element => expect($element.text().trim()).not.to.eq(value));
+		cy.getElem(name).should($element => expect($element.text().trim().toLowerCase()).not.to.eq(value.toLowerCase()));
 	},
 
 	containsText: function(name, value) {

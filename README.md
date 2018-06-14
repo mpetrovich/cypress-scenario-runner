@@ -55,8 +55,10 @@ module.exports = (on, config) => {
 };
 ```
 
-Add this to `cypress/support/index.js`:
+Customize and rename `cypress/support/pages.example.js` and `cypress/support/users.example.js`, then add this to `cypress/support/index.js`:
 ```js
+require('./pages');
+require('./users');
 require('./cypress-scenario-runner/index');
 ```
 

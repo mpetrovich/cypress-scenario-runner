@@ -22,7 +22,7 @@
   "peerDependencies": {
     "cypress": "^3.0.0"
   },
-  "main": "bin/cypress-scenario-runner.js",
+  "main": "bin/cypress-scenario-runner",
   "bin": {
     "cypress-scenario-runner": "bin/cypress-scenario-runner.js"
   }

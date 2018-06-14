@@ -24,6 +24,6 @@
   },
   "main": "bin/cypress-scenario-runner",
   "bin": {
-    "cypress-scenario-runner": "bin/cypress-scenario-runner.js"
+    "cypress-scenario-runner": "bin/cypress-scenario-runner"
   }
 }

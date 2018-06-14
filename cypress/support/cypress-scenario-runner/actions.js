@@ -1,7 +1,7 @@
 const pages = Cypress.env('pages');
 const users = Cypress.env('users');
 
-const elAttrName = Cypress.config('elementAttributeName') || 'test-el';
+const elAttrName = Cypress.config('elementAttributeName') || 'data-test';
 
 const actions = {
 

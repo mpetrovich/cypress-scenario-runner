@@ -1,7 +1,7 @@
 const faker = require('faker');
 
-const elAttrName = Cypress.config('elementAttributeName') || 'test-el';
-const valAttrName = Cypress.config('valueAttributeName') || 'test-val';
+const elAttrName = Cypress.config('elementAttributeName') || 'data-test';
+const valAttrName = Cypress.config('valueAttributeName') || 'data-test-val';
 
 Cypress.Commands.add('getElem', function(name) {
 	return cy.get(`[${elAttrName}="${name}"]`);

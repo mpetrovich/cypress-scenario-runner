@@ -68,8 +68,8 @@ This package adds several configuration settings:
 Parameter | Default | Description
 --- | --- | ---
 `defaultCommandWait` | `0` | Number of milliseconds to wait before each scenario step. Useful if the UI needs a delay for DOM elements to update.
-`elementAttributeName` | `test-el` | Name of the attribute whose value is used to match given/when/then steps
-`valueAttributeName` | `test-val` | Name of the attribute whose value is used to match multi-checkbox inputs
+`elementAttributeName` | `data-test` | Name of the attribute whose value is used to match given/when/then steps
+`valueAttributeName` | `data-test-val` | Name of the attribute whose value is used to match multi-checkbox inputs
 
 
 Removal

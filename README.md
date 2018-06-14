@@ -32,8 +32,9 @@ $(npm bin)/cypress open
 
 #### 3. Run the installer
 ```sh
-$(npm bin)/cypress-scenario-runner install
+$(npm bin)/cypress-scenario-runner install [path]
 ```
+where `[path]` is where your Cypress directory is if you moved it from its default `cypress/` location.
 
 #### 4. Configure Cypress to include the correct assets
 

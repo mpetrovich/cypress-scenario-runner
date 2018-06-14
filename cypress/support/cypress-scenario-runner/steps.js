@@ -2,7 +2,7 @@
 const steps = {
 	preconditions: {
 		loggedOut: 'I am logged out',
-		loggedIn: 'I am logged in as {string}',
+		loggedIn: 'I am logged in as {user}',
 	},
 	actions: {
 		navigate: 'I navigate to {page}',
@@ -28,7 +28,7 @@ const steps = {
 // Replaces custom parameter types like {page}, {number}, etc. with standard Gherkin {string}, {int}, etc.
 for (const category in steps) {
 	for (const stepKey in steps[category]) {
-		steps[category][stepKey] = steps[category][stepKey].replace(/({page}|{element})/g, '{string}');
+		steps[category][stepKey] = steps[category][stepKey].replace(/({page}|{user}|{element})/g, '{string}');
 		steps[category][stepKey] = steps[category][stepKey].replace(/({number})/g, '{int}');
 	}
 }

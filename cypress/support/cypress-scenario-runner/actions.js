@@ -47,6 +47,10 @@ const actions = {
 		}
 	},
 
+	logout: function() {
+		cy.clearCookies();
+	},
+
 };
 
 Cypress.env('actions', actions);

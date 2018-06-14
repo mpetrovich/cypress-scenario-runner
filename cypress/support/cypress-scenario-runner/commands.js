@@ -35,7 +35,7 @@ Cypress.Commands.add('input', { prevSubject: 'element' }, function($input, value
 	}
 	else if ($input.is('select')) {
 		value = $input.find('option').filter(function() { return this.innerText === value; }).val();  // value is the display text, not the actual value attribute
-		cy.wrap($input).select(value);
+		cy.wrap($input).select(value, { force: true });
 	}
 	else if ($input.is('[type="file"]')) {
 		let filename = value;
@@ -46,7 +46,7 @@ Cypress.Commands.add('input', { prevSubject: 'element' }, function($input, value
 		cy.wrap($input).upload(filename);
 	}
 	else {
-		cy.wrap($input).type(value);
+		cy.wrap($input).type(value, { force: true });
 	}
 });
 

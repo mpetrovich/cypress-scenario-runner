@@ -9,12 +9,11 @@ const preconditions = {
 		actions.navigate('login');
 		cy.getInput('email').type(email);
 		cy.getInput('password').type(password);
-		cy.getInput('remember').check();
 		actions.click('login button');
 	},
 
 	loggedOut: function() {
-		cy.clearCookies();
+		actions.logout();
 	},
 
 };

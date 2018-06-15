@@ -13,6 +13,7 @@ module.exports = {
 		waitUntilHidden: 'I wait for {element} to be hidden',
 		pause: 'I pause',
 		debug: 'I debug',
+		wait: 'I wait {float} seconds',
 	},
 	assertions: {
 		isOnPage: 'I will navigate to {page}',

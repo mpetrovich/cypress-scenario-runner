@@ -32,6 +32,10 @@ module.exports = {
 			cy.debug();
 		},
 
+		wait: function(wait) {
+			cy.wait(wait / 1000.0);
+		},
+
 		waitUntilHidden: function(name) {
 			const poll = function($element, resolve) {
 				if ($element && $element.is(':visible')) {

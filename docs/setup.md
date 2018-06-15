@@ -37,4 +37,4 @@ Coming soon.
 Custom behaviors
 ---
 
-See [Custom Behaviors](docs/custom-behaviors.md)
+See [Custom Behaviors](custom-behaviors.md)

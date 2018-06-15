@@ -37,7 +37,7 @@ See [Installation](docs/installation.md)
 
 Setup
 ---
-See [Customization](docs/setup.md)
+See [Setup](docs/setup.md)
 
 
 Related

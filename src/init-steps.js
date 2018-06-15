@@ -55,6 +55,7 @@ function initSteps({ given, when, then, customSteps, actions: customActions, ass
 
 		given(step, run(fn, context));
 		when(step, run(fn, context));
+		then(step, run(fn, context));
 	}
 
 	/*

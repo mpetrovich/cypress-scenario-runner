@@ -2,8 +2,7 @@ Installation
 ===
 
 
-1. Install all required packages
----
+## 1. Install all required packages
 
 - [Cypress](https://github.com/cypress-io/cypress/)
 - [cypress-cucumber-preprocessor](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor)
@@ -13,8 +12,7 @@ npm install --save-dev cypress cypress-cucumber-preprocessor cypress-scenario-ru
 ```
 
 
-2. Launch Cypress
----
+## 2. Launch Cypress
 
 It needs to be launched at least once to create the initial `cypress/` directory structure.
 
@@ -24,8 +22,7 @@ $(npm bin)/cypress open
 You are free to rename and reorganize directories. If you do, adjust the settings below accordingly.
 
 
-3. Configure Cypress
----
+## 3. Configure Cypress
 
 #### a. Specify where to keep steps files
 

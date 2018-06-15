@@ -33,7 +33,7 @@ module.exports = {
 		},
 
 		wait: function(wait) {
-			cy.wait(wait / 1000.0);
+			cy.wait(wait * 1000);
 		},
 
 		waitUntilHidden: function(name) {

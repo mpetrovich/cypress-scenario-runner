@@ -1,83 +1,45 @@
 Cypress Scenario Runner
 ===
-This tool lets you run [Gherkin](https://docs.cucumber.io/gherkin/reference/) scenarios without writing any code.
+**Run [Gherkin](https://docs.cucumber.io/gherkin/reference/) scenarios without writing a singe line of test code.**
 
+Seriously. This is all you need in order to create a working test:
+```
+Features: Signup
+===
 
-Usage
+Scenario: Signup success
 ---
-Coming soon.
+Given I am logged out
+And I navigate to "signup"
+And I set "email" to "name@example.com"
+And I set "password" to "abc123"
+When I click "signup button"
+Then I will navigate to "home"
+```
+cypress-scenario-runner will generate all the necessary test harnesses and UI commands on the fly.
 
 
 How it works
 ---
-Coming soon.
+1. Tag all interactive or assertable HTML elements with special `data-test` attributes that contain a human-readable description of the element. (eg. `data-test="signup button"`)
 
+2. [Gherkin](https://docs.cucumber.io/gherkin/reference/) scenarios are written using a set of predefined step templates with placeholders for specific elements, values, pages, etc. Each step template has associated logic that knows how to actually perform that behavior with an element that's been tagged in step 1.
 
-Prerequisites
----
-- Node 6+
+3. cypress-scenario-runner uses [cypress-cucumber-preprocessor](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor) to create cucumber `given()`, `when()`, `then()` test commands from Gherkin steps on the fly, which are executed by the [Cypress](https://www.cypress.io/) test runner.
 
 
 Installation
 ---
-#### 1. Install [Cypress](https://www.cypress.io/) and this package
-```sh
-npm install --save-dev cypress cypress-scenario-runner
-```
+Requires Node 8+
 
-#### 2. Launch Cypress at least once to create the initial `cypress/` directory structure
-```sh
-$(npm bin)/cypress open
-```
-
-#### 3. Run the installer
-```sh
-$(npm bin)/cypress-scenario-runner install [path]
-```
-where `[path]` is where your Cypress directory is if you moved it from its default `cypress/` location.
-
-#### 4. Configure Cypress to include the correct assets
-
-Add this to `package.json`:
-```
-  "cypress-cucumber-preprocessor": {
-    "step_definitions": "cypress/steps/"
-  }
-```
-
-Add this to `cypress/plugins/index.js`:
-```js
-const scenarioRunner = require('./cypress-scenario-runner/index');
-
-module.exports = (on, config) => {
-   scenarioRunner(on, config);
-   ...
-   return config;
-};
-```
-
-Customize and rename `cypress/support/pages.example.js` and `cypress/support/users.example.js`, then add this to `cypress/support/index.js`:
-```js
-require('./pages');
-require('./users');
-require('./cypress-scenario-runner/index');
-```
+See [Installation](docs/installation.md)
 
 
-Configuration
+Setup
 ---
-This package adds several configuration settings:
-
-Parameter | Default | Description
---- | --- | ---
-`defaultCommandWait` | `0` | Number of milliseconds to wait before each scenario step. Useful if the UI needs a delay for DOM elements to update.
-`elementAttributeName` | `data-test` | Name of the attribute whose value is used to match given/when/then steps
-`valueAttributeName` | `data-test-val` | Name of the attribute whose value is used to match multi-checkbox inputs
+See [Customization](docs/setup.md)
 
 
-Removal
+Related
 ---
-```sh
-$(npm bin)/cypress-scenario-runner uninstall
-npm uninstall cypress-scenario-runner --save-dev
-```
+- Prefer

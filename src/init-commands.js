@@ -1,17 +1,23 @@
 const faker = require('faker');
-
 const elAttrName = Cypress.config('elementAttributeName') || 'data-test';
 const valAttrName = Cypress.config('valueAttributeName') || 'data-test-val';
 
-Cypress.Commands.add('getElem', function(name) {
+function initCommands() {
+	Cypress.Commands.add('getElem', getElem);
+	Cypress.Commands.add('getInput', getInput);
+	Cypress.Commands.add('input', { prevSubject: 'element' }, input);
+	Cypress.Commands.add('upload', { prevSubject: 'element' }, upload);
+}
+
+function getElem(name) {
 	return cy.get(`[${elAttrName}="${name}"]`);
-});
+}
 
-Cypress.Commands.add('getInput', function(name) {
+function getInput(name) {
 	return cy.get(`[${elAttrName}="${name}"]:input, [${elAttrName}="${name}"] :input`);
-});
+}
 
-Cypress.Commands.add('input', { prevSubject: 'element' }, function($input, value) {
+function input($input, value) {
 	let randomRegex = /<random ([^>]+)>/g;
 
 	if (randomRegex.test(value)) {
@@ -48,9 +54,9 @@ Cypress.Commands.add('input', { prevSubject: 'element' }, function($input, value
 	else {
 		cy.wrap($input).type(value, { force: true });
 	}
-});
+}
 
-Cypress.Commands.add('upload', { prevSubject: 'element' }, function($input, filename) {
+function upload($input, filename) {
 	// source: https://github.com/cypress-io/cypress/issues/170#issuecomment-384252209
 	cy.fixture(filename, 'base64').then(content => {
 		const elem = $input[0];
@@ -61,7 +67,7 @@ Cypress.Commands.add('upload', { prevSubject: 'element' }, function($input, file
 		dataTransfer.items.add(testFile);
 		elem.files = dataTransfer.files;
 	});
-});
+}
 
 function b64toBlob(b64Data, contentType, sliceSize) {
 	contentType = contentType || '';
@@ -105,6 +111,9 @@ function getRandomValue(type) {
 	else if (type === 'email') {
 		value = faker.internet.email();
 	}
+	else if (type === 'password') {
+		value = faker.internet.password();
+	}
 	else if (type === 'street address') {
 		value = faker.address.streetAddress();
 	}
@@ -129,3 +138,5 @@ function getRandomValue(type) {
 
 	return value;
 }
+
+module.exports = initCommands;

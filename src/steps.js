@@ -1,10 +1,11 @@
-// This should be kept in sync with cypress-scenario-builder
-const steps = {
+module.exports = {
 	preconditions: {
 		loggedOut: 'I am logged out',
 		loggedIn: 'I am logged in as {user}',
 	},
 	actions: {
+		logout: 'I log out',
+		login: 'I log in as {user}',
 		navigate: 'I navigate to {page}',
 		click: 'I click {element}',
 		set: 'I set {element} to {string}',
@@ -24,13 +25,3 @@ const steps = {
 		doesNotContainText: '{element} will not contain {string}',
 	},
 };
-
-// Replaces custom parameter types like {page}, {number}, etc. with standard Gherkin {string}, {int}, etc.
-for (const category in steps) {
-	for (const stepKey in steps[category]) {
-		steps[category][stepKey] = steps[category][stepKey].replace(/({page}|{user}|{element})/g, '{string}');
-		steps[category][stepKey] = steps[category][stepKey].replace(/({number})/g, '{int}');
-	}
-}
-
-Cypress.env('steps', steps);

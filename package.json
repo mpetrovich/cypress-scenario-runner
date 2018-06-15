@@ -15,15 +15,11 @@
     "node": ">=6.0"
   },
   "dependencies": {
-    "cypress-cucumber-preprocessor": "^1.0.0",
-    "faker": "^4.1.0",
-    "merge-dirs": "^0.2.1"
+    "faker": "^4.1.0"
   },
   "peerDependencies": {
-    "cypress": "^3.0.0"
+    "cypress": "^3.0.0",
+    "cypress-cucumber-preprocessor": "^1.0.0"
   },
-  "main": "bin/cypress-scenario-runner",
-  "bin": {
-    "cypress-scenario-runner": "bin/cypress-scenario-runner"
-  }
+  "main": "index.js"
 }

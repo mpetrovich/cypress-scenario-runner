@@ -13,7 +13,7 @@ module.exports = {
 		},
 
 		navigate: function(page, table, { pages }) {
-			cy.visit(pages[page]);
+			cy.visit(pages[page] || page);
 		},
 
 		click: function(name) {

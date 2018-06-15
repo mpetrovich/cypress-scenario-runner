@@ -16,14 +16,13 @@ function initSteps({ given, when, then, customSteps, actions: customActions, ass
 	const context = { actions, assertions, preconditions, pages, users };
 
 	/*
-		Replaces custom parameter types like {page}, {number}, etc.
-		with standard Gherkin parameters {string}, {int}, etc.
+		Replaces custom parameter types like {page}, {user}, etc.
+		with standard Gherkin parameters {string}, etc.
 	 */
 
 	for (const category in steps) {
 		for (const stepKey in steps[category]) {
 			steps[category][stepKey] = steps[category][stepKey].replace(/({page}|{user}|{element})/g, '{string}');
-			steps[category][stepKey] = steps[category][stepKey].replace(/({number})/g, '{int}');
 		}
 	}
 

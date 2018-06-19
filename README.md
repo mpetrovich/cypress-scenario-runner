@@ -14,7 +14,7 @@ And I navigate to "signup"
 And I set "email" to "name@example.com"
 And I set "password" to "abc123"
 When I click "signup button"
-Then I will navigate to "home"
+Then I should be on "home"
 ```
 cypress-scenario-runner will generate all the necessary test harnesses and UI commands on the fly.
 

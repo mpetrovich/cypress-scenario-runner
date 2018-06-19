@@ -1,6 +1,7 @@
 const faker = require('faker');
 const elAttrName = Cypress.config('elementAttributeName') || 'data-test';
 const valAttrName = Cypress.config('valueAttributeName') || 'data-test-val';
+const forceAttrName = Cypress.config('forceAttributeName') || 'data-test-force';
 
 function initCommands() {
 	Cypress.Commands.add('getElem', getElem);
@@ -18,7 +19,8 @@ function getInput(name) {
 }
 
 function input($input, value) {
-	let randomRegex = /<random ([^>]+)>/g;
+	const randomRegex = /<random ([^>]+)>/g;
+	const shouldForce = !$input.attr(forceAttrName) || $input.attr(forceAttrName) === 'true';  // true by default
 
 	if (randomRegex.test(value)) {
 		value = value.replace(randomRegex, (match, type) => getRandomValue(type));
@@ -26,22 +28,22 @@ function input($input, value) {
 
 	if ($input.is(':checkbox') || $input.is(':radio')) {
 		if (value === 'checked') {
-			cy.wrap($input).check({ force: true });  // { force: true } to support custom checkboxes/radios
+			cy.wrap($input).check({ force: shouldForce });
 		}
 		else if (value === 'unchecked') {
-			cy.wrap($input).uncheck({ force: true });
+			cy.wrap($input).uncheck({ force: shouldForce });
 		}
 		else {
 			// Multi-value checkboxes
 			let values = value.split(',').map(s => s.trim());
 			for (let value of values) {
-				cy.wrap($input).filter(`[${valAttrName}="${value}"]`).first().check({ force: true });
+				cy.wrap($input).filter(`[${valAttrName}="${value}"]`).first().check({ force: shouldForce });
 			}
 		}
 	}
 	else if ($input.is('select')) {
 		value = $input.find('option').filter(function() { return this.innerText.trim() === value; }).val();  // value is the display text, not the actual value attribute
-		cy.wrap($input).select(value, { force: true });
+		cy.wrap($input).select(value, { force: shouldForce });
 	}
 	else if ($input.is('[type="file"]')) {
 		let filename = value;
@@ -52,7 +54,7 @@ function input($input, value) {
 		cy.wrap($input).upload(filename);
 	}
 	else {
-		cy.wrap($input).type(value, { force: true });
+		cy.wrap($input).type(value, { force: shouldForce });
 	}
 }
 

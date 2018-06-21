@@ -1,4 +1,4 @@
-Cypress Scenario Runner
+![Logo](logo.png) Cypress Scenario Runner
 ===
 **Run [Gherkin](https://docs.cucumber.io/gherkin/reference/) scenarios without writing a singe line of test code.**
 

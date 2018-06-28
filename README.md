@@ -42,4 +42,4 @@ See [Setup](docs/setup.md)
 
 Related
 ---
-Prefer using a UI to write Gherkin scenarios? You'll love [cypress-scenario-builder](https://github.com/nextbigsoundinc/cypress-scenario-builder).
+Prefer using a UI to write Gherkin scenarios? Try [gherkin-scenario-builder](https://github.com/nextbigsoundinc/gherkin-scenario-builder).

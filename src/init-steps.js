@@ -22,7 +22,7 @@ function initSteps({ given, when, then, customSteps, actions: customActions, ass
 
 	for (const category in steps) {
 		for (const stepKey in steps[category]) {
-			steps[category][stepKey] = steps[category][stepKey].replace(/({page}|{user}|{element})/g, '{string}');
+			steps[category][stepKey] = steps[category][stepKey].replace(/(\{page|user|element\})/g, '{string}');
 		}
 	}
 

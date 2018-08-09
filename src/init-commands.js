@@ -42,7 +42,6 @@ function input($input, value) {
 		}
 	}
 	else if ($input.is('select')) {
-		value = $input.find('option').filter(function() { return this.innerText.trim() === value; }).val();  // value is the display text, not the actual value attribute
 		cy.wrap($input).select(value, { force: shouldForce });
 	}
 	else if ($input.is('[type="file"]')) {

@@ -81,7 +81,7 @@ module.exports = {
 			cy.getElem(name).should('not.be.visible');
 		},
 
-		hasCount: function(count, name) {
+		hasCount: function(name, count) {
 			cy.getElem(name).should('have.length', count);
 		},
 

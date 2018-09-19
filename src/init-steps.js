@@ -1,3 +1,4 @@
+const merge = require('lodash.merge');
 const defaultSteps = require('./steps');
 const defaultBehaviors = require('./behaviors');
 
@@ -5,7 +6,7 @@ const beforeFns = [];
 const afterFns = [];
 
 function initSteps({ given, when, then, customSteps, actions: customActions, assertions: customAssertions, preconditions: customPreconditions }) {
-	const steps = Object.assign({}, defaultSteps, customSteps);
+	const steps = merge({}, defaultSteps, customSteps);
 	const actions = Object.assign({}, defaultBehaviors.actions, customActions);
 	const assertions = Object.assign({}, defaultBehaviors.assertions, customAssertions);
 	const preconditions = Object.assign({}, defaultBehaviors.preconditions, customPreconditions);

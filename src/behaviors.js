@@ -14,6 +14,9 @@ module.exports = {
 
 		navigate: function(page, table, { pages }) {
 			cy.visit(pages[page] || page);
+			// Sometimes visiting the same page causes the page to not load:
+			// https://github.com/cypress-io/cypress/issues/1311
+			cy.reload(true);
 		},
 
 		click: function(name) {

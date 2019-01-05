@@ -74,7 +74,7 @@ module.exports = {
 		},
 
 		isVisible: function(name) {
-			cy.getElem(name).should('be.visible').and('not.empty');
+			cy.getElem(name).should('be.visible');
 		},
 
 		isNotVisible: function(name) {

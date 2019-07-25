@@ -1,6 +1,6 @@
 Cypress Scenario Runner
 ===
-**Run [Gherkin](https://docs.cucumber.io/gherkin/reference/) scenarios without writing a singe line of test code.**
+**Run [Gherkin](https://docs.cucumber.io/gherkin/reference/) scenarios without writing a single line of test code.**
 
 Seriously. This is all you need in order to create a working test:
 ```

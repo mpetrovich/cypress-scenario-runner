@@ -37,7 +37,10 @@ function input($input, value) {
 			// Multi-value checkboxes
 			let values = value.split(',').map(s => s.trim());
 			for (let value of values) {
-				cy.wrap($input).filter(`[${valAttrName}="${value}"]`).first().check({ force: shouldForce });
+				cy.wrap($input)
+					.filter(`[${valAttrName}="${value}"], [value="${value}"]`)
+					.first()
+					.check({ force: shouldForce });
 			}
 		}
 	}

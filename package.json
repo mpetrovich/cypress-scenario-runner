@@ -22,5 +22,16 @@
     "cypress": "^3.0.3",
     "cypress-cucumber-preprocessor": "^1.0.0"
   },
-  "main": "index.js"
+  "main": "index.js",
+  "devDependencies": {
+    "cypress": "^3.0.3",
+    "cypress-cucumber-preprocessor": "^1.0.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "step_definitions": "test/steps/"
+  },
+  "scripts": {
+    "test": "cypress run",
+    "test:open": "cypress open"
+  }
 }

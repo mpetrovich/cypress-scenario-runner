@@ -25,13 +25,15 @@
   "main": "index.js",
   "devDependencies": {
     "cypress": "^3.0.3",
-    "cypress-cucumber-preprocessor": "^1.0.0"
+    "cypress-cucumber-preprocessor": "^1.0.0",
+    "prettier": "^1.18.2"
   },
   "cypress-cucumber-preprocessor": {
     "step_definitions": "test/steps/"
   },
   "scripts": {
     "test": "cypress run",
-    "test:open": "cypress open"
+    "test:open": "cypress open",
+    "format": "prettier --write '{src,test}/**/*.{js,json,html}'"
   }
 }

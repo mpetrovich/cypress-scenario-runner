@@ -26,4 +26,4 @@ module.exports = {
 		containsText: '{element} should contain {string}',
 		doesNotContainText: '{element} should not contain {string}',
 	},
-};
+}

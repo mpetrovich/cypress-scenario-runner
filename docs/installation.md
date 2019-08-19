@@ -29,10 +29,10 @@ You are free to rename and reorganize directories. If you do, adjust the setting
 This can be located anywhere but is recommended to be within the Cypress directory.
 
 Add this to `package.json`:
-```
-  "cypress-cucumber-preprocessor": {
-    "step_definitions": "cypress/steps/"
-  }
+```diff
++	"cypress-cucumber-preprocessor": {
++		"step_definitions": "cypress/steps/"
++	}
 ```
 
 #### b. (optional) Add a `cypress.json` file to customize Cypress
@@ -54,14 +54,14 @@ If you modified the default Cypress directory structure or want to [customize th
 
 By default, the plugin file is located at `cypress/plugins/index.js`.
 
-```js
-const cucumber = require('cypress-cucumber-preprocessor').default;
+```diff
++	const cucumber = require('cypress-cucumber-preprocessor').default;
 
-module.exports = (on, config) => {
-   on('file:preprocessor', cucumber());
-   ...
-   return config;
-};
+	module.exports = (on, config) => {
++		on('file:preprocessor', cucumber());
+		...
+		return config;
+	};
 ```
 
 #### d. Modify the Cypress support file

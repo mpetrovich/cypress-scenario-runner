@@ -1,4 +1,3 @@
-// This should be kept in sync with cypress-scenario-builder
 module.exports = {
 	preconditions: {
 		loggedOut: 'I am logged out',

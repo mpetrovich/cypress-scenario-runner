@@ -56,7 +56,7 @@ function upload($input, filenames) {
 	const dataTransfer = new DataTransfer()
 
 	for (let filename of filenames) {
-		// source: https://github.com/cypress-io/cypress/issues/170#issuecomment-384252209
+		// Source: https://github.com/cypress-io/cypress/issues/170#issuecomment-384252209
 		promises.push(
 			cy.fixture(filename, 'base64').then(content => {
 				const blob = b64toBlob(content)

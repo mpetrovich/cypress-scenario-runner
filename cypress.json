@@ -1,8 +1,8 @@
 {
 	"integrationFolder": "test/features",
+	"fixturesFolder": "test/fixtures",
 	"pluginsFile": "test/cypress/plugins.js",
 	"supportFile": "test/cypress/support.js",
-	"fixturesFolder": false,
 	"screenshotsFolder": "test/cypress/screenshots",
 	"video": false
 }

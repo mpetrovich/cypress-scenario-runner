@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<button id="button" test-elem="clickable element">Clickable element</button>
+		<div id="button-result" test-elem="clickable element result"></div>
+		<script>
+			document.querySelector('[test-elem="clickable element"]').addEventListener('click', function(event) {
+				document.querySelector('[test-elem="clickable element result"]').innerText = 'Button clicked'
+			})
+		</script>
+
+		<button test-elem="disappear button">Make element disappear</button>
+		<div test-elem="disappearing element">Disappearing element</div>
+		<script>
+			document.querySelector('[test-elem="disappear button"]').addEventListener('click', function(event) {
+				window.setTimeout(
+					() => (document.querySelector('[test-elem="disappearing element"]').style.display = 'none'),
+					250
+				)
+			})
+		</script>
+	</body>
+</html>

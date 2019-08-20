@@ -73,3 +73,19 @@ Given I navigate to "inputs"
 And I set "select input" to "option 2 label"
 When I click "submit button"
 Then "submitted select" should be "option 2 value"
+
+
+# Scenario: Single-selection file inputs can be set
+# ---
+# Given I navigate to "inputs"
+# And I set "file input" to "file.txt"
+# When I click "submit button"
+# Then "submitted file" should be "file.txt"
+
+
+# Scenario: Multiple-selection file inputs can be set
+# ---
+# Given I navigate to "inputs"
+# And I set "file input" to "file.txt, file-2.txt"
+# When I click "submit button"
+# Then "submitted file" should be "file.txt; file-2.txt"

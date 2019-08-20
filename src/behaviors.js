@@ -63,13 +63,23 @@ module.exports = {
 
 	assertions: {
 		isOnPage: function(page, table, { pages }) {
-			let path = pages[page]
+			let path = pages[page] || page
+
+			if (path.startsWith('/') && path.endsWith('/')) {
+				path = new RegExp(path.slice(1, -1))
+			}
+
 			let comparator = path instanceof RegExp ? 'match' : 'eq'
 			cy.location('pathname').should(comparator, path)
 		},
 
 		isNotOnPage: function(page, table, { pages }) {
-			let path = pages[page]
+			let path = pages[page] || page
+
+			if (path.startsWith('/') && path.endsWith('/')) {
+				path = new RegExp(path.slice(1, -1))
+			}
+
 			let comparator = path instanceof RegExp ? 'not.match' : 'not.eq'
 			cy.location('pathname').should(comparator, path)
 		},

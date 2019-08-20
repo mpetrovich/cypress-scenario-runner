@@ -26,16 +26,16 @@ When I navigate to "assertions"
 Then I should not be on "another page"
 
 
-# Scenario: Can assert to not be on a different page by page path string
-# ---
-# When I navigate to "assertions"
-# Then I should not be on "/test/pages/another.html"
+Scenario: Can assert to not be on a different page by page path string
+---
+When I navigate to "assertions"
+Then I should not be on "/test/pages/another.html"
 
 
-# Scenario: Can assert to not be on a different page by page path regex
-# ---
-# When I navigate to "assertions"
-# Then I should not be on "/another.*\.html$/"
+Scenario: Can assert to not be on a different page by page path regex
+---
+When I navigate to "assertions"
+Then I should not be on "/another.*\.html$/"
 
 
 Scenario: A non-empty visible element is visible

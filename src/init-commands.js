@@ -32,7 +32,7 @@ function input($input, value) {
 		} else if (value === 'unchecked') {
 			cy.wrap($input).uncheck({ force: shouldForce })
 		} else {
-			// Multi-value checkboxes
+			// By value
 			let values = value.split(',').map(s => s.trim())
 			for (let value of values) {
 				cy.wrap($input)
@@ -44,27 +44,30 @@ function input($input, value) {
 	} else if ($input.is('select')) {
 		cy.wrap($input).select(value, { force: shouldForce })
 	} else if ($input.is('[type="file"]')) {
-		let filename = value
-		let inputName = $input.attr('name')
-		let files = {
-			[inputName]: new File(['sample data'], filename, { type: 'text/plain' }),
-		}
-		cy.wrap($input).upload(filename)
+		const filenames = value.split(',').map(s => s.trim())
+		cy.wrap($input).upload(filenames)
 	} else {
 		cy.wrap($input).type(value, { force: shouldForce })
 	}
 }
 
-function upload($input, filename) {
-	// source: https://github.com/cypress-io/cypress/issues/170#issuecomment-384252209
-	cy.fixture(filename, 'base64').then(content => {
-		const elem = $input[0]
-		const blob = b64toBlob(content)
-		const testFile = new File([blob], filename)
-		const dataTransfer = new DataTransfer()
+function upload($input, filenames) {
+	const promises = []
+	const dataTransfer = new DataTransfer()
 
-		dataTransfer.items.add(testFile)
-		elem.files = dataTransfer.files
+	for (let filename of filenames) {
+		// source: https://github.com/cypress-io/cypress/issues/170#issuecomment-384252209
+		promises.push(
+			cy.fixture(filename, 'base64').then(content => {
+				const blob = b64toBlob(content)
+				const file = new File([blob], filename)
+				dataTransfer.items.add(file)
+			})
+		)
+	}
+
+	Promise.all(promises).then(() => {
+		$input[0].files = dataTransfer.files
 	})
 }
 

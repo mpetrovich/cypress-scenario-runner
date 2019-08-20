@@ -34,3 +34,24 @@ And "disappearing element" should be visible
 When I click "disappear button"
 And I wait for "disappearing element" to disappear
 Then "disappearing element" should not be visible
+
+
+Scenario: Can use custom actions
+---
+Given I navigate to "actions"
+When I double-click "double-clickable element"
+Then "double-clickable element result" should be "Element double-clicked"
+
+
+Scenario: Can use custom assertions
+---
+When I navigate to "actions"
+Then "even number" should be even
+Then "odd number" should be odd
+
+
+Scenario: Actions can be used with Then
+---
+When I navigate to "actions"
+Then I click "clickable element"
+Then "clickable element result" should be "Button clicked"

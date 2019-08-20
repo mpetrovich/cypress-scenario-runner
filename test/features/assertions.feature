@@ -8,16 +8,16 @@ When I navigate to "assertions"
 Then I should be on "assertions"
 
 
-# Scenario: Can assert to be on the current page by page path string
-# ---
-# When I navigate to "assertions"
-# Then I should be on "/test/pages/assertions.html"
+Scenario: Can assert to be on the current page by page path string
+---
+When I navigate to "assertions"
+Then I should be on "/test/pages/assertions.html"
 
 
-# Scenario: Can assert to be on the current page by page path regex
-# ---
-# When I navigate to "assertions"
-# Then I should be on "/assert.*\.html$/"
+Scenario: Can assert to be on the current page by page path regex
+---
+When I navigate to "assertions"
+Then I should be on "/assert.*\.html$/"
 
 
 Scenario: Can assert to not be on a different page by page name

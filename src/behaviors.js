@@ -54,7 +54,9 @@ module.exports = {
 		},
 
 		inputTable: function(table, { actions }) {
-			for (const row of table.raw()) {
+			const rows = table.raw()
+
+			for (const row of rows) {
 				let [field, value] = row
 				actions.set(field, value)
 			}
@@ -107,6 +109,15 @@ module.exports = {
 			)
 		},
 
+		hasTextTable: function(table, { assertions }) {
+			const rows = table.raw()
+
+			for (const row of rows) {
+				let [element, value] = row
+				assertions.hasText(element, value)
+			}
+		},
+
 		doesNotHaveText: function(name, value) {
 			cy.getElem(name).should($element =>
 				expect(
@@ -120,6 +131,15 @@ module.exports = {
 
 		containsText: function(name, value) {
 			cy.getElem(name).should($element => expect($element.text().toLowerCase()).to.contain(value.toLowerCase()))
+		},
+
+		containsTextTable: function(table, { assertions }) {
+			const rows = table.raw()
+
+			for (const row of rows) {
+				let [element, value] = row
+				assertions.containsText(element, value)
+			}
 		},
 
 		doesNotContainText: function(name, value) {

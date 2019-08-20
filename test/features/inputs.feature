@@ -110,3 +110,22 @@ Examples:
 | select input   | option 2 label                     | submitted select   | option 2 value                     |
 | file input     | file.txt                           | submitted file     | file.txt                           |
 | file input     | file.txt, file-2.txt               | submitted file     | file.txt; file-2.txt               |
+
+
+Scenario: Input values can be set using inline data tables
+---
+Given I navigate to "inputs"
+And I set:
+| text input     | Text value                         |
+| password input | Password value                     |
+| radio input    | radio 2 value                      |
+| checkbox input | checkbox 2 value, checkbox 3 value |
+| select input   | option 2 label                     |
+| file input     | file.txt, file-2.txt               |
+When I click "submit button"
+Then "submitted text" should be "Text value"
+Then "submitted password" should be "Password value"
+Then "submitted radio" should be "radio 2 value"
+Then "submitted checkbox" should be "checkbox 2 value; checkbox 3 value"
+Then "submitted select" should be "option 2 value"
+Then "submitted file" should be "file.txt; file-2.txt"

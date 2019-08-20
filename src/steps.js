@@ -21,8 +21,10 @@ module.exports = {
 		isNotVisible: '{element} should not be visible',
 		hasCount: '{element} should have {int} occurrences',
 		hasText: '{element} should be {string}',
+		hasTextTable: 'elements should be:',
 		doesNotHaveText: '{element} should not be {string}',
 		containsText: '{element} should contain {string}',
+		containsTextTable: 'elements should contain:',
 		doesNotContainText: '{element} should not contain {string}',
 	},
 }

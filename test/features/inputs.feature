@@ -89,3 +89,24 @@ Given I navigate to "inputs"
 And I set "file input" to "file.txt, file-2.txt"
 When I click "submit button"
 Then "submitted file" should be "file.txt; file-2.txt"
+
+
+Scenario Template: Input values can be set within a scenario template
+---
+Given I navigate to "inputs"
+And I set "<field>" to "<value>"
+When I click "submit button"
+Then "<submitted field>" should be "<submitted value>"
+
+Examples:
+| field          | value                              | submitted field    | submitted value                    |
+| text input     | Text value                         | submitted text     | Text value                         |
+| password input | Password value                     | submitted password | Password value                     |
+| radio input    | radio 2 value                      | submitted radio    | radio 2 value                      |
+| radio input    | radio 2 custom attribute value     | submitted radio    | radio 2 value                      |
+| checkbox input | checkbox 2 value                   | submitted checkbox | checkbox 2 value                   |
+| checkbox input | checkbox 2 value, checkbox 3 value | submitted checkbox | checkbox 2 value; checkbox 3 value |
+| select input   | option 2 value                     | submitted select   | option 2 value                     |
+| select input   | option 2 label                     | submitted select   | option 2 value                     |
+| file input     | file.txt                           | submitted file     | file.txt                           |
+| file input     | file.txt, file-2.txt               | submitted file     | file.txt; file-2.txt               |

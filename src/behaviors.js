@@ -134,7 +134,8 @@ module.exports = {
 
 					expect(values).to.eq(value)
 				} else if ($input.is('select')) {
-					expect($input.find(':selected').val()).to.eq(value)
+					const values = [].concat($input.val()).join(', ')
+					expect(values).to.eq(value)
 				} else if ($input.is('[type="file"]')) {
 					const filenames = value.split(',').map(s => s.trim())
 					const files = []

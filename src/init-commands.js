@@ -33,7 +33,7 @@ function input($input, value) {
 			cy.wrap($input).uncheck({ force: shouldForce })
 		} else {
 			// By value
-			let values = value.split(',').map(s => s.trim())
+			const values = value.split(',').map(s => s.trim())
 			for (let value of values) {
 				cy.wrap($input)
 					.filter(`[${valAttrName}="${value}"], [value="${value}"]`)
@@ -42,7 +42,8 @@ function input($input, value) {
 			}
 		}
 	} else if ($input.is('select')) {
-		cy.wrap($input).select(value, { force: shouldForce })
+		const values = value.split(',').map(s => s.trim())
+		cy.wrap($input).select(values, { force: shouldForce })
 	} else if ($input.is('[type="file"]')) {
 		const filenames = value.split(',').map(s => s.trim())
 		cy.wrap($input).upload(filenames)

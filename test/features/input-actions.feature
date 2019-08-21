@@ -75,6 +75,22 @@ When I click "submit button"
 Then "submitted select" should be "option 2 value"
 
 
+Scenario: Multi-select inputs can be set by value
+---
+Given I navigate to "input actions"
+And I set "multi-select input" to "option 2 value, option 3 value"
+When I click "submit button"
+Then "submitted multi-select" should be "option 2 value; option 3 value"
+
+
+Scenario: Multi-select inputs can be set by label
+---
+Given I navigate to "input actions"
+And I set "multi-select input" to "option 2 label, option 3 label"
+When I click "submit button"
+Then "submitted multi-select" should be "option 2 value; option 3 value"
+
+
 Scenario: Single-selection file inputs can be set
 ---
 Given I navigate to "input actions"

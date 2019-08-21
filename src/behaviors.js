@@ -17,8 +17,8 @@ module.exports = {
 
 		click: function(name) {
 			cy.getElem(name).then($element => {
-				const shouldForce = $element.attr(forceAttrName) === 'true'
-				cy.wrap($element).click({ force: shouldForce })
+				const force = $element.attr(forceAttrName) === 'true'
+				cy.wrap($element).click({ force })
 			})
 		},
 

@@ -20,7 +20,7 @@ function getInput(name) {
 
 function input($input, value) {
 	const randomRegex = /<random ([^>]+)>/g
-	const shouldForce = !$input.attr(forceAttrName) || $input.attr(forceAttrName) === 'true' // true by default
+	const force = !$input.attr(forceAttrName) || $input.attr(forceAttrName) === 'true' // true by default
 
 	if (randomRegex.test(value)) {
 		value = value.replace(randomRegex, (match, type) => getRandomValue(type))
@@ -28,28 +28,28 @@ function input($input, value) {
 
 	if ($input.is(':checkbox') || $input.is(':radio')) {
 		if (value === 'checked') {
-			cy.wrap($input).check({ force: shouldForce })
+			cy.wrap($input).check({ force })
 		} else if (value === 'unchecked') {
-			cy.wrap($input).uncheck({ force: shouldForce })
+			cy.wrap($input).uncheck({ force })
 		} else {
 			// By value
 			const values = value.split(',').map(s => s.trim())
 			for (let value of values) {
 				cy.wrap($input)
 					.filter(`[${valAttrName}="${value}"], [value="${value}"]`)
-					.check({ force: shouldForce })
+					.check({ force })
 			}
 		}
 	} else if ($input.is('select')) {
 		const values = value.split(',').map(s => s.trim())
-		cy.wrap($input).select(values, { force: shouldForce })
+		cy.wrap($input).select(values, { force })
 	} else if ($input.is('[type="file"]')) {
 		const filenames = value.split(',').map(s => s.trim())
 		cy.wrap($input).upload(filenames)
 	} else {
 		cy.wrap($input)
-			.clear({ force: shouldForce })
-			.type(value, { force: shouldForce })
+			.clear({ force })
+			.type(value, { force })
 	}
 }
 

@@ -12,9 +12,7 @@ const customSteps = {
 
 const actions = {
 	doubleClick: function(elem) {
-		cy.getElem(elem)
-			.first()
-			.dblclick()
+		cy.getElem(elem).dblclick()
 	},
 }
 

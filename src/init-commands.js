@@ -37,7 +37,6 @@ function input($input, value) {
 			for (let value of values) {
 				cy.wrap($input)
 					.filter(`[${valAttrName}="${value}"], [value="${value}"]`)
-					.first()
 					.check({ force: shouldForce })
 			}
 		}

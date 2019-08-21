@@ -18,6 +18,14 @@ When I click "submit button"
 Then "submitted invisible-text" should be "Text value"
 
 
+Scenario: Text inputs with the test element attribute set on an ancestor can be set
+---
+Given I navigate to "input actions"
+And I set "wrapped-text input" to "Text value"
+When I click "submit button"
+Then "submitted wrapped-text" should be "Text value"
+
+
 Scenario: Password inputs can be set
 ---
 Given I navigate to "input actions"
@@ -32,6 +40,14 @@ Given I navigate to "input actions"
 And I set "invisible-password input" to "Password value"
 When I click "submit button"
 Then "submitted invisible-password" should be "Password value"
+
+
+Scenario: Password inputs with the test element attribute set on an ancestor can be set
+---
+Given I navigate to "input actions"
+And I set "wrapped-password input" to "Password value"
+When I click "submit button"
+Then "submitted wrapped-password" should be "Password value"
 
 
 Scenario: Textarea inputs can be set
@@ -50,6 +66,14 @@ When I click "submit button"
 Then "submitted invisible-textarea" should be "Textarea value"
 
 
+Scenario: Textarea inputs with the test element attribute set on an ancestor can be set
+---
+Given I navigate to "input actions"
+And I set "wrapped-textarea input" to "Textarea value"
+When I click "submit button"
+Then "submitted wrapped-textarea" should be "Textarea value"
+
+
 Scenario: Radio inputs can be set by value
 ---
 Given I navigate to "input actions"
@@ -64,6 +88,14 @@ Given I navigate to "input actions"
 And I set "invisible-radio input" to "radio 2 value"
 When I click "submit button"
 Then "submitted invisible-radio" should be "radio 2 value"
+
+
+Scenario: Radio inputs with the test element attribute set on an ancestor can be set by value
+---
+Given I navigate to "input actions"
+And I set "wrapped-radio input" to "radio 2 value"
+When I click "submit button"
+Then "submitted wrapped-radio" should be "radio 2 value"
 
 
 Scenario: Radio inputs can be set by custom attribute value
@@ -88,6 +120,14 @@ Given I navigate to "input actions"
 And I set "invisible-checkbox input" to "checkbox 2 value"
 When I click "submit button"
 Then "submitted invisible-checkbox" should be "checkbox 2 value"
+
+
+Scenario: A single checkbox input with the test element attribute set on an ancestor can be set by value
+---
+Given I navigate to "input actions"
+And I set "wrapped-checkbox input" to "checkbox 2 value"
+When I click "submit button"
+Then "submitted wrapped-checkbox" should be "checkbox 2 value"
 
 
 Scenario: Multiple checkbox inputs can be set by value individually
@@ -121,6 +161,14 @@ Given I navigate to "input actions"
 And I set "invisible-select input" to "option 2 value"
 When I click "submit button"
 Then "submitted invisible-select" should be "option 2 value"
+
+
+Scenario: Select inputs with the test element attribute set on an ancestor can be set by value
+---
+Given I navigate to "input actions"
+And I set "wrapped-select input" to "option 2 value"
+When I click "submit button"
+Then "submitted wrapped-select" should be "option 2 value"
 
 
 Scenario: Select inputs can be set by label
@@ -161,6 +209,14 @@ Given I navigate to "input actions"
 And I set "invisible-single-file input" to "file.txt"
 When I click "submit button"
 Then "submitted invisible-single-file" should be "file.txt"
+
+
+Scenario: Single-selection file inputs with the test element attribute set on an ancestor can be set
+---
+Given I navigate to "input actions"
+And I set "wrapped-single-file input" to "file.txt"
+When I click "submit button"
+Then "submitted wrapped-single-file" should be "file.txt"
 
 
 Scenario: Multiple-selection file inputs can be set

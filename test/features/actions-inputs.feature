@@ -10,12 +10,28 @@ When I click "submit button"
 Then "submitted text" should be "Text value"
 
 
+Scenario: Invisible text inputs can be set when they have a force attribute
+---
+Given I navigate to "input actions"
+And I set "invisible-text input" to "Text value"
+When I click "submit button"
+Then "submitted invisible-text" should be "Text value"
+
+
 Scenario: Password inputs can be set
 ---
 Given I navigate to "input actions"
 And I set "password input" to "Password value"
 When I click "submit button"
 Then "submitted password" should be "Password value"
+
+
+Scenario: Invisible password inputs can be set when they have a force attribute
+---
+Given I navigate to "input actions"
+And I set "invisible-password input" to "Password value"
+When I click "submit button"
+Then "submitted invisible-password" should be "Password value"
 
 
 Scenario: Textarea inputs can be set
@@ -26,12 +42,28 @@ When I click "submit button"
 Then "submitted textarea" should be "Textarea value"
 
 
+Scenario: Invisible textarea inputs can be set when they have a force attribute
+---
+Given I navigate to "input actions"
+And I set "invisible-textarea input" to "Textarea value"
+When I click "submit button"
+Then "submitted invisible-textarea" should be "Textarea value"
+
+
 Scenario: Radio inputs can be set by value
 ---
 Given I navigate to "input actions"
 And I set "radio input" to "radio 2 value"
 When I click "submit button"
 Then "submitted radio" should be "radio 2 value"
+
+
+Scenario: Invisible radio inputs can be set by value when they have a force attribute
+---
+Given I navigate to "input actions"
+And I set "invisible-radio input" to "radio 2 value"
+When I click "submit button"
+Then "submitted invisible-radio" should be "radio 2 value"
 
 
 Scenario: Radio inputs can be set by custom attribute value
@@ -48,6 +80,14 @@ Given I navigate to "input actions"
 And I set "checkbox input" to "checkbox 2 value"
 When I click "submit button"
 Then "submitted checkbox" should be "checkbox 2 value"
+
+
+Scenario: A single checkbox input can be set by value when they have a force attribute
+---
+Given I navigate to "input actions"
+And I set "invisible-checkbox input" to "checkbox 2 value"
+When I click "submit button"
+Then "submitted invisible-checkbox" should be "checkbox 2 value"
 
 
 Scenario: Multiple checkbox inputs can be set by value individually
@@ -73,6 +113,14 @@ Given I navigate to "input actions"
 And I set "select input" to "option 2 value"
 When I click "submit button"
 Then "submitted select" should be "option 2 value"
+
+
+Scenario: Invisible select inputs can be set by value when they have a force attribute
+---
+Given I navigate to "input actions"
+And I set "invisible-select input" to "option 2 value"
+When I click "submit button"
+Then "submitted invisible-select" should be "option 2 value"
 
 
 Scenario: Select inputs can be set by label
@@ -107,12 +155,28 @@ When I click "submit button"
 Then "submitted single-file" should be "file.txt"
 
 
+Scenario: Single-selection file inputs can be set when they have a force attribute
+---
+Given I navigate to "input actions"
+And I set "invisible-single-file input" to "file.txt"
+When I click "submit button"
+Then "submitted invisible-single-file" should be "file.txt"
+
+
 Scenario: Multiple-selection file inputs can be set
 ---
 Given I navigate to "input actions"
 And I set "multi-file input" to "file.txt, file-2.txt"
 When I click "submit button"
 Then "submitted multi-file" should be "file.txt; file-2.txt"
+
+
+Scenario: Multiple-selection file inputs can be set when they have a force attribute
+---
+Given I navigate to "input actions"
+And I set "invisible-multi-file input" to "file.txt, file-2.txt"
+When I click "submit button"
+Then "submitted invisible-multi-file" should be "file.txt; file-2.txt"
 
 
 Scenario Template: Input values can be set within a scenario template

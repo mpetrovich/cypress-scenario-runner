@@ -5,14 +5,29 @@
 			<p>
 				<label>Text input</label>
 				<input name="text" type="text" test-elem="text input" value="initial text" />
+				<input
+					name="invisible-text"
+					type="text"
+					test-elem="invisible-text input"
+					value="initial text"
+					style="visibility: hidden;"
+				/>
 			</p>
 			<p>
 				<label>Password input</label>
 				<input name="password" type="password" test-elem="password input" value="initial password" />
+				<input
+					name="invisible-password"
+					type="password"
+					test-elem="invisible-password input"
+					value="initial password"
+					style="visibility: hidden;"
+				/>
 			</p>
 			<p>
 				<label>Textarea input</label>
 				<textarea name="textarea" test-elem="textarea input">Initial textarea</textarea>
+				<textarea name="invisible-textarea" test-elem="invisible-textarea input" style="visibility: hidden;"></textarea>
 			</p>
 			<p>
 				<label>Radio button</label>
@@ -43,6 +58,42 @@
 						type="radio"
 						test-elem="radio input"
 						test-value="radio 3 custom attribute value"
+					/>
+					radio 3 label
+				</label>
+			</p>
+			<p>
+				<label>Invisible radio button</label>
+				<label>
+					<input
+						name="invisible-radio"
+						value="radio 1 value"
+						type="radio"
+						test-elem="invisible-radio input"
+						test-value="radio 1 custom attribute value"
+						style="visibility: hidden;"
+					/>
+					radio 1 label
+				</label>
+				<label>
+					<input
+						name="invisible-radio"
+						value="radio 2 value"
+						type="radio"
+						test-elem="invisible-radio input"
+						test-value="radio 2 custom attribute value"
+						style="visibility: hidden;"
+					/>
+					radio 2 label
+				</label>
+				<label>
+					<input
+						name="invisible-radio"
+						value="radio 3 value"
+						type="radio"
+						test-elem="invisible-radio input"
+						test-value="radio 3 custom attribute value"
+						style="visibility: hidden;"
 					/>
 					radio 3 label
 				</label>
@@ -81,8 +132,53 @@
 				</label>
 			</p>
 			<p>
+				<label>Invisible checkbox</label>
+				<label>
+					<input
+						name="invisible-checkbox"
+						value="checkbox 1 value"
+						type="checkbox"
+						test-elem="invisible-checkbox input"
+						test-value="checkbox 1 custom attribute value"
+						style="visibility: hidden;"
+					/>
+					checkbox 1 label
+				</label>
+				<label>
+					<input
+						name="invisible-checkbox"
+						value="checkbox 2 value"
+						type="checkbox"
+						test-elem="invisible-checkbox input"
+						test-value="checkbox 2 custom attribute value"
+						style="visibility: hidden;"
+					/>
+					checkbox 2 label
+				</label>
+				<label>
+					<input
+						name="invisible-checkbox"
+						value="checkbox 3 value"
+						type="checkbox"
+						test-elem="invisible-checkbox input"
+						test-value="checkbox 3 custom attribute value"
+						style="visibility: hidden;"
+					/>
+					checkbox 3 label
+				</label>
+			</p>
+			<p>
 				<label>Select</label>
 				<select name="select" test-elem="select input">
+					<option disabled selected="selected">Default option</option>
+					<option value="option 1 value">option 1 label</option>
+					<option value="option 2 value">option 2 label</option>
+					<option value="option 3 value">option 3 label</option>
+				</select>
+			</p>
+			<p>
+				<label>Invisible select</label>
+				<select name="invisible-select" test-elem="invisible-select input" style="visibility: hidden;">
 					<option disabled selected="selected">Default option</option>
 					<option value="option 1 value">option 1 label</option>
 					<option value="option 2 value">option 2 label</option>
@@ -98,9 +194,35 @@
 				</select>
 			</p>
 			<p>
+				<label>Invisible multi-select</label>
+				<select
+					name="invisible-multi-select"
+					test-elem="invisible-multi-select input"
+					multiple
+					style="visibility: hidden;"
+				>
+					<option value="option 1 value">option 1 label</option>
+					<option value="option 2 value">option 2 label</option>
+					<option value="option 3 value">option 3 label</option>
+				</select>
+			</p>
+			<p>
 				<label>File</label>
 				<input name="single-file" type="file" test-elem="single-file input" />
+				<input
+					name="invisible-single-file"
+					type="file"
+					test-elem="invisible-single-file input"
+					style="visibility: hidden;"
+				/>
 				<input name="multi-file" type="file" test-elem="multi-file input" multiple />
+				<input
+					name="invisible-multi-file"
+					type="file"
+					test-elem="invisible-multi-file input"
+					multiple
+					style="visibility: hidden;"
+				/>
 			</p>
 			<p>
 				<button type="submit" test-elem="submit button">Submit</button>

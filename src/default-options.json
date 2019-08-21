@@ -1,0 +1,9 @@
+{
+	"elementAttr": "data-test",
+	"elementValueAttr": "data-value",
+	"elementOptionsAttr": "data-options",
+	"elementOptions": {
+		"force": false
+	},
+	"defaultCommandWait": 0
+}

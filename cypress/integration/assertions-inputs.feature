@@ -54,17 +54,3 @@ Given I navigate to "input assertions"
 And "multi-select input" should be set to "option 1 value"
 When I set "multi-select input" to "option 2 value, option 3 value"
 Then "multi-select input" should be set to "option 2 value, option 3 value"
-
-
-Scenario: The value of a single-selection file input can be asserted to be equal to its string value
----
-Given I navigate to "input assertions"
-When I set "single-file input" to "file.txt"
-Then "single-file input" should be set to "file.txt"
-
-
-Scenario: The value of multiple-selection file input can be asserted to be equal to a comma-delimited string of its values
----
-Given I navigate to "input assertions"
-When I set "multi-file input" to "file.txt, file-2.txt"
-Then "multi-file input" should be set to "file.txt, file-2.txt"

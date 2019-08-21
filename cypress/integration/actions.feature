@@ -11,7 +11,7 @@ Then I should be on "actions"
 Scenario: Can navigate to a page by path
 ---
 When I navigate to "actions"
-Then I should be on "/test/pages/actions.html"
+Then I should be on "/cypress/pages/actions.html"
 
 
 Scenario: Can click a visible element

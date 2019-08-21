@@ -1,45 +1,101 @@
-Cypress Scenario Runner
-===
-**Run [Gherkin](https://docs.cucumber.io/gherkin/reference/) scenarios without writing a single line of test code.**
+# Cypress Scenario Runner [![npm version](https://badge.fury.io/js/cypress-scenario-runner.svg)](https://badge.fury.io/js/cypress-scenario-runner) [![Build Status](https://travis-ci.org/mpetrovich/cypress-scenario-runner.svg?branch=master)](https://travis-ci.org/mpetrovich/cypress-scenario-runner)
 
-Seriously. This is all you need in order to create a working test:
-```
-Features: Signup
+Write runnable [Gherkin scenarios](https://docs.cucumber.io/gherkin/reference/) without a single line of test code. Powered by [Cypress](https://www.cypress.io).
+
+#### Step 1: Write your Gherkin scenario
+
+```sh
+Feature: Login
 ===
 
-Scenario: Signup success
+Scenario: Successful login
 ---
-Given I am logged out
-And I navigate to "signup"
-And I set "email" to "name@example.com"
-And I set "password" to "abc123"
-When I click "signup button"
+Given I navigate to "login"
+And I set "email input" to "name@example.com"
+And I set "password input" to "abc123"
+When I click "login button"
 Then I should be on "home"
 ```
-cypress-scenario-runner will generate all the necessary test harnesses and UI commands on the fly.
 
+#### Step 2: Add matching `data-test` attributes to your HTML
 
-How it works
----
-1. Tag all interactive or assertable HTML elements with special `data-test` attributes that contain a human-readable description of the element. (eg. `data-test="signup button"`)
+```html
+<!-- login.html -->
+<input name="email" data-test="email input" />
+<input name="password" data-test="password input" />
+<button type="submit" data-test="login button">Login</button>
+```
 
-2. [Gherkin](https://docs.cucumber.io/gherkin/reference/) scenarios are written using a set of predefined step templates with placeholders for specific elements, values, pages, etc. Each step template has associated logic that knows how to actually perform that behavior with an element that's been tagged in step 1.
+#### Step 3: That's it. [There's no step 3!](https://www.youtube.com/watch?v=6uXJlX50Lj8)
 
-3. cypress-scenario-runner uses [cypress-cucumber-preprocessor](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor) to create cucumber `given()`, `when()`, `then()` test commands from Gherkin steps on the fly, which are executed by the [Cypress](https://www.cypress.io/) test runner.
+`cypress-scenario-runner` will run the scenario as-is, no given/when/then glue code needed.
 
+## Table of contents
 
-Installation
----
-Requires Node 8+
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Customization](#customization)
+- [Contributing](#CONTRIBUTING.md)
 
-See [Installation](docs/installation.md)
+## Installation
 
+Requires Node.js v8+
 
-Setup
----
-See [Setup](docs/setup.md)
+#### 1. Install packages
 
+Install this package and its dependencies, [cypress](https://github.com/cypress-io/cypress/) and [cypress-cucumber-preprocessor](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor):
 
-Related
----
-Prefer using a UI to write Gherkin scenarios? Try [gherkin-scenario-builder](https://github.com/nextbigsoundinc/gherkin-scenario-builder).
+```sh
+npm install --save-dev cypress cypress-cucumber-preprocessor cypress-scenario-runner
+```
+
+#### 2. Set up cypress
+
+Follow the setup instructions for [Cypress](https://github.com/cypress-io/cypress/) and launch it once to create the initial directory structure.
+
+#### 3. Set up cypress-scenario-runner
+
+Add these lines to the `pluginsFile` listed in your `cypress.json` ([default path](https://docs.cypress.io/guides/references/configuration.html#Folders-Files) is `cypress/plugins/index.js`):
+
+```diff
++ const cucumber = require('cypress-cucumber-preprocessor').default
+
+module.exports = (on, config) => {
++	on('file:preprocessor', cucumber())
+}
+```
+
+Add these lines to the `supportFile` listed in your `cypress.json` ([default path](https://docs.cypress.io/guides/references/configuration.html#Folders-Files) is `cypress/support/index.js`):
+
+```diff
++ const { addCommands } = require('cypress-scenario-runner')
++ addCommands()
+```
+
+Create a new file at `cypress/support/step_definitions/index.js` that contains:
+
+```diff
++ const { addSteps } = require('cypress-scenario-runner')
++ addSteps()
+```
+
+Now you're ready to begin writing test scenarios.
+
+## Usage
+
+#### 1. Write scenarios
+
+_Coming soon._
+
+#### 2. Annotate HTML elements
+
+_Coming soon._
+
+#### 3. Add routes
+
+_Coming soon._
+
+## Customization
+
+_Coming soon._

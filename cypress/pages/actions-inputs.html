@@ -9,6 +9,7 @@
 					name="invisible-text"
 					type="text"
 					test-elem="invisible-text input"
+					test-options="{ force: true }"
 					value="initial text"
 					style="visibility: hidden;"
 				/>
@@ -23,6 +24,7 @@
 					name="invisible-password"
 					type="password"
 					test-elem="invisible-password input"
+					test-options="{ force: true }"
 					value="initial password"
 					style="visibility: hidden;"
 				/>
@@ -33,7 +35,12 @@
 			<p>
 				<label>Textarea input</label>
 				<textarea name="textarea" test-elem="textarea input">Initial textarea</textarea>
-				<textarea name="invisible-textarea" test-elem="invisible-textarea input" style="visibility: hidden;"></textarea>
+				<textarea
+					name="invisible-textarea"
+					test-elem="invisible-textarea input"
+					test-options="{ force: true }"
+					style="visibility: hidden;"
+				></textarea>
 				<span test-elem="wrapped-textarea input"><textarea name="wrapped-textarea">Initial textarea</textarea></span>
 			</p>
 			<p>
@@ -78,6 +85,7 @@
 						type="radio"
 						test-elem="invisible-radio input"
 						test-value="radio 1 custom attribute value"
+						test-options="{ force: true }"
 						style="visibility: hidden;"
 					/>
 					radio 1 label
@@ -89,6 +97,7 @@
 						type="radio"
 						test-elem="invisible-radio input"
 						test-value="radio 2 custom attribute value"
+						test-options="{ force: true }"
 						style="visibility: hidden;"
 					/>
 					radio 2 label
@@ -100,6 +109,7 @@
 						type="radio"
 						test-elem="invisible-radio input"
 						test-value="radio 3 custom attribute value"
+						test-options="{ force: true }"
 						style="visibility: hidden;"
 					/>
 					radio 3 label
@@ -162,6 +172,7 @@
 						type="checkbox"
 						test-elem="invisible-checkbox input"
 						test-value="checkbox 1 custom attribute value"
+						test-options="{ force: true }"
 						style="visibility: hidden;"
 					/>
 					checkbox 1 label
@@ -173,6 +184,7 @@
 						type="checkbox"
 						test-elem="invisible-checkbox input"
 						test-value="checkbox 2 custom attribute value"
+						test-options="{ force: true }"
 						style="visibility: hidden;"
 					/>
 					checkbox 2 label
@@ -184,6 +196,7 @@
 						type="checkbox"
 						test-elem="invisible-checkbox input"
 						test-value="checkbox 3 custom attribute value"
+						test-options="{ force: true }"
 						style="visibility: hidden;"
 					/>
 					checkbox 3 label
@@ -230,7 +243,12 @@
 			</p>
 			<p>
 				<label>Invisible select</label>
-				<select name="invisible-select" test-elem="invisible-select input" style="visibility: hidden;">
+				<select
+					name="invisible-select"
+					test-elem="invisible-select input"
+					test-options="{ force: true }"
+					style="visibility: hidden;"
+				>
 					<option disabled selected="selected">Default option</option>
 					<option value="option 1 value">option 1 label</option>
 					<option value="option 2 value">option 2 label</option>
@@ -261,6 +279,7 @@
 				<select
 					name="invisible-multi-select"
 					test-elem="invisible-multi-select input"
+					test-options="{ force: true }"
 					multiple
 					style="visibility: hidden;"
 				>
@@ -268,26 +287,6 @@
 					<option value="option 2 value">option 2 label</option>
 					<option value="option 3 value">option 3 label</option>
 				</select>
-			</p>
-			<p>
-				<label>File</label>
-				<input name="single-file" type="file" test-elem="single-file input" />
-				<input
-					name="invisible-single-file"
-					type="file"
-					test-elem="invisible-single-file input"
-					style="visibility: hidden;"
-				/>
-				<span test-elem="wrapped-single-file input"><input name="wrapped-single-file" type="file"/></span>
-
-				<input name="multi-file" type="file" test-elem="multi-file input" multiple />
-				<input
-					name="invisible-multi-file"
-					type="file"
-					test-elem="invisible-multi-file input"
-					multiple
-					style="visibility: hidden;"
-				/>
 			</p>
 			<p>
 				<button type="submit" test-elem="submit button">Submit</button>

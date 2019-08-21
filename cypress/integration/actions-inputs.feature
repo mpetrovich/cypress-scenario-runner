@@ -195,46 +195,6 @@ When I click "submit button"
 Then "submitted multi-select" should be "option 2 value; option 3 value"
 
 
-Scenario: Single-selection file inputs can be set
----
-Given I navigate to "input actions"
-And I set "single-file input" to "file.txt"
-When I click "submit button"
-Then "submitted single-file" should be "file.txt"
-
-
-Scenario: Single-selection file inputs can be set when they have a force attribute
----
-Given I navigate to "input actions"
-And I set "invisible-single-file input" to "file.txt"
-When I click "submit button"
-Then "submitted invisible-single-file" should be "file.txt"
-
-
-Scenario: Single-selection file inputs with the test element attribute set on an ancestor can be set
----
-Given I navigate to "input actions"
-And I set "wrapped-single-file input" to "file.txt"
-When I click "submit button"
-Then "submitted wrapped-single-file" should be "file.txt"
-
-
-Scenario: Multiple-selection file inputs can be set
----
-Given I navigate to "input actions"
-And I set "multi-file input" to "file.txt, file-2.txt"
-When I click "submit button"
-Then "submitted multi-file" should be "file.txt; file-2.txt"
-
-
-Scenario: Multiple-selection file inputs can be set when they have a force attribute
----
-Given I navigate to "input actions"
-And I set "invisible-multi-file input" to "file.txt, file-2.txt"
-When I click "submit button"
-Then "submitted invisible-multi-file" should be "file.txt; file-2.txt"
-
-
 Scenario Template: Input values can be set within a scenario template
 ---
 Given I navigate to "input actions"
@@ -253,8 +213,6 @@ Examples:
 | checkbox input    | checkbox 2 value, checkbox 3 value | submitted checkbox    | checkbox 2 value; checkbox 3 value |
 | select input      | option 2 value                     | submitted select      | option 2 value                     |
 | select input      | option 2 label                     | submitted select      | option 2 value                     |
-| single-file input | file.txt                           | submitted single-file | file.txt                           |
-| multi-file input  | file.txt, file-2.txt               | submitted multi-file  | file.txt; file-2.txt               |
 
 
 Scenario: Input values can be set using inline data tables
@@ -268,7 +226,6 @@ And I set:
 | radio input      | radio 2 value                      |
 | checkbox input   | checkbox 2 value, checkbox 3 value |
 | select input     | option 2 label                     |
-| multi-file input | file.txt, file-2.txt               |
 When I click "submit button"
 Then "submitted text" should be "Text value"
 Then "submitted password" should be "Password value"
@@ -276,7 +233,6 @@ Then "submitted textarea" should be "Textarea value"
 Then "submitted radio" should be "radio 2 value"
 Then "submitted checkbox" should be "checkbox 2 value; checkbox 3 value"
 Then "submitted select" should be "option 2 value"
-Then "submitted multi-file" should be "file.txt; file-2.txt"
 
 
 Scenario: Random values can be set inline

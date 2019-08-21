@@ -1,4 +1,5 @@
 const elAttrName = Cypress.config('elementAttributeName') || 'data-test'
+const forceAttrName = Cypress.config('forceAttributeName') || 'data-test-force'
 
 module.exports = {
 	actions: {
@@ -15,9 +16,10 @@ module.exports = {
 		},
 
 		click: function(name) {
-			cy.getElem(name)
-				.first()
-				.click()
+			cy.getElem(name).then($element => {
+				const shouldForce = $element.attr(forceAttrName) === 'true'
+				cy.wrap($element).click({ force: shouldForce })
+			})
 		},
 
 		set: function(field, value) {

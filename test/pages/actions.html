@@ -30,5 +30,16 @@
 
 		<div test-elem="odd number">3</div>
 		<div test-elem="even number">4</div>
+
+		<button test-elem="clickable invisible element" test-force="true" style="visibility: hidden;">
+			Clickable invisible element
+		</button>
+		<div test-elem="clickable invisible element result"></div>
+		<script>
+			document.querySelector('[test-elem="clickable invisible element"]').addEventListener('click', function(event) {
+				document.querySelector('[test-elem="clickable invisible element result"]').innerText =
+					'Invisible button clicked'
+			})
+		</script>
 	</body>
 </html>

@@ -3,14 +3,6 @@ const forceAttrName = Cypress.config('forceAttributeName') || 'data-test-force'
 
 module.exports = {
 	actions: {
-		login: function() {
-			throw new Error('You must implement login yourself')
-		},
-
-		logout: function() {
-			cy.clearCookies()
-		},
-
 		navigate: function(page, table, { pages }) {
 			cy.visit(pages[page] || page)
 		},
@@ -180,13 +172,5 @@ module.exports = {
 		},
 	},
 
-	preconditions: {
-		loggedIn: function(usertype, table, context) {
-			context.actions.login(usertype, table, context)
-		},
-
-		loggedOut: function(table, context) {
-			context.actions.logout(table, context)
-		},
-	},
+	preconditions: {},
 }

@@ -1,11 +1,6 @@
 module.exports = {
-	preconditions: {
-		loggedOut: 'I am logged out',
-		loggedIn: 'I am logged in as {user}',
-	},
+	preconditions: {},
 	actions: {
-		logout: 'I log out',
-		login: 'I log in as {user}',
 		navigate: 'I navigate to {page}',
 		click: 'I click {element}',
 		set: 'I set {element} to {string}',

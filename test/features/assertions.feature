@@ -102,6 +102,7 @@ Scenario: Inline data tables can be used to assert that element text content is 
 ---
 When I navigate to "assertions"
 Then elements should be:
+| element      | value                |
 | element text | element text content |
 | another text | another text content |
 
@@ -110,5 +111,6 @@ Scenario: Inline data tables can be used to assert that element text content con
 ---
 When I navigate to "assertions"
 And elements should contain:
+| element      | value   |
 | element text | element |
 | another text | another |

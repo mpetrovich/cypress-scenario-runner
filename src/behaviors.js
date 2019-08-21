@@ -56,7 +56,7 @@ module.exports = {
 		},
 
 		inputTable: function(table, { actions }) {
-			const rows = table.raw()
+			const rows = table.raw().slice(1) // First row is column headers
 
 			for (const row of rows) {
 				let [field, value] = row
@@ -112,7 +112,7 @@ module.exports = {
 		},
 
 		hasTextTable: function(table, { assertions }) {
-			const rows = table.raw()
+			const rows = table.raw().slice(1) // First row is column headers
 
 			for (const row of rows) {
 				let [element, value] = row
@@ -167,7 +167,7 @@ module.exports = {
 		},
 
 		containsTextTable: function(table, { assertions }) {
-			const rows = table.raw()
+			const rows = table.raw().slice(1) // First row is column headers
 
 			for (const row of rows) {
 				let [element, value] = row

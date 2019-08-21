@@ -261,6 +261,7 @@ Scenario: Input values can be set using inline data tables
 ---
 Given I navigate to "input actions"
 And I set:
+| element          | value                              |
 | text input       | Text value                         |
 | password input   | Password value                     |
 | textarea input   | Textarea value                     |
@@ -294,6 +295,7 @@ Scenario: Random values can be set using inline data tables
 ---
 Given I navigate to "input actions"
 And I set:
+| element        | value              |
 | text input     | <random full name> |
 | password input | <random password>  |
 When I click "submit button"

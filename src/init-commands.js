@@ -47,7 +47,9 @@ function input($input, value) {
 		const filenames = value.split(',').map(s => s.trim())
 		cy.wrap($input).upload(filenames)
 	} else {
-		cy.wrap($input).type(value, { force: shouldForce })
+		cy.wrap($input)
+			.clear({ force: shouldForce })
+			.type(value, { force: shouldForce })
 	}
 }
 

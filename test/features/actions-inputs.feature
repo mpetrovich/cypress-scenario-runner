@@ -1,4 +1,4 @@
-Feature: Input actions
+Feature: Actions for inputs
 ===
 
 

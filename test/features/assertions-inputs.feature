@@ -1,4 +1,4 @@
-Feature: Input assertions
+Feature: Assertions for inputs
 ===
 
 

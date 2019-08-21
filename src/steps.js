@@ -4,6 +4,7 @@ module.exports = {
 		navigate: 'I navigate to {page}',
 		click: 'I click {element}',
 		set: 'I set {element} to {string}',
+		inputTable: 'I set:',
 		waitUntilHidden: 'I wait for {element} to disappear',
 		wait: 'I wait {float} seconds',
 		pause: 'I pause',

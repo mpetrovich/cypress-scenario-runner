@@ -82,12 +82,6 @@ function initSteps({
 		then(step, run(fn, context))
 	}
 
-	/*
-		Special steps
-	 */
-
-	given('I set:', run(actions.inputTable, context))
-
 	beforeEachStep(function() {
 		cy.wait(Cypress.config('defaultCommandWait') || 0)
 	})

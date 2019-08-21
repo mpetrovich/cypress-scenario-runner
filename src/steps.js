@@ -22,6 +22,7 @@ module.exports = {
 		hasCount: '{element} should have {int} occurrences',
 		hasText: '{element} should be {string}',
 		hasTextTable: 'elements should be:',
+		hasValue: '{element} should be set to {string}',
 		doesNotHaveText: '{element} should not be {string}',
 		containsText: '{element} should contain {string}',
 		containsTextTable: 'elements should contain:',

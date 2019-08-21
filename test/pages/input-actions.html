@@ -4,11 +4,11 @@
 		<form action="" method="GET">
 			<p>
 				<label>Text input</label>
-				<input name="text" type="text" test-elem="text input" />
+				<input name="text" type="text" test-elem="text input" value="initial text" />
 			</p>
 			<p>
 				<label>Password input</label>
-				<input name="password" type="password" test-elem="password input" />
+				<input name="password" type="password" test-elem="password input" value="initial password" />
 			</p>
 			<p>
 				<label>Radio button</label>
@@ -87,7 +87,8 @@
 			</p>
 			<p>
 				<label>File</label>
-				<input name="file" type="file" test-elem="file input" multiple />
+				<input name="single-file" type="file" test-elem="single-file input" />
+				<input name="multi-file" type="file" test-elem="multi-file input" multiple />
 			</p>
 			<p>
 				<button type="submit" test-elem="submit button">Submit</button>

@@ -118,6 +118,36 @@ module.exports = {
 			}
 		},
 
+		hasValue: function(name, value) {
+			cy.getInput(name).then($input => {
+				if ($input.is(':checkbox') || $input.is(':radio')) {
+					const inputName = $input.attr('name')
+					const values = $input
+						.closest('form, :root')
+						.find(`[name="${inputName}"]`)
+						.filter(':checked')
+						.map(function() {
+							return this.value
+						})
+						.get()
+						.join(', ')
+
+					expect(values).to.eq(value)
+				} else if ($input.is('select')) {
+					expect($input.find(':selected').val()).to.eq(value)
+				} else if ($input.is('[type="file"]')) {
+					const filenames = value.split(',').map(s => s.trim())
+					const files = []
+					for (let i = 0; i < $input[0].files.length; i++) {
+						files.push($input[0].files[i].name)
+					}
+					expect(files).to.deep.eq(filenames)
+				} else {
+					expect($input.val()).to.eq(value)
+				}
+			})
+		},
+
 		doesNotHaveText: function(name, value) {
 			cy.getElem(name).should($element =>
 				expect(

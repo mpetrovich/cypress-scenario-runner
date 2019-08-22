@@ -168,7 +168,7 @@ Routes need to provided for navigation steps like these to work:
 Given I navigate to "login"
 ```
 
-A map of route label => route path pairs should be provided to `addSteps()` in the `cypress/support/step_definitions/index.js` file created during installation. Route paths should be relative to the web root:
+A map of label => path should be provided to `addSteps()` in the `cypress/support/step_definitions/index.js` file created during installation. Route paths should be relative to the web root:
 
 ```diff
 const { addSteps } = require('cypress-scenario-runner')

@@ -175,8 +175,13 @@ addSteps({
 +		login: '/login',
 +	},
 })
-
 ```
+
+### Running scenarios
+
+Once you've written your scenarios, annoated associated elements, and added any necessary routes, running these scenarios is simple. Launch Cypress using your preferred method (eg. `$(npm bin)/cypress open`) and select the scenarios you want to run.
+
+<img width="832" alt="Cypress test runner screenshot" src="https://user-images.githubusercontent.com/1235062/63493485-bce1f780-c489-11e9-8361-5fa6ef31c982.png">
 
 ## Customization
 

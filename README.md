@@ -50,7 +50,7 @@ Install this package and its dependencies, [cypress](https://github.com/cypress-
 npm install --save-dev cypress cypress-cucumber-preprocessor cypress-scenario-runner
 ```
 
-### 2. Set up cypress
+### 2. Set up Cypress
 
 Follow the setup instructions for [Cypress](https://github.com/cypress-io/cypress/) and launch it once to create the initial directory structure.
 

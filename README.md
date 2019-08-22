@@ -35,6 +35,7 @@ Then I should be on "home"
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
+- [Examples](#examples)
 - [Customization](#customization)
 - [Contributing](#CONTRIBUTING.md)
 
@@ -182,6 +183,10 @@ addSteps({
 Once you've written your scenarios, annoated associated elements, and added any necessary routes, running these scenarios is simple. Launch Cypress using your preferred method (eg. `$(npm bin)/cypress open`) and select the scenarios you want to run.
 
 <img width="832" alt="Cypress test runner screenshot" src="https://user-images.githubusercontent.com/1235062/63493485-bce1f780-c489-11e9-8361-5fa6ef31c982.png">
+
+## Examples
+
+See the [`cypress/integration/`](cypress/integration/) directory for examples.
 
 ## Customization
 

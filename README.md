@@ -126,7 +126,7 @@ Each given/when/then/and line is called a "step". `cypress-scenario-runner` work
 | `elements should contain:`                | …           |
 | `{element} should not contain {string}`   | …           |
 
-Parameters appear in `{brackets}` in the table above and in `"double quotes"` in actual scenario. For example, this step:
+Parameters appear in `{brackets}` in step templates and in `"double quotes"` in the scenario. For example, this step:
 
 ```sh
 And I set "email input" to "name@example.com"
@@ -149,7 +149,7 @@ In addition, the full [Gherkin specification](https://cucumber.io/docs/gherkin/r
 
 ### Annotating HTML elements
 
-`data-test` HTML attributes are used to map the `{element}` step parameters to their corresponding HTML elements:
+HTML attributes are used to map the `{element}` step parameters to their corresponding HTML elements. `data-test` is used by default, but this is [configurable](#customization).
 
 ```html
 <!-- login.html -->
@@ -157,8 +157,6 @@ In addition, the full [Gherkin specification](https://cucumber.io/docs/gherkin/r
 <input name="password" data-test="password input" />
 <button type="submit" data-test="login button">Login</button>
 ```
-
-The names of HTML attributes to use are [configurable](#customization).
 
 ### Setting routes
 
@@ -168,7 +166,7 @@ Routes need to provided for navigation steps like these to work:
 Given I navigate to "login"
 ```
 
-A map of label => path should be provided to `addSteps()` in the `cypress/support/step_definitions/index.js` file created during installation. Route paths should be relative to the web root:
+A map of all label => path routes should be provided to `addSteps()` in the `cypress/support/step_definitions/index.js` file created during installation. Route paths can be relative to the web root or absolute URLs.
 
 ```diff
 const { addSteps } = require('cypress-scenario-runner')

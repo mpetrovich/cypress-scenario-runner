@@ -3,18 +3,17 @@
 const fs = require('fs')
 const path = require('path')
 const get = require('lodash.get')
-const pkg = require('./package.json')
-const cypress = fs.existsSync('./cypress.json') ? require('./cypress.json') : {}
+const read = from => (fs.existsSync(from) ? fs.readFileSync(from, { encoding: 'utf8' }) : null)
+const copy = (from, to) => fs.copyFileSync(from, to)
+const append = (from, to) => fs.appendFileSync(to, '\n' + fs.readFileSync(from, { encoding: 'utf8' }))
 
-const append = (src, dest) => {
-	src = path.resolve(__dirname, src)
-	content = '\n\n' + fs.readFileSync(src, { encoding: 'utf8' })
-	fs.appendFileSync(dest, content)
-}
+const pkg = read(path.resolve(process.cwd(), 'package.json')) || {}
+const cypress = read(path.resolve(process.cwd(), 'cypress.json')) || {}
 
-append('../defaults/support.js', cypress.supportFile || 'cypress/support/index.js')
-append('../defaults/plugins.js', cypress.pluginsFile || 'cypress/plugins/index.js')
+copy(path.resolve(__dirname, '../defaults/options.json'), 'cypress-scenario-runner.json')
+append(path.resolve(__dirname, '../defaults/support.js'), cypress.supportFile || 'cypress/support/index.js')
+append(path.resolve(__dirname, '../defaults/plugins.js'), cypress.pluginsFile || 'cypress/plugins/index.js')
 append(
-	'../defaults/steps.js',
-	get(pkg, 'cypress-cucumber-preprocessor.step_definitions', 'cypress/support/step_definitions')
+	path.resolve(__dirname, '../defaults/steps.js'),
+	get(pkg, 'cypress-cucumber-preprocessor.step_definitions', 'cypress/support/step_definitions/index.js')
 )

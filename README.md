@@ -1,8 +1,16 @@
 # Cypress Scenario Runner [![npm version](https://badge.fury.io/js/cypress-scenario-runner.svg)](https://badge.fury.io/js/cypress-scenario-runner) [![Build Status](https://travis-ci.org/mpetrovich/cypress-scenario-runner.svg?branch=master)](https://travis-ci.org/mpetrovich/cypress-scenario-runner)
 
-Write runnable [Gherkin scenarios](https://docs.cucumber.io/gherkin/reference/) without a single line of test code. Powered by [Cypress](https://www.cypress.io).
+**Write [Gherkin scenarios](https://docs.cucumber.io/gherkin/reference/) that can be run with [Cypress](https://www.cypress.io) without a single line of code.**
 
-### Step 1: Write your Gherkin scenario
+By just adding a few HTML attributes to your interactive elements like this:
+
+```html
+<input name="email" data-test="email input" />
+<input name="password" data-test="password input" />
+<button type="submit" data-test="login button">Login</button>
+```
+
+...you can then write scenarios like this:
 
 ```sh
 Feature: Login
@@ -17,29 +25,19 @@ When I click "login button"
 Then I should be on "home"
 ```
 
-### Step 2: Add matching `data-test` attributes to your HTML
-
-```html
-<!-- login.html -->
-<input name="email" data-test="email input" />
-<input name="password" data-test="password input" />
-<button type="submit" data-test="login button">Login</button>
-```
-
-### Step 3: That's it. [There's no step 3!](https://www.youtube.com/watch?v=6uXJlX50Lj8)
-
-`cypress-scenario-runner` will run the scenario as-is, no given/when/then glue code needed.
-
 ## Table of contents
 
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
-- [Examples](#examples)
 - [Customization](#customization)
 - [Contributing](#CONTRIBUTING.md)
 
 ## Installation
+
+1. [Install packages](#install-packages)
+1. [Set up Cypress](#set-up-cypress)
+1. [Set up `cypress-scenario-runner`](#set-up-cypress-scenario-runner)
 
 Requires Node.js v8+
 
@@ -85,9 +83,14 @@ Now you're ready to begin writing test scenarios.
 
 ## Usage
 
-### Writing Gherkin scenarios
+- [Writing test scenarios](#writing-test-scenarios)
+- [Annotating HTML elements](#annotating-html-elements)
+- [Setting routes](#setting-routes)
+- [Running scenarios](#running-scenarios)
 
-A [Gherkin scenario](https://cucumber.io/docs/gherkin/reference/) looks like this:
+### Writing test scenarios
+
+Test scenarios are written in [Gherkin syntax](https://cucumber.io/docs/gherkin/reference/) which looks like this:
 
 ```sh
 Feature: Login
@@ -146,7 +149,9 @@ where:
 {string}  = name@example.com
 ```
 
-In addition, the full [Gherkin specification](https://cucumber.io/docs/gherkin/reference/) is supported along with [additional enhancements](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor#background-section) by `cypress-cucumber-preprocessor`. For instance, you can use scenario templates/outlines, data tables, and tags in your scenarios. See the [`cypress/integration/`](cypress/integration/) directory for examples.
+In addition, the full [Gherkin specification](https://cucumber.io/docs/gherkin/reference/) is supported along with [additional enhancements](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor#background-section) by `cypress-cucumber-preprocessor`. For instance, you can use scenario templates/outlines, data tables, and tags in your scenarios.
+
+See the [`cypress/integration/`](cypress/integration/) directory for more examples.
 
 ### Annotating HTML elements
 
@@ -180,13 +185,17 @@ addSteps({
 
 ### Running scenarios
 
-Once you've written your scenarios, annoated associated elements, and added any necessary routes, running these scenarios is simple. Launch Cypress using your preferred method (eg. `$(npm bin)/cypress open`) and select the scenarios you want to run.
+Scenario files can be run directly with Cypress:
 
-<img width="832" alt="Cypress test runner screenshot" src="https://user-images.githubusercontent.com/1235062/63493485-bce1f780-c489-11e9-8361-5fa6ef31c982.png">
+```sh
+$(npm bin)/cypress run [files]
+```
 
-## Examples
+or, using the Cypress UI:
 
-See the [`cypress/integration/`](cypress/integration/) directory for examples.
+```sh
+$(npm bin)/cypress open
+```
 
 ## Customization
 

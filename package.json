@@ -39,7 +39,7 @@
   },
   "main": "src/index.js",
   "scripts": {
-    "postinstall": "src/postinstall.js",
+    "postinstall": "src/scripts/postinstall.js",
     "test": "cypress run",
     "test:open": "cypress open",
     "test:debug": "DEBUG=cypress:* cypress open",

@@ -38,8 +38,10 @@
     "prettier": "^1.18.2"
   },
   "main": "src/index.js",
+  "bin": {
+    "install-cypress-scenario-runner": "src/scripts/postinstall.js"
+  },
   "scripts": {
-    "postinstall": "src/scripts/postinstall.js",
     "test": "cypress run",
     "test:open": "cypress open",
     "test:debug": "DEBUG=cypress:* cypress open",

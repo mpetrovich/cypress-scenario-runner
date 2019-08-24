@@ -1,16 +1,25 @@
 {
   "name": "cypress-scenario-runner",
   "version": "2.0.0-beta.1",
-  "description": "Run Gherkin BDD scenarios without writing any code.",
+  "license": "MIT",
+  "author": "Mike Petrovich <michael.c.petrovich@gmail.com>",
+  "description": "Write Gherkin scenarios that can be run with Cypress without a single line of code",
+  "keywords": [
+    "cypress",
+    "cypress.io",
+    "cucumber",
+    "gherkin",
+    "scenario",
+    "bdd"
+  ],
+  "homepage": "https://github.com/mpetrovich/cypress-scenario-runner#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nextbigsoundinc/cypress-scenario-runner.git"
+    "url": "git+https://github.com/mpetrovich/cypress-scenario-runner.git"
   },
-  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nextbigsoundinc/cypress-scenario-runner/issues"
+    "url": "https://github.com/mpetrovich/cypress-scenario-runner/issues"
   },
-  "homepage": "https://github.com/nextbigsoundinc/cypress-scenario-runner#readme",
   "engines": {
     "node": ">=8.0"
   },
@@ -21,12 +30,12 @@
     "cypress": "^3.0.3",
     "cypress-cucumber-preprocessor": "^1.0.0"
   },
-  "main": "src/index.js",
   "devDependencies": {
     "cypress": "^3.0.3",
     "cypress-cucumber-preprocessor": "^1.0.0",
     "prettier": "^1.18.2"
   },
+  "main": "src/index.js",
   "scripts": {
     "test": "cypress run",
     "test:open": "cypress open",

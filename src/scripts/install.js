@@ -8,7 +8,7 @@ const readJson = from => (fs.existsSync(from) ? JSON.parse(fs.readFileSync(from,
 const copy = (from, to) => fs.copyFileSync(from, to)
 const append = (from, to) => {
 	mkdirp(path.dirname(to))
-	fs.appendFileSync(to, '\n' + fs.readFileSync(from, { encoding: 'utf8' }))
+	fs.appendFileSync(to, fs.readFileSync(from, { encoding: 'utf8' }))
 }
 
 const pkg = readJson(path.resolve(process.cwd(), 'package.json'))

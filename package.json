@@ -39,7 +39,7 @@
   },
   "main": "src/index.js",
   "bin": {
-    "install-cypress-scenario-runner": "src/scripts/postinstall.js"
+    "install-cypress-scenario-runner": "src/scripts/install.js"
   },
   "scripts": {
     "test": "cypress run",

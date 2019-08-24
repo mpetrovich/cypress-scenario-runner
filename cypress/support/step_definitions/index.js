@@ -1,5 +1,5 @@
 const { addSteps, getElementOptions } = require('../../../src/index')
-const options = require('../../../cypress-scenario-runner.json')
+const options = require('../options')
 
 addSteps({
 	options,

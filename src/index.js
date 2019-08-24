@@ -1,9 +1,9 @@
 const { given } = require('cypress-cucumber-preprocessor/steps')
 const faker = require('faker')
-const defaultOptions = require('./default-options')
+const defaultOptions = require('./defaults/options')
 
 function addSteps({ steps: customSteps = {}, routes = {}, options: customOptions = {} } = {}) {
-	const defaultSteps = require('./default-steps')
+	const defaultSteps = require('./steps')
 	const steps = Object.assign({}, defaultSteps, customSteps)
 	const options = Object.assign({}, defaultOptions, customOptions)
 	const normalizeStep = step => step.replace(/\{(route|element)\}/g, '{string}')

@@ -3,14 +3,15 @@
   "version": "2.0.0",
   "license": "MIT",
   "author": "Mike Petrovich <michael.c.petrovich@gmail.com>",
-  "description": "Write Gherkin scenarios that can be run with Cypress without a single line of code",
+  "description": "Run Gherkin scenarios with Cypress without a single line of code.",
   "keywords": [
     "cypress",
     "cypress.io",
-    "cucumber",
     "gherkin",
     "scenario",
-    "bdd"
+    "bdd",
+    "test",
+    "cucumber"
   ],
   "homepage": "https://github.com/mpetrovich/cypress-scenario-runner#readme",
   "repository": {
@@ -24,7 +25,8 @@
     "node": ">=8.0"
   },
   "dependencies": {
-    "faker": "^4.1.0"
+    "faker": "^4.1.0",
+    "lodash.get": "^4.4.2"
   },
   "peerDependencies": {
     "cypress": "^3.0.3",
@@ -37,6 +39,7 @@
   },
   "main": "src/index.js",
   "scripts": {
+    "postinstall": "src/postinstall.js",
     "test": "cypress run",
     "test:open": "cypress open",
     "test:debug": "DEBUG=cypress:* cypress open",

@@ -1,16 +1,16 @@
 # Cypress Scenario Runner [![npm version](https://badge.fury.io/js/cypress-scenario-runner.svg)](https://badge.fury.io/js/cypress-scenario-runner) [![Build Status](https://travis-ci.org/mpetrovich/cypress-scenario-runner.svg?branch=master)](https://travis-ci.org/mpetrovich/cypress-scenario-runner)
 
-**Write [Gherkin scenarios](https://docs.cucumber.io/gherkin/reference/) that can be run with [Cypress](https://www.cypress.io) without a single line of code.**
+**Run [Gherkin scenarios](https://docs.cucumber.io/gherkin/reference/) with [Cypress](https://www.cypress.io) without a single line of code.**
 
-By just adding a few HTML attributes to your interactive elements like this:
+By adding a few HTML attributes:
 
 ```html
-<input name="email" data-test="email input" />
-<input name="password" data-test="password input" />
-<button type="submit" data-test="login button">Login</button>
+<input … data-test="email input" />
+<input … data-test="password input" />
+<button … data-test="login button">Login</button>
 ```
 
-...you can then write scenarios like this:
+Cypress Scenario Runner can run Gherkin scenarios without any Cypress code like `cy.visit()`, `cy.click()`:
 
 ```sh
 Feature: Login
@@ -27,23 +27,34 @@ Then I should be on "home"
 
 ## Table of contents
 
-- [Installation](#installation)
-- [Configuration](#configuration)
+- [Installation & setup](#installation--setup)
 - [Usage](#usage)
 - [Customization](#customization)
 - [Contributing](#CONTRIBUTING.md)
 
 ## Installation
 
+Cypress Scenario Runner requires Node.js v8.0+, [`cypress`](https://github.com/cypress-io/cypress/), and [`cypress-cucumber-preprocessor`](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor).
+
+```sh
+npm install --save-dev cypress cypress-cucumber-preprocessor cypress-scenario-runner
+```
+
+## Configuration
+
+TBD
+
+## Installation & setup
+
 1. [Install packages](#install-packages)
 1. [Set up Cypress](#set-up-cypress)
-1. [Set up `cypress-scenario-runner`](#set-up-cypress-scenario-runner)
+1. [Set up Cypress Scenario Runner](#set-up-cypress-scenario-runner)
 
-Requires Node.js v8+
+**NOTE:** Cypress Scenario Runner requires Node.js v8.0+
 
 ### 1. Install packages
 
-Install this package and its dependencies, [cypress](https://github.com/cypress-io/cypress/) and [cypress-cucumber-preprocessor](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor):
+Install `cypress-scenario-runner` and its dependencies, [`cypress`](https://github.com/cypress-io/cypress/) and [`cypress-cucumber-preprocessor`](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor):
 
 ```sh
 npm install --save-dev cypress cypress-cucumber-preprocessor cypress-scenario-runner
@@ -51,28 +62,28 @@ npm install --save-dev cypress cypress-cucumber-preprocessor cypress-scenario-ru
 
 ### 2. Set up Cypress
 
-Follow the setup instructions for [Cypress](https://github.com/cypress-io/cypress/) and launch it once to create the initial directory structure.
+Follow the setup instructions for [Cypress](https://github.com/cypress-io/cypress/) and launch its GUI at least once in order to create the initial Cypress directory structure.
 
 ### 3. Set up cypress-scenario-runner
 
-Add these lines to the `pluginsFile` listed in your `cypress.json` ([default path](https://docs.cypress.io/guides/references/configuration.html#Folders-Files) is `cypress/plugins/index.js`):
+Edit the [Cypress plugins file](https://docs.cypress.io/guides/references/configuration.html#Folders-Files):
 
-```diff
-+ const cucumber = require('cypress-cucumber-preprocessor').default
+```js
+const cucumber = require('cypress-cucumber-preprocessor').default
 
 module.exports = (on, config) => {
-+	on('file:preprocessor', cucumber())
+	on('file:preprocessor', cucumber())
 }
 ```
 
-Add these lines to the `supportFile` listed in your `cypress.json` ([default path](https://docs.cypress.io/guides/references/configuration.html#Folders-Files) is `cypress/support/index.js`):
+Edit the [Cypress support file](https://docs.cypress.io/guides/references/configuration.html#Folders-Files):
 
 ```js
 const { addCommands } = require('cypress-scenario-runner')
 addCommands()
 ```
 
-Create a new file at `cypress/support/step_definitions/index.js` that contains:
+Create a new file at `cypress/support/step_definitions/index.js`:
 
 ```js
 const { addSteps } = require('cypress-scenario-runner')

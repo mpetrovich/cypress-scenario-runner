@@ -21,7 +21,7 @@
     "cypress": "^3.0.3",
     "cypress-cucumber-preprocessor": "^1.0.0"
   },
-  "main": "index.js",
+  "main": "src/index.js",
   "devDependencies": {
     "cypress": "^3.0.3",
     "cypress-cucumber-preprocessor": "^1.0.0",

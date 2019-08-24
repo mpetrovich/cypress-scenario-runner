@@ -69,16 +69,16 @@ module.exports = (on, config) => {
 
 Add these lines to the `supportFile` listed in your `cypress.json` ([default path](https://docs.cypress.io/guides/references/configuration.html#Folders-Files) is `cypress/support/index.js`):
 
-```diff
-+ const { addCommands } = require('cypress-scenario-runner')
-+ addCommands()
+```js
+const { addCommands } = require('cypress-scenario-runner')
+addCommands()
 ```
 
 Create a new file at `cypress/support/step_definitions/index.js` that contains:
 
-```diff
-+ const { addSteps } = require('cypress-scenario-runner')
-+ addSteps()
+```js
+const { addSteps } = require('cypress-scenario-runner')
+addSteps()
 ```
 
 Now you're ready to begin writing test scenarios.

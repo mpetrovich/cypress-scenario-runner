@@ -24,6 +24,6 @@ const stepsTemplate = path.resolve(__dirname, '../templates/steps.js')
 const stepsFile = path.join(path.dirname(supportFile), 'steps', 'index.js')
 append(stepsTemplate, stepsFile)
 
-const preprocessorConfig = JSON.stringify({ step_definitions: stepsFile }, null, '\t')
+const preprocessorConfig = JSON.stringify({ step_definitions: path.dirname(stepsFile) }, null, '\t')
 const preprocessorFile = path.resolve(process.cwd(), '.cypress-cucumber-preprocessorrc')
 fs.writeFileSync(preprocessorFile, preprocessorConfig)

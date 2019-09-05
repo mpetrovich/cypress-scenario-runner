@@ -1,8 +1,6 @@
 const { addSteps, getElementOptions } = require('cypress-scenario-runner')
-const options = require('../../../cypress-scenario-runner.json')
 
 addSteps({
-	options,
 	routes: {
 		// Examples, replace with your own
 		// see https://github.com/mpetrovich/cypress-scenario-runner#configuration

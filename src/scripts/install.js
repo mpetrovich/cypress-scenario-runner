@@ -17,7 +17,7 @@ const supportPath = cypress.supportFile || 'cypress/support/index.js'
 append(defaultSupportPath, supportPath)
 
 const defaultPluginsPath = path.resolve(__dirname, '../templates/plugins.js')
-const pluginsPath = cypress.pluginsPath || 'cypress/plugins/index.js'
+const pluginsPath = cypress.pluginsFile || 'cypress/plugins/index.js'
 append(defaultPluginsPath, pluginsPath)
 
 const defaultStepDefinitionsPath = path.resolve(__dirname, '../templates/steps.js')

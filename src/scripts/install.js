@@ -21,7 +21,7 @@ const pluginsFile = cypress.pluginsFile || 'cypress/plugins/index.js'
 append(pluginsTemplate, pluginsFile)
 
 const stepsTemplate = path.resolve(__dirname, '../templates/steps.js')
-const stepsFile = path.join(path.dirname(supportFile), 'step_definitions', 'index.js')
+const stepsFile = path.join(path.dirname(supportFile), 'steps', 'index.js')
 append(stepsTemplate, stepsFile)
 
 const preprocessorConfig = JSON.stringify({ step_definitions: stepsFile }, null, '\t')

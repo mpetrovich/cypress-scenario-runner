@@ -10,7 +10,7 @@ By adding a few HTML attributes:
 <button … data-test="login button">Login</button>
 ```
 
-Cypress Scenario Runner can run Gherkin scenarios without any Cypress code like `cy.visit()`, `cy.click()`:
+Cypress Scenario Runner can run Gherkin scenarios without you needing to write any Cypress code like `cy.visit()` or `cy.click()`:
 
 ```sh
 Feature: Login

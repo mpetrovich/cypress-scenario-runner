@@ -5,19 +5,27 @@ const path = require('path')
 const get = require('lodash.get')
 const mkdirp = require('mkdirp').sync
 const readJson = from => (fs.existsSync(from) ? JSON.parse(fs.readFileSync(from, { encoding: 'utf8' })) : {})
-const copy = (from, to) => fs.copyFileSync(from, to)
 const append = (from, to) => {
 	mkdirp(path.dirname(to))
-	fs.appendFileSync(to, fs.readFileSync(from, { encoding: 'utf8' }))
+	const content = fs.readFileSync(from, { encoding: 'utf8' })
+	fs.appendFileSync(to, resolvePaths(content))
 }
 
-const pkg = readJson(path.resolve(process.cwd(), 'package.json'))
+const defaultConfigFile = path.resolve(__dirname, '../defaults/cypress-scenario-runner.json')
+fs.copyFileSync(defaultConfigFile, 'cypress-scenario-runner.json')
+
+const defaultStepDefinitionsFile = path.resolve(__dirname, '../defaults/steps.js')
+const preprocessor = get(cosmiconfig('cypress-cucumber-preprocessor').searchSync(), 'config', {})
+const stepDefinitionsDir = preprocessor.step_definitions || 'cypress/support/step_definitions'
+const stepDefinitionsFile = path.resolve(stepDefinitionsDir, 'index.js')
+append(defaultStepDefinitionsFile, stepDefinitionsFile)
+
 const cypress = readJson(path.resolve(process.cwd(), 'cypress.json'))
 
-copy(path.resolve(__dirname, '../defaults/options.json'), 'cypress-scenario-runner.json')
-append(path.resolve(__dirname, '../defaults/support.js'), cypress.supportFile || 'cypress/support/index.js')
-append(path.resolve(__dirname, '../defaults/plugins.js'), cypress.pluginsFile || 'cypress/plugins/index.js')
-append(
-	path.resolve(__dirname, '../defaults/steps.js'),
-	get(pkg, 'cypress-cucumber-preprocessor.step_definitions', 'cypress/support/step_definitions/index.js')
-)
+const defaultSupportFile = path.resolve(__dirname, '../defaults/support.js')
+const supportFile = cypress.supportFile || 'cypress/support/index.js'
+append(defaultSupportFile, supportFile)
+
+const defaultPluginsFile = path.resolve(__dirname, '../defaults/plugins.js')
+const pluginsFile = cypress.pluginsFile || 'cypress/plugins/index.js'
+append(defaultPluginsFile, pluginsFile)

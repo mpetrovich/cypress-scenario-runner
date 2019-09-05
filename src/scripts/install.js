@@ -25,7 +25,7 @@ const pluginsPath = cypress.pluginsPath || 'cypress/plugins/index.js'
 append(defaultPluginsPath, pluginsPath)
 
 const defaultStepDefinitionsPath = path.resolve(__dirname, '../defaults/steps.js')
-const stepDefinitionsPath = path.join(path.dirname(supportPath), 'steps', 'index.js')
+const stepDefinitionsPath = path.join(path.dirname(supportPath), 'step_definitions', 'index.js')
 append(defaultStepDefinitionsPath, stepDefinitionsPath)
 
 const preprocessorConfigPath = path.resolve(process.cwd(), '.cypress-cucumber-preprocessorrc.json')

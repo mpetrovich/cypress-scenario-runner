@@ -12,7 +12,7 @@ const append = (from, to) => {
 }
 
 const defaultOptionsPath = path.resolve(__dirname, '../defaults/options.json')
-fs.copyFileSync(defaultOptionsPath, 'cypress-scenario-runner.json')
+fs.copyFileSync(defaultOptionsPath, '.cypress-scenario-runnerrc.json')
 
 const cypress = readJson(path.resolve(process.cwd(), 'cypress.json'))
 

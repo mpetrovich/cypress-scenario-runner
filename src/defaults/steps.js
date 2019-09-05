@@ -4,8 +4,8 @@ addSteps({
 	routes: {
 		// Examples, replace with your own
 		// see https://github.com/mpetrovich/cypress-scenario-runner#configuration
-		login: '/login',
-		home: '/home',
+		login: '/login.html',
+		home: '/home.html',
 	},
 	steps: {
 		// Examples, replace with your own

@@ -25,6 +25,7 @@
     "node": ">=8.0"
   },
   "dependencies": {
+    "debug": "^4.1.1",
     "faker": "^4.1.0",
     "lodash.get": "^4.4.2",
     "mkdirp": "^0.5.1"

@@ -1,3 +1,4 @@
+const debug = require('debug')
 const { given } = require('cypress-cucumber-preprocessor/steps')
 const faker = require('faker')
 const defaultOptions = require('./defaults/options')
@@ -7,6 +8,11 @@ function addSteps({ steps: customSteps = {}, routes = {}, options: customOptions
 	const steps = Object.assign({}, defaultSteps, customSteps)
 	const options = Object.assign({}, defaultOptions, customOptions)
 	const normalizeStep = step => step.replace(/\{(route|element)\}/g, '{string}')
+
+	const log = debug('cypress-scenario-runner:addSteps')
+	log('steps', JSON.stringify(steps))
+	log('routes', JSON.stringify(routes))
+	log('options', JSON.stringify(options))
 
 	for (const [step, fn] of Object.entries(steps)) {
 		given(normalizeStep(step), function() {
@@ -20,6 +26,9 @@ function addSteps({ steps: customSteps = {}, routes = {}, options: customOptions
 
 function addCommands(customOptions) {
 	const options = Object.assign({}, defaultOptions, customOptions)
+
+	const log = debug('cypress-scenario-runner:addCommands')
+	log('options', JSON.stringify(options))
 
 	Cypress.Commands.add('getElement', element => getElement(element, options))
 	Cypress.Commands.add('getInputElement', element => getInputElement(element, options))

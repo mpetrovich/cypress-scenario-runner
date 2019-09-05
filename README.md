@@ -34,11 +34,11 @@ Then I should be on "home"
   - [Setting routes](#setting-routes)
   - [Running scenarios](#running-scenarios)
 - [Configuration](#configuration)
-- [Contributing](#CONTRIBUTING.md)
+- [Contributing](CONTRIBUTING.md)
 
 ## Installation
 
-Cypress Scenario Runner requires:
+Requires:
 
 - Node.js 8.0+
 - [`cypress`](https://github.com/cypress-io/cypress/)
@@ -52,7 +52,7 @@ npm install --save-dev cypress cypress-cucumber-preprocessor cypress-scenario-ru
 
 ### Writing test scenarios
 
-Test scenarios are written in [Gherkin syntax](https://cucumber.io/docs/gherkin/reference/) which looks like this:
+Test scenarios are written in [Gherkin syntax](https://cucumber.io/docs/gherkin/reference/):
 
 ```sh
 Feature: Login
@@ -67,7 +67,7 @@ When I click "login button"
 Then I should be on "home"
 ```
 
-Each given/when/then/and line is called a "step". `cypress-scenario-runner` works by using a comprehensive set of reusable step templates that have already been implemented behind the scenes:
+Each line in the scenario is called a _step_. `cypress-scenario-runner` works by using a predefined set of reusable step templates:
 
 | Step                                      | Description |
 | ----------------------------------------- | ----------- |
@@ -92,23 +92,16 @@ Each given/when/then/and line is called a "step". `cypress-scenario-runner` work
 | `elements should contain:`                | …           |
 | `{element} should not contain {string}`   | …           |
 
-Parameters appear in `{brackets}` in step templates and in `"double quotes"` in the scenario. For example, this step:
-
-```sh
-And I set "email input" to "name@example.com"
-```
-
-corresponds to this step template:
+Text in `{brackets}` above are parameters whose values must be (double) quoted in the scenario. For example, this step template:
 
 ```sh
 I set {element} to {string}
 ```
 
-where:
+would appear as this in the scenario:
 
-```
-{element} = email input
-{string}  = name@example.com
+```sh
+And I set "email input" to "name@example.com"
 ```
 
 In addition, the full [Gherkin specification](https://cucumber.io/docs/gherkin/reference/) is supported along with [additional enhancements](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor#background-section) by `cypress-cucumber-preprocessor`. For instance, you can use scenario templates/outlines, data tables, and tags in your scenarios.
@@ -117,7 +110,7 @@ See the [`cypress/integration/`](cypress/integration/) directory for more exampl
 
 ### Annotating HTML elements
 
-HTML attributes are used to map the `{element}` step parameters to their corresponding HTML elements. `data-test` is used by default, but this is [configurable](#configuration).
+HTML attributes are used to map `{element}` step parameters to their corresponding HTML elements. `data-test` attributes is used by default, but this is [configurable](#configuration).
 
 ```html
 <!-- login.html -->

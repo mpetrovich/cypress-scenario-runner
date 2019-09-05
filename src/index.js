@@ -1,12 +1,28 @@
 const { given } = require('cypress-cucumber-preprocessor/steps')
 const faker = require('faker')
-const defaultOptions = require('./defaults/options.json')
-const path = require('path')
 
-function addSteps({ steps: customSteps = {}, routes = {}, options: customOptions = {} } = {}) {
+const defaultOptions = {
+	elementAttr: 'data-test',
+	elementValueAttr: 'data-value',
+	elementOptionsAttr: 'data-options',
+	elementOptions: {
+		force: false,
+	},
+	defaultCommandWait: 0,
+}
+
+function addSteps({ steps: customSteps = {}, routes = {} } = {}) {
+	const customOptions = {
+		elementAttr: Cypress.config('elementAttr'),
+		elementValueAttr: Cypress.config('elementValueAttr'),
+		elementOptionsAttr: Cypress.config('elementOptionsAttr'),
+		elementOptions: JSON.parse(Cypress.config('elementOptions') || '{}'),
+		defaultCommandWait: Cypress.config('defaultCommandWait'),
+	}
+	const options = Object.assign({}, defaultOptions, customOptions)
+
 	const defaultSteps = require('./steps')
 	const steps = Object.assign({}, defaultSteps, customSteps)
-	const options = Object.assign({}, defaultOptions, customOptions)
 	const normalizeStep = step => step.replace(/\{(route|element)\}/g, '{string}')
 
 	for (const [step, fn] of Object.entries(steps)) {
@@ -19,7 +35,14 @@ function addSteps({ steps: customSteps = {}, routes = {}, options: customOptions
 	}
 }
 
-function addCommands(customOptions) {
+function addCommands() {
+	const customOptions = {
+		elementAttr: Cypress.config('elementAttr'),
+		elementValueAttr: Cypress.config('elementValueAttr'),
+		elementOptionsAttr: Cypress.config('elementOptionsAttr'),
+		elementOptions: JSON.parse(Cypress.config('elementOptions') || '{}'),
+		defaultCommandWait: Cypress.config('defaultCommandWait'),
+	}
 	const options = Object.assign({}, defaultOptions, customOptions)
 
 	Cypress.Commands.add('getElement', element => getElement(element, options))

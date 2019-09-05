@@ -1,8 +1,6 @@
 const { addSteps, getElementOptions } = require('../../../src/index')
-const options = require('../options')
 
 addSteps({
-	options,
 	routes: {
 		actions: '/cypress/pages/actions.html',
 		assertions: '/cypress/pages/assertions.html',

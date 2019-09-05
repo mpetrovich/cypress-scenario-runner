@@ -33,11 +33,11 @@
   },
   "peerDependencies": {
     "cypress": "^3.0.3",
-    "cypress-cucumber-preprocessor": "^1.0.0"
+    "cypress-cucumber-preprocessor": "^1.16.0"
   },
   "devDependencies": {
     "cypress": "^3.0.3",
-    "cypress-cucumber-preprocessor": "^1.0.0",
+    "cypress-cucumber-preprocessor": "^1.16.0",
     "prettier": "^1.18.2"
   },
   "main": "src/index.js",

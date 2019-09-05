@@ -12,14 +12,14 @@ const append = (from, to) => {
 
 const cypress = readJson(path.resolve(process.cwd(), 'cypress.json'))
 
-const defaultSupportPath = path.resolve(__dirname, '../templates/support.js')
-const supportPath = cypress.supportFile || 'cypress/support/index.js'
-append(defaultSupportPath, supportPath)
+const supportTemplate = path.resolve(__dirname, '../templates/support.js')
+const supportFile = cypress.supportFile || 'cypress/support/index.js'
+append(supportTemplate, supportFile)
 
-const defaultPluginsPath = path.resolve(__dirname, '../templates/plugins.js')
-const pluginsPath = cypress.pluginsFile || 'cypress/plugins/index.js'
-append(defaultPluginsPath, pluginsPath)
+const pluginsTemplate = path.resolve(__dirname, '../templates/plugins.js')
+const pluginsFile = cypress.pluginsFile || 'cypress/plugins/index.js'
+append(pluginsTemplate, pluginsFile)
 
-const defaultStepDefinitionsPath = path.resolve(__dirname, '../templates/steps.js')
-const stepDefinitionsPath = path.join(path.dirname(supportPath), 'step_definitions', 'index.js')
-append(defaultStepDefinitionsPath, stepDefinitionsPath)
+const stepsTemplate = path.resolve(__dirname, '../templates/steps.js')
+const stepsFile = path.join(path.dirname(supportFile), 'step_definitions', 'index.js')
+append(stepsTemplate, stepsFile)

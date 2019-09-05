@@ -13,6 +13,7 @@ Then "submitted text" should be "Text value"
 Scenario: Invisible text inputs can be set when they have a force attribute
 ---
 Given I navigate to "input actions"
+And "invisible-text input" should not be visible
 And I set "invisible-text input" to "Text value"
 When I click "submit button"
 Then "submitted invisible-text" should be "Text value"
@@ -37,6 +38,7 @@ Then "submitted password" should be "Password value"
 Scenario: Invisible password inputs can be set when they have a force attribute
 ---
 Given I navigate to "input actions"
+And "invisible-password input" should not be visible
 And I set "invisible-password input" to "Password value"
 When I click "submit button"
 Then "submitted invisible-password" should be "Password value"
@@ -61,6 +63,7 @@ Then "submitted textarea" should be "Textarea value"
 Scenario: Invisible textarea inputs can be set when they have a force attribute
 ---
 Given I navigate to "input actions"
+And "invisible-textarea input" should not be visible
 And I set "invisible-textarea input" to "Textarea value"
 When I click "submit button"
 Then "submitted invisible-textarea" should be "Textarea value"
@@ -85,6 +88,7 @@ Then "submitted radio" should be "radio 2 value"
 Scenario: Invisible radio inputs can be set by value when they have a force attribute
 ---
 Given I navigate to "input actions"
+And "invisible-radio input" should not be visible
 And I set "invisible-radio input" to "radio 2 value"
 When I click "submit button"
 Then "submitted invisible-radio" should be "radio 2 value"
@@ -117,6 +121,7 @@ Then "submitted checkbox" should be "checkbox 2 value"
 Scenario: A single checkbox input can be set by value when they have a force attribute
 ---
 Given I navigate to "input actions"
+And "invisible-checkbox input" should not be visible
 And I set "invisible-checkbox input" to "checkbox 2 value"
 When I click "submit button"
 Then "submitted invisible-checkbox" should be "checkbox 2 value"
@@ -158,6 +163,7 @@ Then "submitted select" should be "option 2 value"
 Scenario: Invisible select inputs can be set by value when they have a force attribute
 ---
 Given I navigate to "input actions"
+And "invisible-select input" should not be visible
 And I set "invisible-select input" to "option 2 value"
 When I click "submit button"
 Then "submitted invisible-select" should be "option 2 value"

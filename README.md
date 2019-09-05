@@ -27,77 +27,28 @@ Then I should be on "home"
 
 ## Table of contents
 
-- [Installation & setup](#installation--setup)
+- [Installation](#installation)
 - [Usage](#usage)
-- [Customization](#customization)
+  - [Writing test scenarios](#writing-test-scenarios)
+  - [Annotating HTML elements](#annotating-html-elements)
+  - [Setting routes](#setting-routes)
+  - [Running scenarios](#running-scenarios)
+- [Configuration](#configuration)
 - [Contributing](#CONTRIBUTING.md)
 
 ## Installation
 
-Cypress Scenario Runner requires Node.js v8.0+, [`cypress`](https://github.com/cypress-io/cypress/), and [`cypress-cucumber-preprocessor`](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor).
+Cypress Scenario Runner requires:
+
+- Node.js 8.0+
+- [`cypress`](https://github.com/cypress-io/cypress/)
+- [`cypress-cucumber-preprocessor`](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor)
 
 ```sh
-npm install --save-dev cypress cypress-cucumber-preprocessor cypress-scenario-runner
+npm install --save-dev cypress cypress-cucumber-preprocessor cypress-scenario-runner && $(npm bin)/install-cypress-scenario-runner
 ```
-
-## Configuration
-
-TBD
-
-## Installation & setup
-
-1. [Install packages](#install-packages)
-1. [Set up Cypress](#set-up-cypress)
-1. [Set up Cypress Scenario Runner](#set-up-cypress-scenario-runner)
-
-**NOTE:** Cypress Scenario Runner requires Node.js v8.0+
-
-### 1. Install packages
-
-Install `cypress-scenario-runner` and its dependencies, [`cypress`](https://github.com/cypress-io/cypress/) and [`cypress-cucumber-preprocessor`](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor):
-
-```sh
-npm install --save-dev cypress cypress-cucumber-preprocessor cypress-scenario-runner
-```
-
-### 2. Set up Cypress
-
-Follow the setup instructions for [Cypress](https://github.com/cypress-io/cypress/) and launch its GUI at least once in order to create the initial Cypress directory structure.
-
-### 3. Set up cypress-scenario-runner
-
-Edit the [Cypress plugins file](https://docs.cypress.io/guides/references/configuration.html#Folders-Files):
-
-```js
-const cucumber = require('cypress-cucumber-preprocessor').default
-
-module.exports = (on, config) => {
-	on('file:preprocessor', cucumber())
-}
-```
-
-Edit the [Cypress support file](https://docs.cypress.io/guides/references/configuration.html#Folders-Files):
-
-```js
-const { addCommands } = require('cypress-scenario-runner')
-addCommands()
-```
-
-Create a new file at `cypress/support/step_definitions/index.js`:
-
-```js
-const { addSteps } = require('cypress-scenario-runner')
-addSteps()
-```
-
-Now you're ready to begin writing test scenarios.
 
 ## Usage
-
-- [Writing test scenarios](#writing-test-scenarios)
-- [Annotating HTML elements](#annotating-html-elements)
-- [Setting routes](#setting-routes)
-- [Running scenarios](#running-scenarios)
 
 ### Writing test scenarios
 
@@ -166,7 +117,7 @@ See the [`cypress/integration/`](cypress/integration/) directory for more exampl
 
 ### Annotating HTML elements
 
-HTML attributes are used to map the `{element}` step parameters to their corresponding HTML elements. `data-test` is used by default, but this is [configurable](#customization).
+HTML attributes are used to map the `{element}` step parameters to their corresponding HTML elements. `data-test` is used by default, but this is [configurable](#configuration).
 
 ```html
 <!-- login.html -->
@@ -208,6 +159,6 @@ or, using the Cypress UI:
 $(npm bin)/cypress open
 ```
 
-## Customization
+## Configuration
 
 Coming soon.

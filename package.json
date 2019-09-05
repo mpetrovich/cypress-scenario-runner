@@ -1,6 +1,6 @@
 {
   "name": "cypress-scenario-runner",
-  "version": "2.1.0-beta.4",
+  "version": "2.1.0-beta.5",
   "license": "MIT",
   "author": "Mike Petrovich <michael.c.petrovich@gmail.com>",
   "description": "Run Gherkin scenarios with Cypress without a single line of code.",

@@ -48,6 +48,8 @@ Requires:
 npm install --save-dev cypress cypress-cucumber-preprocessor cypress-scenario-runner && $(npm bin)/install-cypress-scenario-runner
 ```
 
+The installer will create or modify a handful of files. You should review and commit those changes.
+
 ## Usage
 
 ### Writing test scenarios

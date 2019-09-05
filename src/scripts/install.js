@@ -2,7 +2,6 @@
 
 const fs = require('fs')
 const path = require('path')
-const get = require('lodash.get')
 const mkdirp = require('mkdirp').sync
 const readJson = from => (fs.existsSync(from) ? JSON.parse(fs.readFileSync(from, { encoding: 'utf8' })) : {})
 const append = (from, to) => {

@@ -1,4 +1,3 @@
-const get = require('lodash.get')
 const { given } = require('cypress-cucumber-preprocessor/steps')
 const faker = require('faker')
 const defaultOptions = require('./defaults/options.json')

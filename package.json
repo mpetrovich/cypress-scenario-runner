@@ -26,7 +26,6 @@
   },
   "dependencies": {
     "faker": "^4.1.0",
-    "lodash.get": "^4.4.2",
     "mkdirp": "^0.5.1"
   },
   "peerDependencies": {

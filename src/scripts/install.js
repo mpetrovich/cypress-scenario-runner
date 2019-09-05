@@ -12,8 +12,8 @@ const append = (from, to) => {
 	fs.appendFileSync(to, content)
 }
 
-const defaultConfigFile = path.resolve(__dirname, '../defaults/config.json')
-fs.copyFileSync(defaultConfigFile, 'cypress-scenario-runner.json')
+const defaultOptionsFile = path.resolve(__dirname, '../defaults/options.json')
+fs.copyFileSync(defaultOptionsFile, 'cypress-scenario-runner.json')
 
 const defaultStepDefinitionsFile = path.resolve(__dirname, '../defaults/steps.js')
 const preprocessor = get(cosmiconfig('cypress-cucumber-preprocessor').searchSync(), 'config', {})

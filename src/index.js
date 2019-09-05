@@ -2,14 +2,13 @@ const debug = require('debug')
 const get = require('lodash.get')
 const { given } = require('cypress-cucumber-preprocessor/steps')
 const faker = require('faker')
-const defaultOptions = require('./defaults/config')
-const cosmiconfig = require('cosmiconfig')
-const customOptions = get(cosmiconfig('cypress-scenario-runner').searchSync(), 'config', {})
+const defaultOptions = require('./defaults/options.json')
+const path = require('path')
 
-function addSteps({ steps: customSteps = {}, routes = {}, options: customOptionOverrides = {} } = {}) {
+function addSteps({ steps: customSteps = {}, routes = {}, options: customOptions = {} } = {}) {
 	const defaultSteps = require('./steps')
 	const steps = Object.assign({}, defaultSteps, customSteps)
-	const options = Object.assign({}, defaultOptions, customOptions, customOptionOverrides)
+	const options = Object.assign({}, defaultOptions, customOptions)
 	const normalizeStep = step => step.replace(/\{(route|element)\}/g, '{string}')
 
 	const log = debug('cypress-scenario-runner:addSteps')
@@ -27,8 +26,8 @@ function addSteps({ steps: customSteps = {}, routes = {}, options: customOptionO
 	}
 }
 
-function addCommands(customOptionOverrides) {
-	const options = Object.assign({}, defaultOptions, customOptions, customOptionOverrides)
+function addCommands(customOptions) {
+	const options = Object.assign({}, defaultOptions, customOptions)
 
 	const log = debug('cypress-scenario-runner:addCommands')
 	log('options', JSON.stringify(options))

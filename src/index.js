@@ -2,7 +2,7 @@ const debug = require('debug')
 const get = require('lodash.get')
 const { given } = require('cypress-cucumber-preprocessor/steps')
 const faker = require('faker')
-const defaultOptions = require('./defaults/options')
+const defaultOptions = require('./defaults/config')
 const cosmiconfig = require('cosmiconfig')
 const customOptions = get(cosmiconfig('cypress-scenario-runner').searchSync(), 'config', {})
 

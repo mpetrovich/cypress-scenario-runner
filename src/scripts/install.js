@@ -3,12 +3,13 @@
 const fs = require('fs')
 const path = require('path')
 const get = require('lodash.get')
+const cosmiconfig = require('cosmiconfig')
 const mkdirp = require('mkdirp').sync
 const readJson = from => (fs.existsSync(from) ? JSON.parse(fs.readFileSync(from, { encoding: 'utf8' })) : {})
 const append = (from, to) => {
-	mkdirp(path.dirname(to))
 	const content = fs.readFileSync(from, { encoding: 'utf8' })
-	fs.appendFileSync(to, resolvePaths(content))
+	mkdirp(path.dirname(to))
+	fs.appendFileSync(to, content)
 }
 
 const defaultConfigFile = path.resolve(__dirname, '../defaults/cypress-scenario-runner.json')

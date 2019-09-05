@@ -3,6 +3,7 @@ const get = require('lodash.get')
 const { given } = require('cypress-cucumber-preprocessor/steps')
 const faker = require('faker')
 const defaultOptions = require('./defaults/options')
+const cosmiconfig = require('cosmiconfig')
 const customOptions = get(cosmiconfig('cypress-scenario-runner').searchSync(), 'config', {})
 
 function addSteps({ steps: customSteps = {}, routes = {}, options: customOptionOverrides = {} } = {}) {

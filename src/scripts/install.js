@@ -23,7 +23,3 @@ append(defaultPluginsPath, pluginsPath)
 const defaultStepDefinitionsPath = path.resolve(__dirname, '../defaults/steps.js')
 const stepDefinitionsPath = path.join(path.dirname(supportPath), 'step_definitions', 'index.js')
 append(defaultStepDefinitionsPath, stepDefinitionsPath)
-
-const preprocessorConfigPath = path.resolve(process.cwd(), '.cypress-cucumber-preprocessorrc.json')
-const preprocessorConfig = { step_definitions: stepDefinitionsPath }
-fs.writeFileSync(preprocessorConfigPath, JSON.stringify(preprocessorConfig, null, '\t'))

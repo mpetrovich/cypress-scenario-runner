@@ -3,7 +3,6 @@
 const fs = require('fs')
 const path = require('path')
 const get = require('lodash.get')
-const cosmiconfig = require('cosmiconfig')
 const mkdirp = require('mkdirp').sync
 const readJson = from => (fs.existsSync(from) ? JSON.parse(fs.readFileSync(from, { encoding: 'utf8' })) : {})
 const append = (from, to) => {
@@ -12,21 +11,23 @@ const append = (from, to) => {
 	fs.appendFileSync(to, content)
 }
 
-const defaultOptionsFile = path.resolve(__dirname, '../defaults/options.json')
-fs.copyFileSync(defaultOptionsFile, 'cypress-scenario-runner.json')
-
-const defaultStepDefinitionsFile = path.resolve(__dirname, '../defaults/steps.js')
-const preprocessor = get(cosmiconfig('cypress-cucumber-preprocessor').searchSync(), 'config', {})
-const stepDefinitionsDir = preprocessor.step_definitions || 'cypress/support/step_definitions'
-const stepDefinitionsFile = path.resolve(stepDefinitionsDir, 'index.js')
-append(defaultStepDefinitionsFile, stepDefinitionsFile)
+const defaultOptionsPath = path.resolve(__dirname, '../defaults/options.json')
+fs.copyFileSync(defaultOptionsPath, 'cypress-scenario-runner.json')
 
 const cypress = readJson(path.resolve(process.cwd(), 'cypress.json'))
 
-const defaultSupportFile = path.resolve(__dirname, '../defaults/support.js')
-const supportFile = cypress.supportFile || 'cypress/support/index.js'
-append(defaultSupportFile, supportFile)
+const defaultSupportPath = path.resolve(__dirname, '../defaults/support.js')
+const supportPath = cypress.supportFile || 'cypress/support/index.js'
+append(defaultSupportPath, supportPath)
 
-const defaultPluginsFile = path.resolve(__dirname, '../defaults/plugins.js')
-const pluginsFile = cypress.pluginsFile || 'cypress/plugins/index.js'
-append(defaultPluginsFile, pluginsFile)
+const defaultPluginsPath = path.resolve(__dirname, '../defaults/plugins.js')
+const pluginsPath = cypress.pluginsPath || 'cypress/plugins/index.js'
+append(defaultPluginsPath, pluginsPath)
+
+const defaultStepDefinitionsPath = path.resolve(__dirname, '../defaults/steps.js')
+const stepDefinitionsPath = path.join(path.dirname(supportPath), 'steps', 'index.js')
+append(defaultStepDefinitionsPath, stepDefinitionsPath)
+
+const preprocessorConfigPath = path.resolve(process.cwd(), '.cypress-cucumber-preprocessorrc.json')
+const preprocessorConfig = { step_definitions: stepDefinitionsPath }
+fs.writeFileSync(preprocessorConfigPath, JSON.stringify(preprocessorConfig, null, 2))

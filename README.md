@@ -124,7 +124,7 @@ HTML attributes are used to map `{element}` step parameters to their correspondi
 
 ### Setting routes
 
-Routes need to provided for navigation steps like these to work:
+Routes need to be provided for navigation steps like these to work:
 
 ```sh
 Given I navigate to "login"

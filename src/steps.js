@@ -104,7 +104,7 @@ module.exports = {
 					.text()
 					.trim()
 					.toLowerCase()
-			).to.eq(value.toLowerCase())
+			).to.eq(value.trim().toLowerCase())
 		)
 	},
 

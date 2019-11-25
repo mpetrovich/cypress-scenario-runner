@@ -6,6 +6,7 @@ Scenario: Element text content can be asserted to be equal to a string, ignoring
 ---
 When I navigate to "assertions"
 Then "element text" should be "element text content"
+And "element text" should be "  ELEMENT TEXT CONTENT  "
 
 
 Scenario: Element text content can be asserted to be inequal to a string, ignoring case and surrounding whitespace
@@ -14,16 +15,20 @@ When I navigate to "assertions"
 Then "element text" should not be "different text content"
 
 
-Scenario: Element text content can be asserted to contain a string, ignoring case
+Scenario: Element text content can be asserted to contain a string, ignoring case but not surrounding whitespace
 ---
 When I navigate to "assertions"
 Then "element text" should contain "text content"
+Then "element text" should contain "TEXT CONTENT"
+Then "element text" should not contain " text content "
 
 
-Scenario: Element text content can be asserted to not contain a string, ignoring case
+Scenario: Element text content can be asserted to not contain a string, ignoring case but not surrounding whitespace
 ---
 When I navigate to "assertions"
 Then "element text" should not contain "different text content"
+Then "element text" should not contain "  DIFFERENT TEXT CONTENT  "
+Then "element text" should contain " text content"
 
 
 Scenario: Inline data tables can be used to assert that element text content is equal to a string, ignoring case and surrounding whitespace

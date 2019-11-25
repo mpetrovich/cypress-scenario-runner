@@ -123,12 +123,14 @@ module.exports = {
 					.text()
 					.toLowerCase()
 					.trim()
-			).not.to.eq(value.toLowerCase())
+			).not.to.eq(value.trim().toLowerCase())
 		)
 	},
 
 	'{element} should contain {string}': function(element, value) {
-		cy.getElement(element).should($element => expect($element.text().toLowerCase()).to.contain(value.toLowerCase()))
+		cy.getElement(element).should($element =>
+			expect($element.text().toLowerCase()).to.contain(value.trim().toLowerCase())
+		)
 	},
 
 	'elements should contain:': function(table, { steps }) {

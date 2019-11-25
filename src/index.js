@@ -70,11 +70,13 @@ function setInputElement(element, value, options) {
 
 		if ($element.is(':checkbox') || $element.is(':radio')) {
 			if (value === 'checked') {
+				// Explicitly checks a checkbox/radio
 				cy.wrap($element).check(elementOptions)
 			} else if (value === 'unchecked') {
+				// Explicitly unchecks a checkbox/radio
 				cy.wrap($element).uncheck(elementOptions)
 			} else {
-				// Select by value
+				// Checks a checkbox/radio by value
 				const selectors = value
 					.split(',')
 					.map(val => val.trim())
@@ -85,9 +87,11 @@ function setInputElement(element, value, options) {
 					.check(elementOptions)
 			}
 		} else if ($element.is('select')) {
+			// Selects an option by value or text content
 			const values = value.split(',').map(s => s.trim())
 			cy.wrap($element).select(values, elementOptions)
 		} else {
+			// Replaces the value for all other input types
 			cy.wrap($element)
 				.clear(elementOptions)
 				.type(value, elementOptions)

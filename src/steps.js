@@ -63,8 +63,9 @@ module.exports = {
 
 	'I should be on {route}': function(route, table, { routes }) {
 		let path = routes[route] || route
+		const isRegexPath = path.startsWith('/') && path.endsWith('/')
 
-		if (path.startsWith('/') && path.endsWith('/')) {
+		if (isRegexPath) {
 			path = new RegExp(path.slice(1, -1))
 		}
 
@@ -74,8 +75,9 @@ module.exports = {
 
 	'I should not be on {route}': function(route, table, { routes }) {
 		let path = routes[route] || route
+		const isRegexPath = path.startsWith('/') && path.endsWith('/')
 
-		if (path.startsWith('/') && path.endsWith('/')) {
+		if (isRegexPath) {
 			path = new RegExp(path.slice(1, -1))
 		}
 

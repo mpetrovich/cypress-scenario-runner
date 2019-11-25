@@ -116,30 +116,6 @@ module.exports = {
 		}
 	},
 
-	'{element} should be set to {string}': function(element, value) {
-		cy.getInputElement(element).then($element => {
-			if ($element.is(':checkbox') || $element.is(':radio')) {
-				const name = $element.attr('name')
-				const values = $element
-					.closest('form, :root')
-					.find(`[name="${name}"]`)
-					.filter(':checked')
-					.map(function() {
-						return this.value
-					})
-					.get()
-					.join(', ')
-
-				expect(values).to.eq(value)
-			} else if ($element.is('select')) {
-				const values = [].concat($element.val()).join(', ')
-				expect(values).to.eq(value)
-			} else {
-				expect($element.val()).to.eq(value)
-			}
-		})
-	},
-
 	'{element} should not be {string}': function(element, value) {
 		cy.getElement(element).should($element =>
 			expect(
@@ -165,5 +141,29 @@ module.exports = {
 
 	'{element} should not contain {string}': function(element, value) {
 		cy.getElement(element).should($element => expect($element.text().toLowerCase()).not.to.contain(value.toLowerCase()))
+	},
+
+	'{element} should be set to {string}': function(element, value) {
+		cy.getInputElement(element).then($element => {
+			if ($element.is(':checkbox') || $element.is(':radio')) {
+				const name = $element.attr('name')
+				const values = $element
+					.closest('form, :root')
+					.find(`[name="${name}"]`)
+					.filter(':checked')
+					.map(function() {
+						return this.value
+					})
+					.get()
+					.join(', ')
+
+				expect(values).to.eq(value)
+			} else if ($element.is('select')) {
+				const values = [].concat($element.val()).join(', ')
+				expect(values).to.eq(value)
+			} else {
+				expect($element.val()).to.eq(value)
+			}
+		})
 	},
 }

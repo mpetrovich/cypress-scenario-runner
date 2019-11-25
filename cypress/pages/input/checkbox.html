@@ -115,7 +115,7 @@
 		<h1>You submitted</h1>
 		<script>
 			const params = new URLSearchParams(window.location.search)
-			const get = param => (params.getAll(param) || '').join('; ')
+			const get = param => (params.getAll(param) || '').join(', ')
 		</script>
 
 		<h2>Checkbox</h2>

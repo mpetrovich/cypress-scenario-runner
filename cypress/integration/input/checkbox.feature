@@ -37,7 +37,7 @@ And I set "checkbox input" to "checkbox 2 value"
 And I set "checkbox input" to "checkbox 3 value"
 And "checkbox input" should be set to "checkbox 2 value, checkbox 3 value"
 When I click "submit button"
-Then "submitted checkbox" should be "checkbox 2 value; checkbox 3 value"
+Then "submitted checkbox" should be "checkbox 2 value, checkbox 3 value"
 
 
 Scenario: Multiple checkbox inputs can be set by value together
@@ -46,4 +46,4 @@ Given I navigate to "checkbox input test page"
 And I set "checkbox input" to "checkbox 2 value, checkbox 3 value"
 And "checkbox input" should be set to "checkbox 2 value, checkbox 3 value"
 When I click "submit button"
-Then "submitted checkbox" should be "checkbox 2 value; checkbox 3 value"
+Then "submitted checkbox" should be "checkbox 2 value, checkbox 3 value"

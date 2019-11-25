@@ -3,6 +3,7 @@ const { addSteps, getElementOptions } = require('../../../src/index')
 addSteps({
 	routes: {
 		'checkbox input test page': '/cypress/pages/input/checkbox.html',
+		'password input test page': '/cypress/pages/input/password.html',
 		actions: '/cypress/pages/actions.html',
 		assertions: '/cypress/pages/assertions.html',
 		'input actions': '/cypress/pages/actions-inputs.html',

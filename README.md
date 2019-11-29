@@ -70,7 +70,7 @@ When I click "login button"
 Then I should be on "home"
 ```
 
-Each line in the scenario is called a _step_. `cypress-scenario-runner` works by using a predefined set of reusable step templates:
+Each line in the scenario is called a _step_. `cypress-scenario-runner` works by using a predefined set of reusable step templates, but you can also add your own (see [Customization](#customization)):
 
 #### Actions
 

@@ -148,7 +148,7 @@ Many Cypress commands accept an optional `options` object that can be used to cu
 
 ### Setting routes
 
-Routes need to provided for navigation steps like these to work:
+Routes need to be provided for navigation steps like these to work:
 
 ```sh
 Given I navigate to "login"

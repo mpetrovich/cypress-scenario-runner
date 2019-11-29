@@ -127,6 +127,14 @@ module.exports = {
 		}
 	},
 
+	'elements text should not be:': function(table, { steps }) {
+		const rows = table.raw().slice(1) // First row is column headers
+
+		for (const [element, value] of rows) {
+			steps['{element} text should not be {string}'](element, value)
+		}
+	},
+
 	'{element} text should contain {string}': function(element, value) {
 		cy.getElement(element).should($element =>
 			expect($element.text().toLowerCase()).to.contain(value.trim().toLowerCase())
@@ -142,6 +150,14 @@ module.exports = {
 
 		for (const [element, value] of rows) {
 			steps['{element} text should contain {string}'](element, value)
+		}
+	},
+
+	'elements text should not contain:': function(table, { steps }) {
+		const rows = table.raw().slice(1) // First row is column headers
+
+		for (const [element, value] of rows) {
+			steps['{element} text should not contain {string}'](element, value)
 		}
 	},
 

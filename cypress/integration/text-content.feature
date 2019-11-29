@@ -40,6 +40,15 @@ Then elements text should be:
 | another text | another text content |
 
 
+Scenario: Inline data tables can be used to assert that element text content is not equal to a string, ignoring case and surrounding whitespace
+---
+When I navigate to "assertions"
+Then elements text should not be:
+| element      | value                |
+| element text | another text content |
+| another text | element text content |
+
+
 Scenario: Inline data tables can be used to assert that element text content contains a string, ignoring case
 ---
 When I navigate to "assertions"
@@ -47,3 +56,12 @@ And elements text should contain:
 | element      | value   |
 | element text | element |
 | another text | another |
+
+
+Scenario: Inline data tables can be used to assert that element text content does not contain a string, ignoring case
+---
+When I navigate to "assertions"
+And elements text should not contain:
+| element      | value   |
+| element text | another |
+| another text | element |

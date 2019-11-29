@@ -2,14 +2,14 @@ const { addSteps, getElementOptions } = require('cypress-scenario-runner')
 
 addSteps({
 	routes: {
-		// Examples, replace with your own
-		// see https://github.com/mpetrovich/cypress-scenario-runner#configuration
+		// Examples to replace with your own
+		// see https://github.com/mpetrovich/cypress-scenario-runner#customization
 		login: '/login.html',
 		home: '/home.html',
 	},
 	steps: {
-		// Examples, replace with your own
-		// see https://github.com/mpetrovich/cypress-scenario-runner#configuration
+		// Examples to replace with your own
+		// see https://github.com/mpetrovich/cypress-scenario-runner#customization
 		'I double-click {element}': function(element, table, { options }) {
 			cy.getElement(element).then($element => {
 				const elementOptions = getElementOptions($element, options)

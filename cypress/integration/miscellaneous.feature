@@ -12,4 +12,4 @@ Scenario: Actions can be used with Then
 ---
 When I navigate to "actions"
 Then I click "clickable element"
-Then "clickable element result" should be "Button clicked"
+Then "clickable element result" text should be "Button clicked"

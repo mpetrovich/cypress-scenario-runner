@@ -7,7 +7,7 @@ Scenario Template: Input values can be set within a scenario template
 Given I navigate to "input actions"
 And I set "<field>" to "<value>"
 When I click "submit button"
-Then "<submitted field>" should be "<submitted value>"
+Then "<submitted field>" text should be "<submitted value>"
 
 Examples:
 | field             | value                              | submitted field       | submitted value                    |
@@ -34,9 +34,9 @@ And I set:
 | checkbox input   | checkbox 2 value, checkbox 3 value |
 | select input     | option 2 label                     |
 When I click "submit button"
-Then "submitted text" should be "Text value"
-Then "submitted password" should be "Password value"
-Then "submitted textarea" should be "Textarea value"
-Then "submitted radio" should be "radio 2 value"
-Then "submitted checkbox" should be "checkbox 2 value; checkbox 3 value"
-Then "submitted select" should be "option 2 value"
+Then "submitted text" text should be "Text value"
+Then "submitted password" text should be "Password value"
+Then "submitted textarea" text should be "Textarea value"
+Then "submitted radio" text should be "radio 2 value"
+Then "submitted checkbox" text should be "checkbox 2 value; checkbox 3 value"
+Then "submitted select" text should be "option 2 value"

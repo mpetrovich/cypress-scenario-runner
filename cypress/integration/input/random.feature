@@ -9,9 +9,9 @@ And I set "text input" to "<random full name>"
 And I set "password input" to "<random password>"
 When I click "submit button"
 Then "submitted text" should be visible
-Then "submitted text" should not be "<random full name>"
+Then "submitted text" text should not be "<random full name>"
 Then "submitted password" should be visible
-Then "submitted password" should not be "<random password>"
+Then "submitted password" text should not be "<random password>"
 
 
 Scenario: Random values can be set using inline data tables
@@ -23,9 +23,9 @@ And I set:
 | password input | <random password>  |
 When I click "submit button"
 Then "submitted text" should be visible
-Then "submitted text" should not be "<random full name>"
+Then "submitted text" text should not be "<random full name>"
 Then "submitted password" should be visible
-Then "submitted password" should not be "<random password>"
+Then "submitted password" text should not be "<random password>"
 
 
 Scenario Template: Random values can be set in a scenario template table
@@ -35,9 +35,9 @@ And I set "text input" to "<text value>"
 And I set "password input" to "<password value>"
 When I click "submit button"
 Then "submitted text" should be visible
-Then "submitted text" should not contain "random"
+Then "submitted text" text should not contain "random"
 Then "submitted password" should be visible
-Then "submitted password" should not contain "random"
+Then "submitted password" text should not contain "random"
 
 Examples:
 | text value              | password value          |

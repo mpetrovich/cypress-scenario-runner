@@ -6,7 +6,7 @@ Scenario: Can use custom actions
 ---
 Given I navigate to "actions"
 When I double-click "double-clickable element"
-Then "double-clickable element result" should be "Element double-clicked"
+Then "double-clickable element result" text should be "Element double-clicked"
 
 
 Scenario: Can use custom assertions

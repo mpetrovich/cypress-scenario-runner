@@ -97,7 +97,7 @@ module.exports = {
 		cy.getElement(element).should('have.length', count)
 	},
 
-	'{element} should be {string}': function(element, value) {
+	'{element} text should be {string}': function(element, value) {
 		cy.getElement(element).should($element =>
 			expect(
 				$element
@@ -108,7 +108,7 @@ module.exports = {
 		)
 	},
 
-	'{element} should not be {string}': function(element, value) {
+	'{element} text should not be {string}': function(element, value) {
 		cy.getElement(element).should($element =>
 			expect(
 				$element
@@ -119,29 +119,29 @@ module.exports = {
 		)
 	},
 
-	'elements should be:': function(table, { steps }) {
+	'elements text should be:': function(table, { steps }) {
 		const rows = table.raw().slice(1) // First row is column headers
 
 		for (const [element, value] of rows) {
-			steps['{element} should be {string}'](element, value)
+			steps['{element} text should be {string}'](element, value)
 		}
 	},
 
-	'{element} should contain {string}': function(element, value) {
+	'{element} text should contain {string}': function(element, value) {
 		cy.getElement(element).should($element =>
 			expect($element.text().toLowerCase()).to.contain(value.trim().toLowerCase())
 		)
 	},
 
-	'{element} should not contain {string}': function(element, value) {
+	'{element} text should not contain {string}': function(element, value) {
 		cy.getElement(element).should($element => expect($element.text().toLowerCase()).not.to.contain(value.toLowerCase()))
 	},
 
-	'elements should contain:': function(table, { steps }) {
+	'elements text should contain:': function(table, { steps }) {
 		const rows = table.raw().slice(1) // First row is column headers
 
 		for (const [element, value] of rows) {
-			steps['{element} should contain {string}'](element, value)
+			steps['{element} text should contain {string}'](element, value)
 		}
 	},
 

@@ -8,6 +8,13 @@ When I navigate to "assertions"
 Then "countable element" should have 3 occurrences
 
 
+Scenario: The minimum and maximum counts of a set of existing elements can be asserted
+---
+When I navigate to "assertions"
+Then "countable element" should have at least 2 occurrences
+And "countable element" should have at most 4 occurrences
+
+
 Scenario: Visually hidden and invisible elements are countable
 ---
 When I navigate to "assertions"

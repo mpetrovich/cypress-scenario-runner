@@ -97,6 +97,14 @@ module.exports = {
 		cy.getElement(element).should('have.length', count)
 	},
 
+	'{element} should have at least {int} occurrences': function(element, count) {
+		cy.getElement(element).should('have.length.gte', count)
+	},
+
+	'{element} should have at most {int} occurrences': function(element, count) {
+		cy.getElement(element).should('have.length.lte', count)
+	},
+
 	'{element} text should be {string}': function(element, value) {
 		cy.getElement(element).should($element =>
 			expect(

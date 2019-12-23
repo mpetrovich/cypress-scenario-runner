@@ -1,5 +1,4 @@
 const { given } = require('cypress-cucumber-preprocessor/steps')
-const faker = require('faker')
 
 const defaultOptions = {
 	elementAttr: 'data-test',

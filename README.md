@@ -324,34 +324,6 @@ I set "colors" to "0f0, 00f"
 
 For more example usage, see [input/checkbox.feature](cypress/integration/input/checkbox.feature).
 
-#### Randomly generated values
-
-In certain scenarios it may be useful to generate well-formed but random data to use as input. For such cases, these placeholders can be used when setting input values:
-
-- `<random full name>`: eg. `John Smith`
-- `<random first name>`: eg. `John`
-- `<random last name>`: eg. `Smith`
-- `<random phone>`: eg. `555-555-5555`
-- `<random email>`: eg. `jsmith@example.com`
-- `<random password>`: eg. `password123`
-- `<random street address>`: eg. `123 Anywhere St`
-- `<random city>`: eg. `Beverly Hills`
-- `<random state>`: eg. `California`
-- `<random zip>`: eg. `90210`
-- `<random number>`: eg. `42`
-- `<random dollar value>`: eg. `79.99`
-
-These placeholders can be used as part or all of the input value. Multiple placeholders can be combined in the same value. For example:
-
-```
-I set "name" to "<random full name>"
-I set "email" to "test-<random email>"
-I set "username" to "<random first name><random number>"
-I set "password input" to "<random password>"
-```
-
-For more example usage, see [input/random.feature](cypress/integration/input/random.feature).
-
 ### Using data tables
 
 TBD

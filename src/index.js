@@ -59,12 +59,6 @@ function getInputElement(element, options) {
 }
 
 function setInputElement(element, value, options) {
-	const randomValueRegex = /<random ([^>]+)>/g
-
-	if (randomValueRegex.test(value)) {
-		value = value.replace(randomValueRegex, (match, type) => getRandomValue(type))
-	}
-
 	cy.getInputElement(element).then($element => {
 		const elementOptions = getElementOptions($element, options)
 
@@ -106,36 +100,6 @@ function getElementOptions($element, options) {
 		options.elementOptions,
 		$element.attr(options.elementOptionsAttr) ? eval(`opts = ${$element.attr(options.elementOptionsAttr)}`) : {}
 	)
-}
-
-function getRandomValue(type) {
-	if (type === 'first name') {
-		return faker.name.firstName()
-	} else if (type === 'last name') {
-		return faker.name.lastName()
-	} else if (type === 'full name') {
-		return faker.name.findName()
-	} else if (type === 'phone') {
-		return faker.phone.phoneNumberFormat()
-	} else if (type === 'email') {
-		return faker.internet.email()
-	} else if (type === 'password') {
-		return faker.internet.password()
-	} else if (type === 'street address') {
-		return faker.address.streetAddress()
-	} else if (type === 'city') {
-		return faker.address.city()
-	} else if (type === 'state') {
-		return faker.address.state()
-	} else if (type === 'zip') {
-		return faker.address.zipCode('#####')
-	} else if (type === 'number') {
-		return faker.random.number()
-	} else if (type === 'dollar value') {
-		return faker.finance.amount()
-	} else {
-		return faker.random.word()
-	}
 }
 
 module.exports = { addSteps, addCommands, getElementOptions }

@@ -44,7 +44,6 @@ Examples:
 | <random full name>      | <random full name>      |
 | <random first name>     | <random first name>     |
 | <random last name>      | <random last name>      |
-| <random full name>      | <random full name>      |
 | <random phone>          | <random phone>          |
 | <random email>          | <random email>          |
 | <random password>       | <random password>       |

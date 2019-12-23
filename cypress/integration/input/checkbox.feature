@@ -2,7 +2,7 @@ Feature: Checkbox inputs
 ===
 
 
-Scenario: A single checkbox input can be set by value
+Scenario: A checkbox input can be set by value
 ---
 Given I navigate to "checkbox input test page"
 And I set "checkbox input" to "checkbox 2 value"
@@ -11,7 +11,7 @@ When I click "submit button"
 Then "submitted checkbox" text should be "checkbox 2 value"
 
 
-Scenario: A single checkbox input can be set by value when it has a force attribute
+Scenario: An invisible checkbox input can be set by value when it has a force attribute
 ---
 Given I navigate to "checkbox input test page"
 And "invisible-checkbox input" should not be visible
@@ -21,7 +21,7 @@ When I click "submit button"
 Then "submitted invisible-checkbox" text should be "checkbox 2 value"
 
 
-Scenario: A single checkbox input with the test element attribute set on an ancestor can be set by value
+Scenario: A wrapped checkbox input with the test element attribute set on an ancestor can be set by value
 ---
 Given I navigate to "checkbox input test page"
 And I set "wrapped-checkbox input" to "checkbox 2 value"

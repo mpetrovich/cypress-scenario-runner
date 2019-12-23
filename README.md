@@ -2,15 +2,7 @@
 
 **Run [Gherkin scenarios](https://docs.cucumber.io/gherkin/reference/) in [Cypress](https://www.cypress.io) without a single line of code.**
 
-By adding a few HTML attributes:
-
-```html
-<input … data-test="email input" />
-<input … data-test="password input" />
-<button … data-test="login button">Login</button>
-```
-
-Cypress Scenario Runner can run Gherkin scenarios without you needing to write any Cypress glue code like `cy.visit()` or `cy.click()`:
+Cypress Scenario Runner enables you to run Gherkin scenarios like this one:
 
 ```sh
 Feature: Login
@@ -25,13 +17,31 @@ When I click "login button"
 Then I should be on "home"
 ```
 
+…without needing to write any Cypress glue code like `cy.visit()`, `cy.click()`, etc. All you need to do is tag HTML elements:
+
+```html
+<input … data-test="email input" />
+<input … data-test="password input" />
+<button … data-test="login button">Login</button>
+```
+
+and map route names to URIs:
+
+```json
+{
+  "login": "/login"
+}
+```
+
 ## Table of contents
 
 - [Installation](#installation)
 - [Usage](#usage)
   - [Writing test scenarios](#writing-test-scenarios)
   - [Tagging elements](#tagging-elements)
-  - [Setting routes](#setting-routes)
+  - [Mapping routes](#mapping-routes)
+  - [Working with inputs](#working-with-inputs)
+  - [Using data tables](#using-data-tables)
   - [Running scenarios](#running-scenarios)
 - [Customization](#customization)
 - [Contributing](CONTRIBUTING.md)
@@ -76,7 +86,7 @@ Each line in the scenario is called a _step_. `cypress-scenario-runner` works by
 
 | Step                                         | Description                                                                                                                      | Examples                                                               |
 | -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| <pre>I navigate to {route}</pre>             | Navigates the browser to a preconfigured route (see [Setting routes](#setting-routes)) or an absolute URL                        | [`navigation.feature`](cypress/integration/navigation.feature)         |
+| <pre>I navigate to {route}</pre>             | Navigates the browser to a preconfigured route (see [Mapping routes](#mapping-routes)) or an absolute URL                        | [`navigation.feature`](cypress/integration/navigation.feature)         |
 | <pre>I click {element}</pre>                 | Clicks the first element with a matching tag (see [Tagging elements](#tagging-elements))                                         | [`pointer-events.feature`](cypress/integration/pointer-events.feature) |
 | <pre>I set {element} to {string}</pre>       | Sets the first matching input to the given value (see [Working with inputs](#working-with-inputs))                               | [`input/`](cypress/integration/input/)                                 |
 | <pre>I set:</pre>                            | Same as the step above, but for setting multiple inputs using an inline data table (see [Using data tables](#using-data-tables)) | [`input/`](cypress/integration/input/)                                 |
@@ -89,7 +99,7 @@ Each line in the scenario is called a _step_. `cypress-scenario-runner` works by
 
 | Step                                                        | Description                                                                                                                                                                                                                                                                                       | Examples                                                           |
 | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| <pre>I should be on {route}</pre>                           | Asserts that the current page URL matches the specified route (see [Setting routes](#setting-routes)), an absolute URL, or a regular expression                                                                                                                                                   | [`navigation.feature`](cypress/integration/navigation.feature)     |
+| <pre>I should be on {route}</pre>                           | Asserts that the current page URL matches the specified route (see [Mapping routes](#mapping-routes)), an absolute URL, or a regular expression                                                                                                                                                   | [`navigation.feature`](cypress/integration/navigation.feature)     |
 | <pre>I should not be on {route}</pre>                       | Asserts the inverse of the step above                                                                                                                                                                                                                                                             | [`navigation.feature`](cypress/integration/navigation.feature)     |
 | <pre>{element} should be visible</pre>                      | Asserts that the first matching element is visible, using `.should('be.visible')`                                                                                                                                                                                                                 | [`visibility.feature`](cypress/integration/visibility.feature)     |
 | <pre>{element} should not be visible</pre>                  | Asserts that the first matching element is not visible, using `.should('not.be.visible')`                                                                                                                                                                                                         | [`visibility.feature`](cypress/integration/visibility.feature)     |
@@ -133,7 +143,7 @@ HTML attributes are used to map `{element}` step parameters to their correspondi
 <button type="submit" data-test="login button">Login</button>
 ```
 
-##### Element options
+#### Element options
 
 Many Cypress commands accept an optional `options` object that can be used to customize how the command is executed (eg. [`cy.type(text, options)`](https://docs.cypress.io/api/commands/type.html#Arguments)). These options can be set on a per-element basis via a `data-options` attribute. Example:
 
@@ -146,7 +156,7 @@ Many Cypress commands accept an optional `options` object that can be used to cu
   >
 ```
 
-### Setting routes
+### Mapping routes
 
 Routes need to be provided for navigation steps like these to work:
 
@@ -154,7 +164,7 @@ Routes need to be provided for navigation steps like these to work:
 Given I navigate to "login"
 ```
 
-A map of all label => path routes should be provided to `addSteps()` in the `cypress/support/step_definitions/index.js` file created during installation. Route paths can be absolute URLs or relative to the web root.
+A map of all route names to URIs should be provided to `addSteps()` in the `cypress/support/step_definitions/index.js` file created during installation. Route URIs can be absolute URLs, relative to the web root, or regular expressions.
 
 <!-- prettier-ignore -->
 ```diff
@@ -162,24 +172,191 @@ const { addSteps } = require('cypress-scenario-runner')
 addSteps({
 + routes: {
 +   login: '/login',
-+ },
++   'a specific product': '/products/acme-widget',
++   'any product': '\/products\/.*'
++ }
 })
 ```
 
 ### Working with inputs
 
+Like other HTML elements, input elements are selectable by their `data-test` attribute (or whichever attribute [you've configured](#configuration)).
+
+#### Supported types
+
+The step `I set {element} to {string}` can be used to set the value of nearly any type of input:
+
+- `<input type="checkbox">`
+- `<input type="color">`
+- `<input type="date">`
+- `<input type="datetime-local">`
+- `<input type="email">`
+- `<input type="file">`
+- `<input type="hidden">`
+- `<input type="image">`
+- `<input type="month">`
+- `<input type="number">`
+- `<input type="password">`
+- `<input type="radio">`
+- `<input type="range">`
+- `<input type="search">`
+- `<input type="tel">`
+- `<input type="text">`
+- `<input type="time">`
+- `<input type="url">`
+- `<input type="week">`
+- `<select></select>`
+- `<textarea></textarea>`
+
+#### Input value and options
+
 TBD
 
-- input types
-  - checkbox: checked, unchecked, by tag
-  - select: by tag, by option value or text content
-- wrapped inputs
-- random values
-- note on fact that setting checkboxes does not clear other checkbox values
+#### Wrapped inputs
+
+When using UI frameworks, it may not be practical to add `data-test` and other attributes directly to the input elements themselves. In such cases, those attributes can be added to an ancestor element that wraps the input. For example:
+
+```html
+<my-custom-input data-test="some input"></my-custom-input>
+```
+
+This is convenient when checkboxes are wrapped with their labels:
+
+```html
+<label data-test="color options">
+  <input type="checkbox" name="colors" value="red" />
+  <input type="checkbox" name="colors" value="green" />
+  <input type="checkbox" name="colors" value="blue" />
+</label>
+```
+
+#### Selects
+
+`<select>` options can be selected by their value or by their label. For example, given:
+
+```html
+<select name="select" data-test="select input">
+  <option value="Value A">Label A</option>
+  <option value="Value B">Label B</option>
+  <option value="Value C">Label C</option>
+</select>
+```
+
+The second `<option>` can be selected by its value `Value B` or by its label `Label B`:
+
+```
+# By value:
+I set "select input" to "Value B"
+
+# By label:
+I set "select input" to "Label B"
+```
+
+For more example usage, see [input/select.feature](cypress/integration/input/select.feature).
+
+#### Multi-selects
+
+For multi-selects (ie. `<select multiple>`), multiple options can be selected by stringing together their labels or values with commas. For example, given:
+
+```html
+<select multiple name="select" data-test="select input">
+  <option value="Value A">Label A</option>
+  <option value="Value B">Label B</option>
+  <option value="Value C">Label C</option>
+</select>
+```
+
+The second and third `<option>`s can be selected by their values or by their labels:
+
+```
+# By values:
+I set "select input" to "Value B, Value C"
+
+# By labels:
+I set "select input" to "Label B, Label C"
+```
+
+For more example usage, see [input/select.feature](cypress/integration/input/select.feature).
+
+#### Checkboxes
+
+Checkboxes can be checked by their value or by their `data-value` attributes (or whichever attribute [you've configured](#configuration) for input values). For example, given:
+
+```html
+<input type="checkbox" name="color" value="f00" data-test="colors" data-value="red" />
+<input type="checkbox" name="color" value="0f0" data-test="colors" data-value="green" />
+<input type="checkbox" name="color" value="00f" data-test="colors" data-value="blue" />
+```
+
+The second checkbox can be set by its `data-value` attribute `green` or by its value `0f0`:
+
+```
+# By data-value:
+I set "colors" to "green"
+
+# By value:
+I set "colors" to "0f0"
+```
+
+Multiple checkboxes can be checked individually by `data-value` or by value:
+
+```
+# By data-value:
+I set "colors" to "green"
+I set "colors" to "blue"
+
+# By value:
+I set "colors" to "0f0"
+I set "colors" to "00f"
+```
+
+Multiple checkboxes can also be checked together by stringing together their `data-value` or `value` attributes with commas:
+
+```
+# By data-value:
+I set "colors" to "green, blue"
+
+# By value:
+I set "colors" to "0f0, 00f"
+```
+
+**NOTE:** Setting one or more checkboxes does not clear the other checkboxes.
+
+For more example usage, see [input/checkbox.feature](cypress/integration/input/checkbox.feature).
+
+#### Randomly generated values
+
+In certain scenarios it may be useful to generate well-formed but random data to use as input. For such cases, these placeholders can be used when setting input values:
+
+- `<random full name>`: eg. `John Smith`
+- `<random first name>`: eg. `John`
+- `<random last name>`: eg. `Smith`
+- `<random phone>`: eg. `555-555-5555`
+- `<random email>`: eg. `jsmith@example.com`
+- `<random password>`: eg. `password123`
+- `<random street address>`: eg. `123 Anywhere St`
+- `<random city>`: eg. `Beverly Hills`
+- `<random state>`: eg. `California`
+- `<random zip>`: eg. `90210`
+- `<random number>`: eg. `42`
+- `<random dollar value>`: eg. `79.99`
+
+These placeholders can be used as part or all of the input value. Multiple placeholders can be combined in the same value. For example:
+
+```
+I set "name" to "<random full name>"
+I set "email" to "test-<random email>"
+I set "username" to "<random first name><random number>"
+I set "password input" to "<random password>"
+```
+
+For more example usage, see [input/random.feature](cypress/integration/input/random.feature).
 
 ### Using data tables
 
 TBD
+
+For more example usage, see [input/tables.feature](cypress/integration/input/tables.feature).
 
 ### Running scenarios
 
@@ -189,7 +366,7 @@ Scenario files can be run directly with Cypress:
 $(npm bin)/cypress run [files]
 ```
 
-or, using the Cypress UI:
+or by using the Cypress UI:
 
 ```sh
 $(npm bin)/cypress open
@@ -199,6 +376,6 @@ $(npm bin)/cypress open
 
 TBD
 
-- options
-- custom steps
-- csr api
+- Options
+- Custom steps
+- API

@@ -4,44 +4,44 @@
 		<form action="" method="GET">
 			<p>
 				<label>Text input</label>
-				<input name="text" type="text" test-elem="text input" value="initial text" />
+				<input name="text" type="text" t-element="text input" value="initial text" />
 				<input
 					name="invisible-text"
 					type="text"
-					test-elem="invisible-text input"
-					test-options="{ force: true }"
+					t-element="invisible-text input"
+					t-options="{ force: true }"
 					value="initial text"
 					style="visibility: hidden;"
 				/>
-				<span test-elem="wrapped-text input">
+				<span t-element="wrapped-text input">
 					<input name="wrapped-text" type="text" value="initial text" />
 				</span>
 			</p>
 			<p>
 				<label>Password input</label>
-				<input name="password" type="password" test-elem="password input" value="initial password" />
+				<input name="password" type="password" t-element="password input" value="initial password" />
 				<input
 					name="invisible-password"
 					type="password"
-					test-elem="invisible-password input"
-					test-options="{ force: true }"
+					t-element="invisible-password input"
+					t-options="{ force: true }"
 					value="initial password"
 					style="visibility: hidden;"
 				/>
-				<span test-elem="wrapped-password input">
+				<span t-element="wrapped-password input">
 					<input name="wrapped-password" type="password" value="initial password" />
 				</span>
 			</p>
 			<p>
 				<label>Textarea input</label>
-				<textarea name="textarea" test-elem="textarea input">Initial textarea</textarea>
+				<textarea name="textarea" t-element="textarea input">Initial textarea</textarea>
 				<textarea
 					name="invisible-textarea"
-					test-elem="invisible-textarea input"
-					test-options="{ force: true }"
+					t-element="invisible-textarea input"
+					t-options="{ force: true }"
 					style="visibility: hidden;"
 				></textarea>
-				<span test-elem="wrapped-textarea input"><textarea name="wrapped-textarea">Initial textarea</textarea></span>
+				<span t-element="wrapped-textarea input"><textarea name="wrapped-textarea">Initial textarea</textarea></span>
 			</p>
 			<p>
 				<label>Radio button</label>
@@ -50,8 +50,8 @@
 						name="radio"
 						value="radio 1 value"
 						type="radio"
-						test-elem="radio input"
-						test-value="radio 1 custom attribute value"
+						t-element="radio input"
+						t-value="radio 1 custom attribute value"
 					/>
 					radio 1 label
 				</label>
@@ -60,8 +60,8 @@
 						name="radio"
 						value="radio 2 value"
 						type="radio"
-						test-elem="radio input"
-						test-value="radio 2 custom attribute value"
+						t-element="radio input"
+						t-value="radio 2 custom attribute value"
 					/>
 					radio 2 label
 				</label>
@@ -70,8 +70,8 @@
 						name="radio"
 						value="radio 3 value"
 						type="radio"
-						test-elem="radio input"
-						test-value="radio 3 custom attribute value"
+						t-element="radio input"
+						t-value="radio 3 custom attribute value"
 					/>
 					radio 3 label
 				</label>
@@ -83,9 +83,9 @@
 						name="invisible-radio"
 						value="radio 1 value"
 						type="radio"
-						test-elem="invisible-radio input"
-						test-value="radio 1 custom attribute value"
-						test-options="{ force: true }"
+						t-element="invisible-radio input"
+						t-value="radio 1 custom attribute value"
+						t-options="{ force: true }"
 						style="visibility: hidden;"
 					/>
 					radio 1 label
@@ -95,9 +95,9 @@
 						name="invisible-radio"
 						value="radio 2 value"
 						type="radio"
-						test-elem="invisible-radio input"
-						test-value="radio 2 custom attribute value"
-						test-options="{ force: true }"
+						t-element="invisible-radio input"
+						t-value="radio 2 custom attribute value"
+						t-options="{ force: true }"
 						style="visibility: hidden;"
 					/>
 					radio 2 label
@@ -107,9 +107,9 @@
 						name="invisible-radio"
 						value="radio 3 value"
 						type="radio"
-						test-elem="invisible-radio input"
-						test-value="radio 3 custom attribute value"
-						test-options="{ force: true }"
+						t-element="invisible-radio input"
+						t-value="radio 3 custom attribute value"
+						t-options="{ force: true }"
 						style="visibility: hidden;"
 					/>
 					radio 3 label
@@ -117,16 +117,16 @@
 			</p>
 			<p>
 				<label>Wrapped radio button</label>
-				<label test-elem="wrapped-radio input">
-					<input name="wrapped-radio" value="radio 1 value" type="radio" test-value="radio 1 custom attribute value" />
+				<label t-element="wrapped-radio input">
+					<input name="wrapped-radio" value="radio 1 value" type="radio" t-value="radio 1 custom attribute value" />
 					radio 1 label
 				</label>
-				<label test-elem="wrapped-radio input">
-					<input name="wrapped-radio" value="radio 2 value" type="radio" test-value="radio 2 custom attribute value" />
+				<label t-element="wrapped-radio input">
+					<input name="wrapped-radio" value="radio 2 value" type="radio" t-value="radio 2 custom attribute value" />
 					radio 2 label
 				</label>
-				<label test-elem="wrapped-radio input">
-					<input name="wrapped-radio" value="radio 3 value" type="radio" test-value="radio 3 custom attribute value" />
+				<label t-element="wrapped-radio input">
+					<input name="wrapped-radio" value="radio 3 value" type="radio" t-value="radio 3 custom attribute value" />
 					radio 3 label
 				</label>
 			</p>
@@ -137,8 +137,8 @@
 						name="checkbox"
 						value="checkbox 1 value"
 						type="checkbox"
-						test-elem="checkbox input"
-						test-value="checkbox 1 custom attribute value"
+						t-element="checkbox input"
+						t-value="checkbox 1 custom attribute value"
 					/>
 					checkbox 1 label
 				</label>
@@ -147,8 +147,8 @@
 						name="checkbox"
 						value="checkbox 2 value"
 						type="checkbox"
-						test-elem="checkbox input"
-						test-value="checkbox 2 custom attribute value"
+						t-element="checkbox input"
+						t-value="checkbox 2 custom attribute value"
 					/>
 					checkbox 2 label
 				</label>
@@ -157,8 +157,8 @@
 						name="checkbox"
 						value="checkbox 3 value"
 						type="checkbox"
-						test-elem="checkbox input"
-						test-value="checkbox 3 custom attribute value"
+						t-element="checkbox input"
+						t-value="checkbox 3 custom attribute value"
 					/>
 					checkbox 3 label
 				</label>
@@ -170,9 +170,9 @@
 						name="invisible-checkbox"
 						value="checkbox 1 value"
 						type="checkbox"
-						test-elem="invisible-checkbox input"
-						test-value="checkbox 1 custom attribute value"
-						test-options="{ force: true }"
+						t-element="invisible-checkbox input"
+						t-value="checkbox 1 custom attribute value"
+						t-options="{ force: true }"
 						style="visibility: hidden;"
 					/>
 					checkbox 1 label
@@ -182,9 +182,9 @@
 						name="invisible-checkbox"
 						value="checkbox 2 value"
 						type="checkbox"
-						test-elem="invisible-checkbox input"
-						test-value="checkbox 2 custom attribute value"
-						test-options="{ force: true }"
+						t-element="invisible-checkbox input"
+						t-value="checkbox 2 custom attribute value"
+						t-options="{ force: true }"
 						style="visibility: hidden;"
 					/>
 					checkbox 2 label
@@ -194,9 +194,9 @@
 						name="invisible-checkbox"
 						value="checkbox 3 value"
 						type="checkbox"
-						test-elem="invisible-checkbox input"
-						test-value="checkbox 3 custom attribute value"
-						test-options="{ force: true }"
+						t-element="invisible-checkbox input"
+						t-value="checkbox 3 custom attribute value"
+						t-options="{ force: true }"
 						style="visibility: hidden;"
 					/>
 					checkbox 3 label
@@ -204,37 +204,37 @@
 			</p>
 			<p>
 				<label>Wrapped checkbox</label>
-				<label test-elem="wrapped-checkbox input">
+				<label t-element="wrapped-checkbox input">
 					<input
 						name="wrapped-checkbox"
 						value="checkbox 1 value"
 						type="checkbox"
-						test-value="checkbox 1 custom attribute value"
+						t-value="checkbox 1 custom attribute value"
 					/>
 					checkbox 1 label
 				</label>
-				<label test-elem="wrapped-checkbox input">
+				<label t-element="wrapped-checkbox input">
 					<input
 						name="wrapped-checkbox"
 						value="checkbox 2 value"
 						type="checkbox"
-						test-value="checkbox 2 custom attribute value"
+						t-value="checkbox 2 custom attribute value"
 					/>
 					checkbox 2 label
 				</label>
-				<label test-elem="wrapped-checkbox input">
+				<label t-element="wrapped-checkbox input">
 					<input
 						name="wrapped-checkbox"
 						value="checkbox 3 value"
 						type="checkbox"
-						test-value="checkbox 3 custom attribute value"
+						t-value="checkbox 3 custom attribute value"
 					/>
 					checkbox 3 label
 				</label>
 			</p>
 			<p>
 				<label>Select</label>
-				<select name="select" test-elem="select input">
+				<select name="select" t-element="select input">
 					<option disabled selected="selected">Default option</option>
 					<option value="option 1 value">option 1 label</option>
 					<option value="option 2 value">option 2 label</option>
@@ -245,8 +245,8 @@
 				<label>Invisible select</label>
 				<select
 					name="invisible-select"
-					test-elem="invisible-select input"
-					test-options="{ force: true }"
+					t-element="invisible-select input"
+					t-options="{ force: true }"
 					style="visibility: hidden;"
 				>
 					<option disabled selected="selected">Default option</option>
@@ -257,7 +257,7 @@
 			</p>
 			<p>
 				<label>Wrapped select</label>
-				<span test-elem="wrapped-select input">
+				<span t-element="wrapped-select input">
 					<select name="wrapped-select">
 						<option disabled selected="selected">Default option</option>
 						<option value="option 1 value">option 1 label</option>
@@ -268,7 +268,7 @@
 			</p>
 			<p>
 				<label>Multi-select</label>
-				<select name="multi-select" test-elem="multi-select input" multiple>
+				<select name="multi-select" t-element="multi-select input" multiple>
 					<option value="option 1 value">option 1 label</option>
 					<option value="option 2 value">option 2 label</option>
 					<option value="option 3 value">option 3 label</option>
@@ -278,8 +278,8 @@
 				<label>Invisible multi-select</label>
 				<select
 					name="invisible-multi-select"
-					test-elem="invisible-multi-select input"
-					test-options="{ force: true }"
+					t-element="invisible-multi-select input"
+					t-options="{ force: true }"
 					multiple
 					style="visibility: hidden;"
 				>
@@ -289,7 +289,7 @@
 				</select>
 			</p>
 			<p>
-				<button type="submit" test-elem="submit button">Submit</button>
+				<button type="submit" t-element="submit button">Submit</button>
 			</p>
 		</form>
 
@@ -303,7 +303,7 @@
 
 			for (key in data) {
 				const values = [].concat(data[key])
-				document.write(`<p>${key}: <span test-elem="submitted ${key}">${values.join('; ')}</span></p>`)
+				document.write(`<p>${key}: <span t-element="submitted ${key}">${values.join('; ')}</span></p>`)
 			}
 		</script>
 	</body>

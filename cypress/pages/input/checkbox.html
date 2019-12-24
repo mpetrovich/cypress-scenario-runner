@@ -9,8 +9,8 @@
 						name="checkbox"
 						value="checkbox 1 value"
 						type="checkbox"
-						test-elem="checkbox input"
-						test-value="checkbox 1 custom attribute value"
+						t-element="checkbox input"
+						t-value="checkbox 1 custom attribute value"
 					/>
 					checkbox 1 label
 				</label>
@@ -19,8 +19,8 @@
 						name="checkbox"
 						value="checkbox 2 value"
 						type="checkbox"
-						test-elem="checkbox input"
-						test-value="checkbox 2 custom attribute value"
+						t-element="checkbox input"
+						t-value="checkbox 2 custom attribute value"
 					/>
 					checkbox 2 label
 				</label>
@@ -29,8 +29,8 @@
 						name="checkbox"
 						value="checkbox 3 value"
 						type="checkbox"
-						test-elem="checkbox input"
-						test-value="checkbox 3 custom attribute value"
+						t-element="checkbox input"
+						t-value="checkbox 3 custom attribute value"
 					/>
 					checkbox 3 label
 				</label>
@@ -43,9 +43,9 @@
 						name="invisible-checkbox"
 						value="checkbox 1 value"
 						type="checkbox"
-						test-elem="invisible-checkbox input"
-						test-value="checkbox 1 custom attribute value"
-						test-options="{ force: true }"
+						t-element="invisible-checkbox input"
+						t-value="checkbox 1 custom attribute value"
+						t-options="{ force: true }"
 						style="visibility: hidden;"
 					/>
 					checkbox 1 label
@@ -55,9 +55,9 @@
 						name="invisible-checkbox"
 						value="checkbox 2 value"
 						type="checkbox"
-						test-elem="invisible-checkbox input"
-						test-value="checkbox 2 custom attribute value"
-						test-options="{ force: true }"
+						t-element="invisible-checkbox input"
+						t-value="checkbox 2 custom attribute value"
+						t-options="{ force: true }"
 						style="visibility: hidden;"
 					/>
 					checkbox 2 label
@@ -67,9 +67,9 @@
 						name="invisible-checkbox"
 						value="checkbox 3 value"
 						type="checkbox"
-						test-elem="invisible-checkbox input"
-						test-value="checkbox 3 custom attribute value"
-						test-options="{ force: true }"
+						t-element="invisible-checkbox input"
+						t-value="checkbox 3 custom attribute value"
+						t-options="{ force: true }"
 						style="visibility: hidden;"
 					/>
 					checkbox 3 label
@@ -78,37 +78,37 @@
 
 			<h2>Wrapped checkbox</h2>
 			<p>
-				<label test-elem="wrapped-checkbox input">
+				<label t-element="wrapped-checkbox input">
 					<input
 						name="wrapped-checkbox"
 						value="checkbox 1 value"
 						type="checkbox"
-						test-value="checkbox 1 custom attribute value"
+						t-value="checkbox 1 custom attribute value"
 					/>
 					checkbox 1 label
 				</label>
-				<label test-elem="wrapped-checkbox input">
+				<label t-element="wrapped-checkbox input">
 					<input
 						name="wrapped-checkbox"
 						value="checkbox 2 value"
 						type="checkbox"
-						test-value="checkbox 2 custom attribute value"
+						t-value="checkbox 2 custom attribute value"
 					/>
 					checkbox 2 label
 				</label>
-				<label test-elem="wrapped-checkbox input">
+				<label t-element="wrapped-checkbox input">
 					<input
 						name="wrapped-checkbox"
 						value="checkbox 3 value"
 						type="checkbox"
-						test-value="checkbox 3 custom attribute value"
+						t-value="checkbox 3 custom attribute value"
 					/>
 					checkbox 3 label
 				</label>
 			</p>
 
 			<p>
-				<button type="submit" test-elem="submit button">Submit</button>
+				<button type="submit" t-element="submit button">Submit</button>
 			</p>
 		</form>
 
@@ -120,25 +120,25 @@
 
 		<h2>Checkbox</h2>
 		<p>
-			<span test-elem="submitted checkbox"></span>
+			<span t-element="submitted checkbox"></span>
 			<script>
-				document.querySelector('[test-elem="submitted checkbox"]').innerText = get('checkbox')
+				document.querySelector('[t-element="submitted checkbox"]').innerText = get('checkbox')
 			</script>
 		</p>
 
 		<h2>Invisible checkbox</h2>
 		<p>
-			<span test-elem="submitted invisible-checkbox"></span>
+			<span t-element="submitted invisible-checkbox"></span>
 			<script>
-				document.querySelector('[test-elem="submitted invisible-checkbox"]').innerText = get('invisible-checkbox')
+				document.querySelector('[t-element="submitted invisible-checkbox"]').innerText = get('invisible-checkbox')
 			</script>
 		</p>
 
 		<h2>Wrapped checkbox</h2>
 		<p>
-			<span test-elem="submitted wrapped-checkbox"></span>
+			<span t-element="submitted wrapped-checkbox"></span>
 			<script>
-				document.querySelector('[test-elem="submitted wrapped-checkbox"]').innerText = get('wrapped-checkbox')
+				document.querySelector('[t-element="submitted wrapped-checkbox"]').innerText = get('wrapped-checkbox')
 			</script>
 		</p>
 	</body>

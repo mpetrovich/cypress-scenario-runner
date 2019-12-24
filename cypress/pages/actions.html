@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html>
 	<body>
-		<button test-elem="clickable element">Clickable element</button>
-		<div test-elem="clickable element result"></div>
+		<button t-element="clickable element">Clickable element</button>
+		<div t-element="clickable element result"></div>
 		<script>
-			document.querySelector('[test-elem="clickable element"]').addEventListener('click', function(event) {
-				document.querySelector('[test-elem="clickable element result"]').innerText = 'Button clicked'
+			document.querySelector('[t-element="clickable element"]').addEventListener('click', function(event) {
+				document.querySelector('[t-element="clickable element result"]').innerText = 'Button clicked'
 			})
 		</script>
 
-		<button test-elem="disappear button">Make element disappear</button>
-		<div test-elem="disappearing element">Disappearing element</div>
+		<button t-element="disappear button">Make element disappear</button>
+		<div t-element="disappearing element">Disappearing element</div>
 		<script>
-			document.querySelector('[test-elem="disappear button"]').addEventListener('click', function(event) {
+			document.querySelector('[t-element="disappear button"]').addEventListener('click', function(event) {
 				window.setTimeout(
-					() => (document.querySelector('[test-elem="disappearing element"]').style.display = 'none'),
+					() => (document.querySelector('[t-element="disappearing element"]').style.display = 'none'),
 					250
 				)
 			})
 		</script>
 
-		<div test-elem="double-clickable element">Double-clickable element</div>
-		<div test-elem="double-clickable element result"></div>
+		<div t-element="double-clickable element">Double-clickable element</div>
+		<div t-element="double-clickable element result"></div>
 		<script>
-			document.querySelector('[test-elem="double-clickable element"]').addEventListener('dblclick', function(event) {
-				document.querySelector('[test-elem="double-clickable element result"]').innerText = 'Element double-clicked'
+			document.querySelector('[t-element="double-clickable element"]').addEventListener('dblclick', function(event) {
+				document.querySelector('[t-element="double-clickable element result"]').innerText = 'Element double-clicked'
 			})
 		</script>
 
-		<div test-elem="odd number">3</div>
-		<div test-elem="even number">4</div>
+		<div t-element="odd number">3</div>
+		<div t-element="even number">4</div>
 
-		<button test-elem="clickable invisible element" test-options="{ force: true }" style="visibility: hidden;">
+		<button t-element="clickable invisible element" t-options="{ force: true }" style="visibility: hidden;">
 			Clickable invisible element
 		</button>
-		<div test-elem="clickable invisible element result"></div>
+		<div t-element="clickable invisible element result"></div>
 		<script>
-			document.querySelector('[test-elem="clickable invisible element"]').addEventListener('click', function(event) {
-				document.querySelector('[test-elem="clickable invisible element result"]').innerText =
+			document.querySelector('[t-element="clickable invisible element"]').addEventListener('click', function(event) {
+				document.querySelector('[t-element="clickable invisible element result"]').innerText =
 					'Invisible button clicked'
 			})
 		</script>

@@ -1,3 +1,3 @@
-const { addCommands } = require('cypress-scenario-runner')
+const { addCommands } = require("cypress-scenario-runner")
 
 addCommands()

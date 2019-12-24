@@ -1,9 +1,9 @@
-const { given } = require('cypress-cucumber-preprocessor/steps')
+const { given } = require("cypress-cucumber-preprocessor/steps")
 
 const defaultOptions = {
-    elementAttr: 'test-element',
-    elementValueAttr: 'test-value',
-    elementOptionsAttr: 'test-options',
+    elementAttr: "test-element",
+    elementValueAttr: "test-value",
+    elementOptionsAttr: "test-options",
     elementOptions: {
         force: false,
     },
@@ -12,17 +12,17 @@ const defaultOptions = {
 
 function addSteps({ steps: customSteps = {}, routes = {} } = {}) {
     const customOptions = {
-        elementAttr: Cypress.config('elementAttr'),
-        elementValueAttr: Cypress.config('elementValueAttr'),
-        elementOptionsAttr: Cypress.config('elementOptionsAttr'),
-        elementOptions: JSON.parse(Cypress.config('elementOptions') || '{}'),
-        defaultCommandWait: Cypress.config('defaultCommandWait'),
+        elementAttr: Cypress.config("elementAttr"),
+        elementValueAttr: Cypress.config("elementValueAttr"),
+        elementOptionsAttr: Cypress.config("elementOptionsAttr"),
+        elementOptions: JSON.parse(Cypress.config("elementOptions") || "{}"),
+        defaultCommandWait: Cypress.config("defaultCommandWait"),
     }
     const options = Object.assign({}, defaultOptions, customOptions)
 
-    const defaultSteps = require('./steps')
+    const defaultSteps = require("./steps")
     const steps = Object.assign({}, defaultSteps, customSteps)
-    const normalizeStep = step => step.replace(/\{(route|element)\}/g, '{string}')
+    const normalizeStep = step => step.replace(/\{(route|element)\}/g, "{string}")
 
     for (const [step, fn] of Object.entries(steps)) {
         given(normalizeStep(step), function() {
@@ -36,17 +36,17 @@ function addSteps({ steps: customSteps = {}, routes = {} } = {}) {
 
 function addCommands() {
     const customOptions = {
-        elementAttr: Cypress.config('elementAttr'),
-        elementValueAttr: Cypress.config('elementValueAttr'),
-        elementOptionsAttr: Cypress.config('elementOptionsAttr'),
-        elementOptions: JSON.parse(Cypress.config('elementOptions') || '{}'),
-        defaultCommandWait: Cypress.config('defaultCommandWait'),
+        elementAttr: Cypress.config("elementAttr"),
+        elementValueAttr: Cypress.config("elementValueAttr"),
+        elementOptionsAttr: Cypress.config("elementOptionsAttr"),
+        elementOptions: JSON.parse(Cypress.config("elementOptions") || "{}"),
+        defaultCommandWait: Cypress.config("defaultCommandWait"),
     }
     const options = Object.assign({}, defaultOptions, customOptions)
 
-    Cypress.Commands.add('getElement', element => getElement(element, options))
-    Cypress.Commands.add('getInputElement', element => getInputElement(element, options))
-    Cypress.Commands.add('setInputElement', (element, value) => setInputElement(element, value, options))
+    Cypress.Commands.add("getElement", element => getElement(element, options))
+    Cypress.Commands.add("getInputElement", element => getInputElement(element, options))
+    Cypress.Commands.add("setInputElement", (element, value) => setInputElement(element, value, options))
 }
 
 function getElement(element, options) {
@@ -61,27 +61,27 @@ function setInputElement(element, value, options) {
     cy.getInputElement(element).then($element => {
         const elementOptions = getElementOptions($element, options)
 
-        if ($element.is(':checkbox') || $element.is(':radio')) {
-            if (value === 'checked') {
+        if ($element.is(":checkbox") || $element.is(":radio")) {
+            if (value === "checked") {
                 // Explicitly checks a checkbox/radio
                 cy.wrap($element).check(elementOptions)
-            } else if (value === 'unchecked') {
+            } else if (value === "unchecked") {
                 // Explicitly unchecks a checkbox/radio
                 cy.wrap($element).uncheck(elementOptions)
             } else {
                 // Checks a checkbox/radio by value
                 const selectors = value
-                    .split(',')
+                    .split(",")
                     .map(val => val.trim())
                     .map(val => `[${options.elementValueAttr}="${val}"], [value="${val}"]`)
 
                 cy.wrap($element)
-                    .filter(selectors.join(', '))
+                    .filter(selectors.join(", "))
                     .check(elementOptions)
             }
-        } else if ($element.is('select')) {
+        } else if ($element.is("select")) {
             // Selects an option by value or text content
-            const values = value.split(',').map(s => s.trim())
+            const values = value.split(",").map(s => s.trim())
             cy.wrap($element).select(values, elementOptions)
         } else {
             // Replaces the value for all other input types

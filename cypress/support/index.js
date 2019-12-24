@@ -1,3 +1,3 @@
-const { addCommands } = require('../../src/index')
+const { addCommands } = require("../../src/index")
 
 addCommands()

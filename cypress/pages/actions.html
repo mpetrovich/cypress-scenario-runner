@@ -4,17 +4,17 @@
         <button t-element="clickable element">Clickable element</button>
         <div t-element="clickable element result"></div>
         <script>
-            document.querySelector('[t-element="clickable element"]').addEventListener('click', function(event) {
-                document.querySelector('[t-element="clickable element result"]').innerText = 'Button clicked'
+            document.querySelector('[t-element="clickable element"]').addEventListener("click", function(event) {
+                document.querySelector('[t-element="clickable element result"]').innerText = "Button clicked"
             })
         </script>
 
         <button t-element="disappear button">Make element disappear</button>
         <div t-element="disappearing element">Disappearing element</div>
         <script>
-            document.querySelector('[t-element="disappear button"]').addEventListener('click', function(event) {
+            document.querySelector('[t-element="disappear button"]').addEventListener("click", function(event) {
                 window.setTimeout(
-                    () => (document.querySelector('[t-element="disappearing element"]').style.display = 'none'),
+                    () => (document.querySelector('[t-element="disappearing element"]').style.display = "none"),
                     250
                 )
             })
@@ -25,9 +25,9 @@
         <script>
             document
                 .querySelector('[t-element="double-clickable element"]')
-                .addEventListener('dblclick', function(event) {
+                .addEventListener("dblclick", function(event) {
                     document.querySelector('[t-element="double-clickable element result"]').innerText =
-                        'Element double-clicked'
+                        "Element double-clicked"
                 })
         </script>
 
@@ -41,9 +41,9 @@
         <script>
             document
                 .querySelector('[t-element="clickable invisible element"]')
-                .addEventListener('click', function(event) {
+                .addEventListener("click", function(event) {
                     document.querySelector('[t-element="clickable invisible element result"]').innerText =
-                        'Invisible button clicked'
+                        "Invisible button clicked"
                 })
         </script>
     </body>

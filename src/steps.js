@@ -2,8 +2,8 @@ const { getElementOptions } = require("./index")
 
 module.exports = {
     /*
-		Actions
-	 */
+        Actions
+     */
 
     "I navigate to {route}": function(route, table, { routes }) {
         cy.visit(routes[route] || route)
@@ -58,26 +58,26 @@ module.exports = {
     },
 
     /*
-		Assertions
-	 */
+        Assertions
+     */
 
     "I should be on {route}": function(route, table, { routes }) {
         let path = routes[route] || route
-        const isRegexPath = path.startsWith("/") && path.endsWith("/")
 
-        if (isRegexPath) {
+        const isRegexStringPath = typeof path === "string" && path.startsWith("/") && path.endsWith("/")
+        if (isRegexStringPath) {
             path = new RegExp(path.slice(1, -1))
         }
 
-        let comparator = path instanceof RegExp ? "match" : "eq"
+        const comparator = path instanceof RegExp ? "match" : "eq"
         cy.location("pathname").should(comparator, path)
     },
 
     "I should not be on {route}": function(route, table, { routes }) {
         let path = routes[route] || route
-        const isRegexPath = path.startsWith("/") && path.endsWith("/")
 
-        if (isRegexPath) {
+        const isRegexStringPath = typeof path === "string" && path.startsWith("/") && path.endsWith("/")
+        if (isRegexStringPath) {
             path = new RegExp(path.slice(1, -1))
         }
 

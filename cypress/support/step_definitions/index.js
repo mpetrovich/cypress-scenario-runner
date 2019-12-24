@@ -8,6 +8,7 @@ addSteps({
         assertions: "/cypress/pages/assertions.html",
         "input actions": "/cypress/pages/actions-inputs.html",
         "input assertions": "/cypress/pages/assertions-inputs.html",
+        "any page": /cypress\/pages\//,
     },
     steps: {
         "I double-click {element}": function(element, table, { options }) {

@@ -14,10 +14,16 @@ When I navigate to "actions"
 Then I should be on "/cypress/pages/actions.html"
 
 
-Scenario: Can assert to be on the current page by page name
+Scenario: Can assert to be on the current page by page name when the page URI is a relative path
 ---
 When I navigate to "assertions"
 Then I should be on "assertions"
+
+
+Scenario: Can assert to be on the current page by page name when the page URI is a regex
+---
+When I navigate to "assertions"
+Then I should be on "any page"
 
 
 Scenario: Can assert to be on the current page by page path string

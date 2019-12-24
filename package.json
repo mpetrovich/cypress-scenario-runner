@@ -1,49 +1,49 @@
 {
-  "name": "cypress-scenario-runner",
-  "version": "2.1.0",
-  "license": "MIT",
-  "author": "Mike Petrovich <michael.c.petrovich@gmail.com>",
-  "description": "Run Gherkin scenarios in Cypress without a single line of code.",
-  "keywords": [
-    "cypress",
-    "cypress.io",
-    "gherkin",
-    "scenario",
-    "bdd",
-    "test",
-    "cucumber"
-  ],
-  "homepage": "https://github.com/mpetrovich/cypress-scenario-runner#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mpetrovich/cypress-scenario-runner.git"
-  },
-  "bugs": {
-    "url": "https://github.com/mpetrovich/cypress-scenario-runner/issues"
-  },
-  "engines": {
-    "node": ">=8.0"
-  },
-  "dependencies": {
-    "mkdirp": "^0.5.1"
-  },
-  "peerDependencies": {
-    "cypress": "^3.0.3",
-    "cypress-cucumber-preprocessor": "^1.16.0"
-  },
-  "devDependencies": {
-    "cypress": "^3.8.0",
-    "cypress-cucumber-preprocessor": "^1.16.0",
-    "prettier": "^1.18.2"
-  },
-  "main": "src/index.js",
-  "bin": {
-    "install-cypress-scenario-runner": "src/scripts/install.js"
-  },
-  "scripts": {
-    "test": "cypress run",
-    "test:open": "cypress open",
-    "test:debug": "DEBUG=cypress:* cypress open",
-    "format": "prettier --write '{src,test}/**/*.{js,json,html}'"
-  }
+    "name": "cypress-scenario-runner",
+    "version": "2.1.0",
+    "license": "MIT",
+    "author": "Mike Petrovich <michael.c.petrovich@gmail.com>",
+    "description": "Run Gherkin scenarios in Cypress without a single line of code.",
+    "keywords": [
+        "cypress",
+        "cypress.io",
+        "gherkin",
+        "scenario",
+        "bdd",
+        "test",
+        "cucumber"
+    ],
+    "homepage": "https://github.com/mpetrovich/cypress-scenario-runner#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mpetrovich/cypress-scenario-runner.git"
+    },
+    "bugs": {
+        "url": "https://github.com/mpetrovich/cypress-scenario-runner/issues"
+    },
+    "engines": {
+        "node": ">=8.0"
+    },
+    "dependencies": {
+        "mkdirp": "^0.5.1"
+    },
+    "peerDependencies": {
+        "cypress": "^3.0.3",
+        "cypress-cucumber-preprocessor": "^1.16.0"
+    },
+    "devDependencies": {
+        "cypress": "^3.8.0",
+        "cypress-cucumber-preprocessor": "^1.16.0",
+        "prettier": "^1.18.2"
+    },
+    "main": "src/index.js",
+    "bin": {
+        "install-cypress-scenario-runner": "src/scripts/install.js"
+    },
+    "scripts": {
+        "test": "cypress run",
+        "test:open": "cypress open",
+        "test:debug": "DEBUG=cypress:* cypress open",
+        "format": "prettier --write '{src,cypress}/**/*.{js,json,html,md}'"
+    }
 }

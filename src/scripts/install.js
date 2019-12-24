@@ -5,9 +5,9 @@ const path = require('path')
 const mkdirp = require('mkdirp').sync
 const readJson = from => (fs.existsSync(from) ? JSON.parse(fs.readFileSync(from, { encoding: 'utf8' })) : {})
 const append = (from, to) => {
-	const content = fs.readFileSync(from, { encoding: 'utf8' })
-	mkdirp(path.dirname(to))
-	fs.appendFileSync(to, content)
+    const content = fs.readFileSync(from, { encoding: 'utf8' })
+    mkdirp(path.dirname(to))
+    fs.appendFileSync(to, content)
 }
 
 const cypress = readJson(path.resolve(process.cwd(), 'cypress.json'))

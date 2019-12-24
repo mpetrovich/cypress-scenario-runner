@@ -20,9 +20,9 @@ Then I should be on "home"
 …without needing to write any Cypress glue code like `cy.visit()`, `cy.click()`, etc. All you need to do is tag HTML elements:
 
 ```html
-<input … data-test="email input" />
-<input … data-test="password input" />
-<button … data-test="login button">Login</button>
+<input … test-element="email input" />
+<input … test-element="password input" />
+<button … test-element="login button">Login</button>
 ```
 
 and map route names to URIs:
@@ -134,25 +134,25 @@ See the [`cypress/integration/`](cypress/integration/) directory for more exampl
 
 ### Tagging elements
 
-HTML attributes are used to map `{element}` step parameters to their corresponding HTML elements. `data-test` attributes is used by default, but this is [configurable](#configuration).
+HTML attributes are used to map `{element}` step parameters to their corresponding HTML elements. `test-element` attributes is used by default, but this is [configurable](#configuration).
 
 ```html
 <!-- login.html -->
-<input name="email" data-test="email input" />
-<input name="password" data-test="password input" />
-<button type="submit" data-test="login button">Login</button>
+<input name="email" test-element="email input" />
+<input name="password" test-element="password input" />
+<button type="submit" test-element="login button">Login</button>
 ```
 
 #### Element options
 
-Many Cypress commands accept an optional `options` object that can be used to customize how the command is executed (eg. [`cy.type(text, options)`](https://docs.cypress.io/api/commands/type.html#Arguments)). These options can be set on a per-element basis via a `data-options` attribute. Example:
+Many Cypress commands accept an optional `options` object that can be used to customize how the command is executed (eg. [`cy.type(text, options)`](https://docs.cypress.io/api/commands/type.html#Arguments)). These options can be set on a per-element basis via a `test-options` attribute. Example:
 
 ```diff
   <input
     name="search"
     type="text"
-    data-test="search input"
-+   data-options="{ force: true, log: true }"
+    test-element="search input"
++   test-options="{ force: true, log: true }"
   >
 ```
 
@@ -180,7 +180,7 @@ addSteps({
 
 ### Working with inputs
 
-Like other HTML elements, input elements are selectable by their `data-test` attribute (or whichever attribute [you've configured](#configuration)).
+Like other HTML elements, input elements are selectable by their `test-element` attribute (or whichever attribute [you've configured](#configuration)).
 
 #### Supported types
 
@@ -214,16 +214,16 @@ TBD
 
 #### Wrapped inputs
 
-When using UI frameworks, it may not be practical to add `data-test` and other attributes directly to the input elements themselves. In such cases, those attributes can be added to an ancestor element that wraps the input. For example:
+When using UI frameworks, it may not be practical to add `test-element` and other attributes directly to the input elements themselves. In such cases, those attributes can be added to an ancestor element that wraps the input. For example:
 
 ```html
-<my-custom-input data-test="some input"></my-custom-input>
+<my-custom-input test-element="some input"></my-custom-input>
 ```
 
 This is convenient when checkboxes are wrapped with their labels:
 
 ```html
-<label data-test="color options">
+<label test-element="color options">
   <input type="checkbox" name="colors" value="red" />
   <input type="checkbox" name="colors" value="green" />
   <input type="checkbox" name="colors" value="blue" />
@@ -235,7 +235,7 @@ This is convenient when checkboxes are wrapped with their labels:
 `<select>` options can be selected by their value or by their label. For example, given:
 
 ```html
-<select name="select" data-test="select input">
+<select name="select" test-element="select input">
   <option value="Value A">Label A</option>
   <option value="Value B">Label B</option>
   <option value="Value C">Label C</option>
@@ -259,7 +259,7 @@ For more example usage, see [input/select.feature](cypress/integration/input/sel
 For multi-selects (ie. `<select multiple>`), multiple options can be selected by stringing together their labels or values with commas. For example, given:
 
 ```html
-<select multiple name="select" data-test="select input">
+<select multiple name="select" test-element="select input">
   <option value="Value A">Label A</option>
   <option value="Value B">Label B</option>
   <option value="Value C">Label C</option>
@@ -280,28 +280,28 @@ For more example usage, see [input/select.feature](cypress/integration/input/sel
 
 #### Checkboxes
 
-Checkboxes can be checked by their value or by their `data-value` attributes (or whichever attribute [you've configured](#configuration) for input values). For example, given:
+Checkboxes can be checked by their value or by their `test-value` attributes (or whichever attribute [you've configured](#configuration) for input values). For example, given:
 
 ```html
-<input type="checkbox" name="color" value="f00" data-test="colors" data-value="red" />
-<input type="checkbox" name="color" value="0f0" data-test="colors" data-value="green" />
-<input type="checkbox" name="color" value="00f" data-test="colors" data-value="blue" />
+<input type="checkbox" name="color" value="f00" test-element="colors" test-value="red" />
+<input type="checkbox" name="color" value="0f0" test-element="colors" test-value="green" />
+<input type="checkbox" name="color" value="00f" test-element="colors" test-value="blue" />
 ```
 
-The second checkbox can be set by its `data-value` attribute `green` or by its value `0f0`:
+The second checkbox can be set by its `test-value` attribute `green` or by its value `0f0`:
 
 ```
-# By data-value:
+# By test-value:
 I set "colors" to "green"
 
 # By value:
 I set "colors" to "0f0"
 ```
 
-Multiple checkboxes can be checked individually by `data-value` or by value:
+Multiple checkboxes can be checked individually by `test-value` or by value:
 
 ```
-# By data-value:
+# By test-value:
 I set "colors" to "green"
 I set "colors" to "blue"
 
@@ -310,10 +310,10 @@ I set "colors" to "0f0"
 I set "colors" to "00f"
 ```
 
-Multiple checkboxes can also be checked together by stringing together their `data-value` or `value` attributes with commas:
+Multiple checkboxes can also be checked together by stringing together their `test-value` or `value` attributes with commas:
 
 ```
-# By data-value:
+# By test-value:
 I set "colors" to "green, blue"
 
 # By value:

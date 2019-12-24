@@ -1,9 +1,9 @@
 const { given } = require('cypress-cucumber-preprocessor/steps')
 
 const defaultOptions = {
-	elementAttr: 'data-test',
-	elementValueAttr: 'data-value',
-	elementOptionsAttr: 'data-options',
+	elementAttr: 'test-element',
+	elementValueAttr: 'test-value',
+	elementOptionsAttr: 'test-options',
 	elementOptions: {
 		force: false,
 	},

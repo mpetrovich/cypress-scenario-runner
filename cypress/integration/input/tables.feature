@@ -40,3 +40,21 @@ Then "submitted textarea" text should be "Textarea value"
 Then "submitted radio" text should be "radio 2 value"
 Then "submitted checkbox" text should be "checkbox 2 value; checkbox 3 value"
 Then "submitted select" text should be "option 2 value"
+
+
+Scenario Template: Input values can be set using inline tables within a scenario template
+---
+Given I navigate to "input actions"
+And I set:
+| element          | value                              |
+| text input       | Text value                         |
+| password input   | Password value                     |
+| textarea input   | Textarea value                     |
+When I click "submit button"
+Then "<submitted field>" text should be "<submitted value>"
+
+Examples:
+| submitted field       | submitted value                    |
+| submitted text        | Text value                         |
+| submitted password    | Password value                     |
+| submitted textarea    | Textarea value                     |

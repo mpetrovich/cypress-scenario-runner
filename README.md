@@ -1,8 +1,10 @@
 # Cypress Scenario Runner [![npm version](https://badge.fury.io/js/cypress-scenario-runner.svg)](https://badge.fury.io/js/cypress-scenario-runner) [![Build Status](https://travis-ci.org/mpetrovich/cypress-scenario-runner.svg?branch=master)](https://travis-ci.org/mpetrovich/cypress-scenario-runner)
 
+> ⚠️ **CAUTION:** These docs are for latest unstable development version. For for the latest stable release, see the [2.x branch docs](https://github.com/mpetrovich/cypress-scenario-runner/blob/2.x/README.md).
+
 **Run [Gherkin scenarios](https://docs.cucumber.io/gherkin/reference/) in [Cypress](https://www.cypress.io) without a single line of code.**
 
-Cypress Scenario Runner enables you to run Gherkin scenarios like this one:
+To run a Gherkin scenario like this:
 
 ```sh
 Feature: Login
@@ -10,14 +12,14 @@ Feature: Login
 
 Scenario: Successful login
 ---
-Given I navigate to "login"
+Given I navigate to "/login"
 And I set "email input" to "name@example.com"
-And I set "password input" to "abc123"
+And I set "password input" to "p4ssw0rd"
 When I click "login button"
-Then I should be on "home"
+Then I should be on "/dashboard"
 ```
 
-…without needing to write any Cypress glue code like `cy.visit()`, `cy.click()`, etc. All you need to do is tag HTML elements:
+Just tag the appropriate HTML elements:
 
 ```html
 <input … test-element="email input" />
@@ -25,34 +27,28 @@ Then I should be on "home"
 <button … test-element="login button">Login</button>
 ```
 
-and map route names to URIs:
-
-```json
-{
-  "login": "/login"
-}
-```
+That's it. No other coding required.
 
 ## Table of contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Writing test scenarios](#writing-test-scenarios)
-  - [Tagging elements](#tagging-elements)
-  - [Mapping routes](#mapping-routes)
-  - [Working with inputs](#working-with-inputs)
-  - [Using data tables](#using-data-tables)
-  - [Running scenarios](#running-scenarios)
-- [Customization](#customization)
-- [Contributing](CONTRIBUTING.md)
+-   [Installation](#installation)
+-   [Usage](#usage)
+    -   [Writing test scenarios](#writing-test-scenarios)
+    -   [Tagging elements](#tagging-elements)
+    -   [Mapping routes](#mapping-routes)
+    -   [Working with inputs](#working-with-inputs)
+    -   [Using data tables](#using-data-tables)
+    -   [Running scenarios](#running-scenarios)
+-   [Customization](#customization)
+-   [Contributing](CONTRIBUTING.md)
 
 ## Installation
 
 Requires:
 
-- Node.js 8.0+
-- [`cypress`](https://github.com/cypress-io/cypress/)
-- [`cypress-cucumber-preprocessor`](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor)
+-   Node.js 8.0+
+-   [`cypress`](https://github.com/cypress-io/cypress/)
+-   [`cypress-cucumber-preprocessor`](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor)
 
 ```sh
 npm install --save-dev cypress cypress-cucumber-preprocessor cypress-scenario-runner
@@ -182,74 +178,29 @@ addSteps({
 
 Like other HTML elements, input elements are selectable by their `test-element` attribute (or whichever attribute [you've configured](#configuration)).
 
-#### Supported types
+Nearly [any type of input](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#%3Cinput%3E_types) can be set with this step:
 
-The step `I set {element} to {string}` can be used to set the value of nearly any type of input:
-
-- `<input type="checkbox">`
-- `<input type="color">`
-- `<input type="date">`
-- `<input type="datetime-local">`
-- `<input type="email">`
-- `<input type="file">`
-- `<input type="hidden">`
-- `<input type="image">`
-- `<input type="month">`
-- `<input type="number">`
-- `<input type="password">`
-- `<input type="radio">`
-- `<input type="range">`
-- `<input type="search">`
-- `<input type="tel">`
-- `<input type="text">`
-- `<input type="time">`
-- `<input type="url">`
-- `<input type="week">`
-- `<select></select>`
-- `<textarea></textarea>`
-
-#### Input value and options
-
-TBD
-
-#### Wrapped inputs
-
-When using UI frameworks, it may not be practical to add `test-element` and other attributes directly to the input elements themselves. In such cases, those attributes can be added to an ancestor element that wraps the input. For example:
-
-```html
-<my-custom-input test-element="some input"></my-custom-input>
 ```
-
-This is convenient when checkboxes are wrapped with their labels:
-
-```html
-<label test-element="color options">
-  <input type="checkbox" name="colors" value="red" />
-  <input type="checkbox" name="colors" value="green" />
-  <input type="checkbox" name="colors" value="blue" />
-</label>
+I set {element} to {string}
 ```
 
 #### Selects
 
-`<select>` options can be selected by their value or by their label. For example, given:
+A `<select>` option can be selected by its value or label. For example, given:
 
 ```html
-<select name="select" test-element="select input">
-  <option value="Value A">Label A</option>
-  <option value="Value B">Label B</option>
-  <option value="Value C">Label C</option>
+<select name="fav_color" test-element="favorite color">
+    <option value="#f00">Red</option>
+    <option value="#0f0">Green</option>
+    <option value="#00f">Blue</option>
 </select>
 ```
 
-The second `<option>` can be selected by its value `Value B` or by its label `Label B`:
+These steps are equivalent:
 
 ```
-# By value:
-I set "select input" to "Value B"
-
-# By label:
-I set "select input" to "Label B"
+I set "favorite color" to "#0f0"
+I set "favorite color" to "Green"
 ```
 
 For more example usage, see [input/select.feature](cypress/integration/input/select.feature).
@@ -260,9 +211,9 @@ For multi-selects (ie. `<select multiple>`), multiple options can be selected by
 
 ```html
 <select multiple name="select" test-element="select input">
-  <option value="Value A">Label A</option>
-  <option value="Value B">Label B</option>
-  <option value="Value C">Label C</option>
+    <option value="Value A">Label A</option>
+    <option value="Value B">Label B</option>
+    <option value="Value C">Label C</option>
 </select>
 ```
 
@@ -277,6 +228,54 @@ I set "select input" to "Label B, Label C"
 ```
 
 For more example usage, see [input/select.feature](cypress/integration/input/select.feature).
+
+#### Radios
+
+A radio option can set by its value or `test-value` label. For example:
+
+```html
+<label>
+    <input type="radio" name="fav_color" value="#f00" test-element="favorite color" test-value="Red" />
+    Red
+</label>
+<label>
+    <input type="radio" name="fav_color" value="#0f0" test-element="favorite color" test-value="Green" />
+    Green
+</label>
+<label>
+    <input type="radio" name="fav_color" value="#00f" test-element="favorite color" test-value="Blue" />
+    Blue
+</label>
+```
+
+These steps are equivalent:
+
+```
+I set "favorite color" to "#0f0"
+I set "favorite color" to "Green"
+```
+
+#### Wrapped inputs
+
+When using UI frameworks, it may not be practical to add `test-element` and other attributes directly to the input elements themselves. In such cases, those attributes can be added to an ancestor element that wraps the input. For example:
+
+```html
+<my-custom-input test-element="some input"></my-custom-input>
+```
+
+This is convenient when checkbox or radio inputs are wrapped with labels:
+
+```html
+<label test-element="color options">
+    <input type="checkbox" name="colors" value="red" />
+</label>
+<label test-element="color options">
+    <input type="checkbox" name="colors" value="green" />
+</label>
+<label test-element="color options">
+    <input type="checkbox" name="colors" value="blue" />
+</label>
+```
 
 #### Checkboxes
 
@@ -320,15 +319,84 @@ I set "colors" to "green, blue"
 I set "colors" to "0f0, 00f"
 ```
 
+A single-option checkbox can be checked or unchecked by setting its value to the string `checked` or `unchecked`. For example, given:
+
+```html
+<input type="checkbox" name="remember_me" value="1" test-element="remember me" />
+```
+
+```
+I set "remember me" to "checked"
+```
+
 **NOTE:** Setting one or more checkboxes does not clear the other checkboxes.
 
 For more example usage, see [input/checkbox.feature](cypress/integration/input/checkbox.feature).
 
-### Using data tables
+### Data tables
 
-TBD
+Repetitive steps can be written in tabular form with inline data tables.
 
-For more example usage, see [input/tables.feature](cypress/integration/input/tables.feature).
+For example, this scenario:
+
+```
+I set "first name" to "Jane"
+I set "last name" to "Doe"
+I set "email" to "jdoe@example.com"
+I set "address" to "123 Somewhere St."
+I set "city" to "Anywhere"
+I set "zip" to "38274"
+```
+
+Can be written as a data table with `I set:`:
+
+```
+I set:
+| element    | value             |
+| first name | Jane              |
+| last name  | Doe               |
+| email      | jdoe@example.com  |
+| address    | 123 Somewhere St. |
+| city       | Anywhere          |
+| zip        | 38274             |
+```
+
+The first column of the table are column headers. It doesn't matter how you name them—they're meant to be purely informational and are ignored.
+
+The list steps that use data tables are:
+
+-   `I set:`
+-   `elements text should be:`
+-   `elements text should not be:`
+-   `elements text should contain:`
+-   `elements text should not contain:`
+
+For more example usage, see [input/tables.feature](cypress/integration/input/tables.feature) and the [official Gherkin spec](https://cucumber.io/docs/gherkin/reference/#data-tables).
+
+### Scenario outlines/templates
+
+Repetitive scenarios can be parameterized with a scenario outline (aka scenario template):
+
+```
+Scenario Template: Multiple valid forms can be submitted
+---
+Given I navigate to "form"
+And I set "first name" to "<first name>"
+And I set "last name" to "<last name>"
+And I set "email" to "<email>"
+When I click "submit button"
+Then I "form submitted message" should be visible
+
+Examples:
+| first name  | last name      | email                 |
+| Peter       | Gibbons        | pgibbons@initech.com  |
+| Samir       | Nagheenanajar  | samir@initrode.com    |
+| Mike        | Bolton         | pcl04dl3tt3r@aol.com  |
+```
+
+The scenario is run once for each row in the table. Parameters denoted by `< >` are replaced with the associated column value.
+
+For more details, see the [official Gherkin spec](https://cucumber.io/docs/gherkin/reference/#scenario-outline).
 
 ### Running scenarios
 
@@ -348,6 +416,6 @@ $(npm bin)/cypress open
 
 TBD
 
-- Options
-- Custom steps
-- API
+-   Options
+-   Custom steps
+-   API

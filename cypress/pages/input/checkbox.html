@@ -36,6 +36,106 @@
                 </label>
             </p>
 
+            <h2>Solo unselected checkbox</h2>
+            <p>
+                <label>
+                    <input
+                        name="solo-unselected-checkbox"
+                        value="checkbox value"
+                        type="checkbox"
+                        t-element="solo-unselected-checkbox input"
+                        t-value="checkbox custom attribute value"
+                        checked
+                    />
+                    checkbox label
+                </label>
+            </p>
+
+            <h2>Solo preselected checkbox</h2>
+            <p>
+                <label>
+                    <input
+                        name="solo-preselected-checkbox"
+                        value="checkbox value"
+                        type="checkbox"
+                        t-element="solo-preselected-checkbox input"
+                        t-value="checkbox custom attribute value"
+                        checked
+                    />
+                    checkbox label
+                </label>
+            </p>
+
+            <h2>Single preselected checkbox</h2>
+            <p>
+                <label>
+                    <input
+                        name="single-preselected-checkbox"
+                        value="checkbox 1 value"
+                        type="checkbox"
+                        t-element="single-preselected-checkbox input"
+                        t-value="checkbox 1 custom attribute value"
+                        checked
+                    />
+                    checkbox 1 label
+                </label>
+                <label>
+                    <input
+                        name="single-preselected-checkbox"
+                        value="checkbox 2 value"
+                        type="checkbox"
+                        t-element="single-preselected-checkbox input"
+                        t-value="checkbox 2 custom attribute value"
+                    />
+                    checkbox 2 label
+                </label>
+                <label>
+                    <input
+                        name="single-preselected-checkbox"
+                        value="checkbox 3 value"
+                        type="checkbox"
+                        t-element="single-preselected-checkbox input"
+                        t-value="checkbox 3 custom attribute value"
+                    />
+                    checkbox 3 label
+                </label>
+            </p>
+
+            <h2>Multiple preselected checkboxes</h2>
+            <p>
+                <label>
+                    <input
+                        name="multiple-preselected-checkbox"
+                        value="checkbox 1 value"
+                        type="checkbox"
+                        t-element="multiple-preselected-checkbox input"
+                        t-value="checkbox 1 custom attribute value"
+                        checked
+                    />
+                    checkbox 1 label
+                </label>
+                <label>
+                    <input
+                        name="multiple-preselected-checkbox"
+                        value="checkbox 2 value"
+                        type="checkbox"
+                        t-element="multiple-preselected-checkbox input"
+                        t-value="checkbox 2 custom attribute value"
+                    />
+                    checkbox 2 label
+                </label>
+                <label>
+                    <input
+                        name="multiple-preselected-checkbox"
+                        value="checkbox 3 value"
+                        type="checkbox"
+                        t-element="multiple-preselected-checkbox input"
+                        t-value="checkbox 3 custom attribute value"
+                    />
+                    checkbox 3 label
+                </label>
+            </p>
+
             <h2>Invisible checkbox</h2>
             <p>
                 <label>
@@ -123,6 +223,46 @@
             <span t-element="submitted checkbox"></span>
             <script>
                 document.querySelector('[t-element="submitted checkbox"]').innerText = get("checkbox")
+            </script>
+        </p>
+
+        <h2>Solo unselected checkbox</h2>
+        <p>
+            <span t-element="submitted solo-unselected-checkbox"></span>
+            <script>
+                document.querySelector('[t-element="submitted solo-unselected-checkbox"]').innerText = get(
+                    "solo-unselected-checkbox"
+                )
+            </script>
+        </p>
+
+        <h2>Solo preselected checkbox</h2>
+        <p>
+            <span t-element="submitted solo-preselected-checkbox"></span>
+            <script>
+                document.querySelector('[t-element="submitted solo-preselected-checkbox"]').innerText = get(
+                    "solo-preselected-checkbox"
+                )
+            </script>
+        </p>
+
+        <h2>Single preselected checkbox</h2>
+        <p>
+            <span t-element="submitted single-preselected-checkbox"></span>
+            <script>
+                document.querySelector('[t-element="submitted single-preselected-checkbox"]').innerText = get(
+                    "single-preselected-checkbox"
+                )
+            </script>
+        </p>
+
+        <h2>Multiple preselected checkboxes</h2>
+        <p>
+            <span t-element="submitted multiple-preselected-checkbox"></span>
+            <script>
+                document.querySelector('[t-element="submitted multiple-preselected-checkbox"]').innerText = get(
+                    "multiple-preselected-checkbox"
+                )
             </script>
         </p>
 

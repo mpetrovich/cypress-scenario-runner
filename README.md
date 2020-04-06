@@ -1,3 +1,5 @@
+# DEPRECATED: No longer maintained. For details, see: https://github.com/mpetrovich/cypress-scenario-runner/issues/22
+
 # Cypress Scenario Runner [![npm version](https://badge.fury.io/js/cypress-scenario-runner.svg)](https://badge.fury.io/js/cypress-scenario-runner) [![Build Status](https://travis-ci.org/mpetrovich/cypress-scenario-runner.svg?branch=master)](https://travis-ci.org/mpetrovich/cypress-scenario-runner)
 
 > ⚠️ **CAUTION:** These docs are for latest unstable development version. For for the latest stable release, see the [2.x branch docs](https://github.com/mpetrovich/cypress-scenario-runner/blob/2.x/README.md).

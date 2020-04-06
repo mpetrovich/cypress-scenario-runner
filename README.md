@@ -1,3 +1,5 @@
+# DEPRECATED: No longer maintained. For details, see: https://github.com/mpetrovich/cypress-scenario-runner/issues/22
+
 # Cypress Scenario Runner [![npm version](https://badge.fury.io/js/cypress-scenario-runner.svg)](https://badge.fury.io/js/cypress-scenario-runner) [![Build Status](https://travis-ci.org/mpetrovich/cypress-scenario-runner.svg?branch=master)](https://travis-ci.org/mpetrovich/cypress-scenario-runner)
 
 **Run [Gherkin scenarios](https://docs.cucumber.io/gherkin/reference/) with [Cypress](https://www.cypress.io) without a single line of code.**

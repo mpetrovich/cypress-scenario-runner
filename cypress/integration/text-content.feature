@@ -2,17 +2,30 @@ Feature: Text content
 ===
 
 
-Scenario: Element text content can be asserted to be equal to a string, ignoring case and surrounding whitespace
+Scenario: Text content of an element can be asserted to be equal to a string, ignoring case and surrounding whitespace
 ---
 When I navigate to "assertions"
 Then "element text" text should be "element text content"
 And "element text" text should be "  ELEMENT TEXT CONTENT  "
 
 
-Scenario: Element text content can be asserted to be inequal to a string, ignoring case and surrounding whitespace
+Scenario: Text content of a descendent element within an ancestor element can be asserted to be equal to a string, ignoring case and surrounding whitespace
+---
+When I navigate to "assertions"
+Then within "ancestor element", "descendant element text" text should be "descendant element text content"
+And within "ancestor element", "descendant element text" text should be "  DESCENDANT ELEMENT TEXT CONTENT  "
+
+
+Scenario: Text content of an element can be asserted to be inequal to a string, ignoring case and surrounding whitespace
 ---
 When I navigate to "assertions"
 Then "element text" text should not be "different text content"
+
+
+Scenario: Text content of a descendent element within an ancestor element can be asserted to be inequal to a string, ignoring case and surrounding whitespace
+---
+When I navigate to "assertions"
+Then within "ancestor element", "descendant element text" text should not be "different descendant text content"
 
 
 Scenario: Element text content can be asserted to contain a string, ignoring case but not surrounding whitespace

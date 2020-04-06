@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form action="" method="GET">
+            <p>
+                <label>Text input</label>
+                <input name="ignored text" type="text" t-element="text input" value="initial text" />
+                <input
+                    name="ignored invisible-text"
+                    type="text"
+                    t-element="invisible-text input"
+                    t-options="{ force: true }"
+                    value="initial text"
+                    style="visibility: hidden;"
+                />
+                <span t-element="wrapped-text input">
+                    <input name="ignored wrapped-text" type="text" value="initial text" />
+                </span>
+            </p>
+
+            <div t-element="ancestor element">
+                <p>
+                    <label>Text input</label>
+                    <input name="text" type="text" t-element="text input" value="initial text" />
+                    <input
+                        name="invisible-text"
+                        type="text"
+                        t-element="invisible-text input"
+                        t-options="{ force: true }"
+                        value="initial text"
+                        style="visibility: hidden;"
+                    />
+                    <span t-element="wrapped-text input">
+                        <input name="wrapped-text" type="text" value="initial text" />
+                    </span>
+                </p>
+            </div>
+            <p>
+                <button type="submit" t-element="submit button">Submit</button>
+            </p>
+        </form>
+
+        <h1>You submitted</h1>
+        <script>
+            const data = Array.from(new URLSearchParams(window.location.search)).reduce((data, entry) => {
+                const [key, value] = entry
+                data[key] = data[key] ? [].concat(data[key], value) : value
+                return data
+            }, {})
+
+            for (key in data) {
+                const values = [].concat(data[key])
+                document.write(`<p>${key}: <span t-element="submitted ${key}">${values.join("; ")}</span></p>`)
+            }
+        </script>
+    </body>
+</html>

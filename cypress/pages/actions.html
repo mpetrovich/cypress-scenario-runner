@@ -9,6 +9,21 @@
             })
         </script>
 
+        <div t-element="ancestor element">
+            <div>
+                <button t-element="clickable descendant element">Clickable element</button>
+            </div>
+        </div>
+        <div t-element="clickable descendant element result"></div>
+        <script>
+            document
+                .querySelector('[t-element="clickable descendant element"]')
+                .addEventListener("click", function(event) {
+                    document.querySelector('[t-element="clickable descendant element result"]').innerText =
+                        "Button clicked"
+                })
+        </script>
+
         <button t-element="disappear button">Make element disappear</button>
         <div t-element="disappearing element">Disappearing element</div>
         <script>

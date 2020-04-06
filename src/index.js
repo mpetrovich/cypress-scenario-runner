@@ -45,51 +45,77 @@ function addCommands() {
     const options = Object.assign({}, defaultOptions, customOptions)
 
     Cypress.Commands.add("getElement", element => getElement(element, options))
+    Cypress.Commands.add("getElementWithinAncestor", (element, ancestorElement) =>
+        getElementWithinAncestor(element, ancestorElement, options)
+    )
     Cypress.Commands.add("getInputElement", element => getInputElement(element, options))
+    Cypress.Commands.add("getInputElementWithinAncestor", (element, ancestorElement) =>
+        getInputElementWithinAncestor(element, ancestorElement, options)
+    )
     Cypress.Commands.add("setInputElement", (element, value) => setInputElement(element, value, options))
+    Cypress.Commands.add("setInputElementWithinAncestor", (element, ancestorElement, value) =>
+        setInputElementWithinAncestor(element, ancestorElement, value, options)
+    )
 }
 
 function getElement(element, options) {
     return cy.get(`[${options.elementAttr}="${element}"]`)
 }
 
+function getElementWithinAncestor(element, ancestorElement, options) {
+    return cy.get(`[${options.elementAttr}="${ancestorElement}"] [${options.elementAttr}="${element}"]`)
+}
+
 function getInputElement(element, options) {
     return cy.get(`[${options.elementAttr}="${element}"]:input, [${options.elementAttr}="${element}"] :input`)
 }
 
+function getInputElementWithinAncestor(element, ancestorElement, options) {
+    return cy.get(
+        `[${options.elementAttr}="${ancestorElement}"] [${options.elementAttr}="${element}"]:input,` +
+            `[${options.elementAttr}="${ancestorElement}"] [${options.elementAttr}="${element}"] :input`
+    )
+}
+
 function setInputElement(element, value, options) {
-    cy.getInputElement(element).then($element => {
-        const elementOptions = getElementOptions($element, options)
+    cy.getInputElement(element).then($element => setInput($element, value, options))
+}
 
-        if ($element.is(":checkbox") || $element.is(":radio")) {
-            if (value === "checked") {
-                // Explicitly checks a checkbox/radio
-                cy.wrap($element).check(elementOptions)
-            } else if (value === "unchecked") {
-                // Explicitly unchecks a checkbox/radio
-                cy.wrap($element).uncheck(elementOptions)
-            } else {
-                // Checks a checkbox/radio by value
-                const selectors = value
-                    .split(",")
-                    .map(val => val.trim())
-                    .map(val => `[${options.elementValueAttr}="${val}"], [value="${val}"]`)
+function setInputElementWithinAncestor(element, ancestorElement, value, options) {
+    cy.getInputElementWithinAncestor(element, ancestorElement).then($element => setInput($element, value, options))
+}
 
-                cy.wrap($element)
-                    .filter(selectors.join(", "))
-                    .check(elementOptions)
-            }
-        } else if ($element.is("select")) {
-            // Selects an option by value or text content
-            const values = value.split(",").map(s => s.trim())
-            cy.wrap($element).select(values, elementOptions)
+function setInput($element, value, options) {
+    const elementOptions = getElementOptions($element, options)
+
+    if ($element.is(":checkbox") || $element.is(":radio")) {
+        if (value === "checked") {
+            // Explicitly checks a checkbox/radio
+            cy.wrap($element).check(elementOptions)
+        } else if (value === "unchecked") {
+            // Explicitly unchecks a checkbox/radio
+            cy.wrap($element).uncheck(elementOptions)
         } else {
-            // Replaces the value for all other input types
+            // Checks a checkbox/radio by value
+            const selectors = value
+                .split(",")
+                .map(val => val.trim())
+                .map(val => `[${options.elementValueAttr}="${val}"], [value="${val}"]`)
+
             cy.wrap($element)
-                .clear(elementOptions)
-                .type(value, elementOptions)
+                .filter(selectors.join(", "))
+                .check(elementOptions)
         }
-    })
+    } else if ($element.is("select")) {
+        // Selects an option by value or text content
+        const values = value.split(",").map(s => s.trim())
+        cy.wrap($element).select(values, elementOptions)
+    } else {
+        // Replaces the value for all other input types
+        cy.wrap($element)
+            .clear(elementOptions)
+            .type(value, elementOptions)
+    }
 }
 
 function getElementOptions($element, options) {

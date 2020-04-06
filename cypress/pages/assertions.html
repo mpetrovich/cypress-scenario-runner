@@ -18,5 +18,17 @@
 
         <div t-element="element text">&nbsp;Element Text Content&nbsp;</div>
         <div t-element="another text">&nbsp;Another Text Content&nbsp;</div>
+
+        <div t-element="ancestor element">
+            <div>
+                <div t-element="non-empty visible descendant element">Visible element</div>
+                <div t-element="empty visible descendant element"></div>
+                <div t-element="visually hidden descendant element" style="visibility: hidden">
+                    Visually hidden element
+                </div>
+
+                <div t-element="descendant element text">&nbsp;Descendant Element Text Content&nbsp;</div>
+            </div>
+        </div>
     </body>
 </html>

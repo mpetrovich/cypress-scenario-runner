@@ -15,9 +15,18 @@ module.exports = {
             cy.wrap($element).click(elementOptions)
         })
     },
+    "within {element}, I click {element}": function(ancestorElement, element, table, { options }) {
+        cy.getElementWithinAncestor(element, ancestorElement).then($element => {
+            const elementOptions = getElementOptions($element, options)
+            cy.wrap($element).click(elementOptions)
+        })
+    },
 
     "I set {element} to {string}": function(element, value) {
         cy.setInputElement(element, value)
+    },
+    "within {element}, I set {element} to {string}": function(ancestorElement, element, value) {
+        cy.setInputElementWithinAncestor(element, ancestorElement, value)
     },
 
     "I set:": function(table, { steps }) {
@@ -88,9 +97,15 @@ module.exports = {
     "{element} should be visible": function(element) {
         cy.getElement(element).should("be.visible")
     },
+    "within {element}, {element} should be visible": function(ancestorElement, element) {
+        cy.getElementWithinAncestor(element, ancestorElement).should("be.visible")
+    },
 
     "{element} should not be visible": function(element) {
         cy.getElement(element).should("not.be.visible")
+    },
+    "within {element}, {element} should not be visible": function(ancestorElement, element) {
+        cy.getElementWithinAncestor(element, ancestorElement).should("not.be.visible")
     },
 
     "{element} should have {int} occurrences": function(element, count) {
@@ -115,9 +130,29 @@ module.exports = {
             ).to.eq(value.trim().toLowerCase())
         )
     },
+    "within {element}, {element} text should be {string}": function(ancestorElement, element, value) {
+        cy.getElementWithinAncestor(element, ancestorElement).should($element =>
+            expect(
+                $element
+                    .text()
+                    .trim()
+                    .toLowerCase()
+            ).to.eq(value.trim().toLowerCase())
+        )
+    },
 
     "{element} text should not be {string}": function(element, value) {
         cy.getElement(element).should($element =>
+            expect(
+                $element
+                    .text()
+                    .toLowerCase()
+                    .trim()
+            ).not.to.eq(value.trim().toLowerCase())
+        )
+    },
+    "within {element}, {element} text should not be {string}": function(ancestorElement, element, value) {
+        cy.getElementWithinAncestor(element, ancestorElement).should($element =>
             expect(
                 $element
                     .text()
@@ -173,6 +208,29 @@ module.exports = {
 
     "{element} should be set to {string}": function(element, value) {
         cy.getInputElement(element).then($element => {
+            if ($element.is(":checkbox") || $element.is(":radio")) {
+                const name = $element.attr("name")
+                const values = $element
+                    .closest("form, :root")
+                    .find(`[name="${name}"]`)
+                    .filter(":checked")
+                    .map(function() {
+                        return this.value
+                    })
+                    .get()
+                    .join(", ")
+
+                expect(values).to.eq(value)
+            } else if ($element.is("select")) {
+                const values = [].concat($element.val()).join(", ")
+                expect(values).to.eq(value)
+            } else {
+                expect($element.val()).to.eq(value)
+            }
+        })
+    },
+    "within {element}, {element} should be set to {string}": function(ancestorElement, element, value) {
+        cy.getInputElementWithinAncestor(element, ancestorElement).then($element => {
             if ($element.is(":checkbox") || $element.is(":radio")) {
                 const name = $element.attr("name")
                 const values = $element
